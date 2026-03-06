@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #0a0d12;
+      --surface:  #111418;
+      --surface2: #181c22;
+      --border:   #21262f;
+      --accent:   #3ecf8e;
+      --accent2:  #1aa870;
+      --text:     #e8edf3;
+      --muted:    #5a6374;
+      --success:  #3ecf8e;
+      --error:    #f05252;
+      --warn:     #f0a020;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 45% at 15% 5%,  rgba(62,207,142,.07) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 40% at 85% 90%, rgba(26,168,112,.04) 0%, transparent 65%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Grid texture */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none; z-index: 0;
+    }
+
+    .container {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+      position: relative; z-index: 1;
+    }
+
+    /* ── Header ── */
+    .header { margin-bottom: 44px; animation: fadeDown .55s ease both; }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(62,207,142,.1);
+      border: 1px solid rgba(62,207,142,.2);
+      color: var(--accent);
+      padding: 4px 13px; border-radius: 20px;
+      font-size: 10.5px; font-weight: 500;
+      letter-spacing: .09em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .pill-dot {
+      width: 6px; height: 6px;
+      background: var(--accent); border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      margin-bottom: 14px;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    /* ── Worker URL banner ── */
+    .worker-banner {
+      background: rgba(240,160,32,.08);
+      border: 1px solid rgba(240,160,32,.25);
+      border-radius: 11px;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+      font-size: 12.5px;
+      display: flex; gap: 12px; align-items: flex-start;
+      animation: fadeDown .55s .08s ease both;
+    }
+    .worker-banner strong { display: block; color: var(--warn); margin-bottom: 3px; font-size: 13px; }
+    .worker-banner span { color: var(--muted); line-height: 1.5; }
+    .worker-banner code {
+      font-family: 'Courier New', monospace;
+      background: rgba(255,255,255,.06);
+      padding: 1px 6px; border-radius: 4px; font-size: 12px;
+      color: #c8d0dc;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px 28px;
+      margin-bottom: 18px;
+      animation: fadeUp .55s ease both;
+    }
+    .card:nth-child(2) { animation-delay: .08s; }
+    .card:nth-child(3) { animation-delay: .16s; }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 22px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ── Fields ── */
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { margin-bottom: 15px; }
+
+    label {
+      display: block;
+      font-size: 11px; font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    input[type=text], input[type=email], input[type=tel],
+    textarea, select {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      padding: 10px 13px;
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(62,207,142,.1);
+    }
+    textarea { resize: vertical; min-height: 88px; }
+    select option { background: var(--surface2); }
+
+    /* ── Upload zones ── */
+    .upload-label { margin-bottom: 8px; }
+
+    .drop-zone {
+      position: relative;
+      border: 1.5px dashed var(--border);
+      border-radius: 12px;
+      padding: 28px 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .18s, background .18s;
+      margin-bottom: 10px;
+    }
+    .drop-zone:hover, .drop-zone.over {
+      border-color: var(--accent);
+      background: rgba(62,207,142,.03);
+    }
+    .drop-zone input[type=file] {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer;
+      width: 100%; height: 100%;
+    }
+    .drop-icon {
+      width: 42px; height: 42px;
+      background: var(--surface2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 11px;
+      font-size: 19px;
+    }
+    .drop-zone h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 13.5px; font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .drop-zone p { font-size: 12px; color: var(--muted); }
+    .drop-zone .hl { color: var(--accent); }
+
+    /* File selected chip */
+    .file-chip {
+      display: none;
+      align-items: center; gap: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 10px 13px;
+      margin-bottom: 10px;
+    }
+    .file-chip.show { display: flex; }
+    .chip-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .chip-icon.v { background: rgba(62,207,142,.12); }
+    .chip-icon.p { background: rgba(240,160,32,.12); }
+    .chip-meta { flex: 1; min-width: 0; }
+    .chip-name { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .chip-size { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .chip-rm {
+      background: none; border: none;
+      color: var(--muted); cursor: pointer;
+      font-size: 15px; padding: 4px;
+      transition: color .15s;
+    }
+    .chip-rm:hover { color: var(--error); }
+
+    /* Progress */
+    .prog-wrap { display: none; margin-bottom: 12px; }
+    .prog-wrap.show { display: block; }
+    .prog-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 5px; }
+    .prog-bar { height: 3px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
+    .prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 99px;
+      width: 0%;
+      transition: width .25s ease;
+    }
+
+    /* ── Submit button ── */
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none; border-radius: 11px;
+      color: #071210;
+      font-family: 'Syne', sans-serif;
+      font-size: 14.5px; font-weight: 700;
+      letter-spacing: .02em;
+      padding: 14px;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .2s, opacity .2s;
+      margin-top: 10px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(62,207,142,.22);
+    }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .submit-btn .sp {
+      display: none;
+      width: 15px; height: 15px;
+      border: 2px solid rgba(0,0,0,.25);
+      border-top-color: #071210;
+      border-radius: 50%;
+      animation: spin .65s linear infinite;
+      margin: 0 auto;
+    }
+    .submit-btn.loading .btn-text { display: none; }
+    .submit-btn.loading .sp { display: block; }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed; bottom: 28px;
+      left: 50%; transform: translateX(-50%) translateY(16px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 13px 20px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13.5px;
+      opacity: 0;
+      transition: opacity .28s, transform .28s;
+      z-index: 200;
+      min-width: 270px;
+      box-shadow: 0 20px 48px rgba(0,0,0,.5);
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast.ok  { border-color: rgba(62,207,142,.35); }
+    .toast.err { border-color: rgba(240,82,82,.35); }
+
+    /* ── Keyframes ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .35; }
+    }
+
+    @media (max-width: 480px) {
+      .row { grid-template-columns: 1fr; }
+      .card { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ── Header ── -->
+  <div class="header">
+    <div class="pill"><span class="pill-dot"></span>Secure Upload Portal</div>
+    <h1>Submit Your <em>Files</em><br/>& Information</h1>
+    <p class="subtitle">Your uploads are stored privately. No other user can view or access your files.</p>
+  </div>
+
+  <!-- ── Worker URL notice ── -->
+  <div class="worker-banner">
+    <span style="font-size:20px">⚙️</span>
+    <div>
+      <strong>One-time Setup Required</strong>
+      <span>
+        Replace <code>WORKER_URL</code> at the top of the &lt;script&gt; with your
+        Cloudflare Worker URL, e.g. <code>https://my-worker.yourname.workers.dev</code>
+      </span>
+    </div>
+  </div>
+
+  <!-- ── Personal Info ── -->
+  <div class="card">
+    <div class="section-label">Personal Information</div>
+
+    <div class="row">
+      <div class="field">
+        <label>First Name *</label>
+        <input type="text" id="firstName" placeholder="Jane"/>
+      </div>
+      <div class="field">
+        <label>Last Name *</label>
+        <input type="text" id="lastName" placeholder="Smith"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Email Address *</label>
+      <input type="email" id="email" placeholder="jane@example.com"/>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="+1 555 000 0000"/>
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <select id="category">
+          <option value="">Select one…</option>
+          <option>Student</option>
+          <option>Professional</option>
+          <option>Researcher</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>About / Notes</label>
+      <textarea id="about" placeholder="Tell us about yourself or your submission…"></textarea>
+    </div>
+  </div>
+
+  <!-- ── File Uploads ── -->
+  <div class="card">
+    <div class="section-label">File Uploads</div>
+
+    <!-- Video -->
+    <label class="upload-label">Video File</label>
+    <div class="drop-zone" id="vZone">
+      <input type="file" id="vFile" accept="video/*"/>
+      <div class="drop-icon">🎬</div>
+      <h3>Drop your video here</h3>
+      <p>or <span class="hl">click to browse</span> &nbsp;·&nbsp; MP4, MOV, AVI, MKV</p>
+    </div>
+    <div class="file-chip" id="vChip">
+      <div class="chip-icon v">🎬</div>
+      <div class="chip-meta">
+        <div class="chip-name" id="vName"></div>
+        <div class="chip-size" id="vSize"></div>
+      </div>
+      <button class="chip-rm" onclick="clearFile('v')">✕</button>
+    </div>
+    <div class="prog-wrap" id="vProg">
+      <div class="prog-meta"><span>Uploading video…</span><span id="vPct">0%</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="vFill"></div></div>
+    </div>
+
+    <div style="margin-top:22px"></div>
+
+    <!-- PPT -->
+    <label class="upload-label">Presentation (PPT / PDF)</label>
+    <div class="drop-zone" id="pZone">
+      <input type="file" id="pFile" accept=".ppt,.pptx,.pdf"/>
+      <div class="drop-icon">📊</div>
+      <h3>Drop your presentation here</h3>
+      <p>or <span class="hl">click to browse</span> &nbsp;·&nbsp; PPT, PPTX, PDF</p>
+    </div>
+    <div class="file-chip" id="pChip">
+      <div class="chip-icon p">📊</div>
+      <div class="chip-meta">
+        <div class="chip-name" id="pName"></div>
+        <div class="chip-size" id="pSize"></div>
+      </div>
+      <button class="chip-rm" onclick="clearFile('p')">✕</button>
+    </div>
+    <div class="prog-wrap" id="pProg">
+      <div class="prog-meta"><span>Uploading presentation…</span><span id="pPct">0%</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="pFill"></div></div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+      <span class="btn-text">Submit &rarr;</span>
+      <div class="sp"></div>
+    </button>
+  </div>
+
+</div><!-- /container -->
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span id="toastIcon"></span>
+  <span id="toastMsg"></span>
+</div>
+
+<script>
+  // ─────────────────────────────────────────────
+  //  🔧 Replace with your Cloudflare Worker URL
+  // ─────────────────────────────────────────────
+  const WORKER_URL = 'https://YOUR_WORKER.YOUR_NAME.workers.dev';
+  // ─────────────────────────────────────────────
+
+  let vFileObj = null;
+  let pFileObj = null;
+
+  // File input listeners
+  document.getElementById('vFile').addEventListener('change', e => {
+    vFileObj = e.target.files[0];
+    if (vFileObj) showChip('v', vFileObj);
+  });
+  document.getElementById('pFile').addEventListener('change', e => {
+    pFileObj = e.target.files[0];
+    if (pFileObj) showChip('p', pFileObj);
+  });
+
+  // Drag feedback
+  ['vZone','pZone'].forEach(id => {
+    const z = document.getElementById(id);
+    z.addEventListener('dragover',  e => { e.preventDefault(); z.classList.add('over'); });
+    z.addEventListener('dragleave', () => z.classList.remove('over'));
+    z.addEventListener('drop',      () => z.classList.remove('over'));
+  });
+
+  function showChip(t, f) {
+    document.getElementById(`${t}Name`).textContent = f.name;
+    document.getElementById(`${t}Size`).textContent = fmtBytes(f.size);
+    document.getElementById(`${t}Chip`).classList.add('show');
+  }
+
+  function clearFile(t) {
+    if (t === 'v') { vFileObj = null; document.getElementById('vFile').value = ''; }
+    else           { pFileObj = null; document.getElementById('pFile').value = ''; }
+    document.getElementById(`${t}Chip`).classList.remove('show');
+    document.getElementById(`${t}Prog`).classList.remove('show');
+  }
+
+  function fmtBytes(b) {
+    if (b < 1024)        return b + ' B';
+    if (b < 1048576)     return (b/1024).toFixed(1) + ' KB';
+    return (b/1048576).toFixed(1) + ' MB';
+  }
+
+  // ─────────────────────────────────────────────
+  //  Upload a single file via the Cloudflare Worker
+  //  Uses XMLHttpRequest so we can track progress
+  // ─────────────────────────────────────────────
+  function uploadFile(file, folder, fileType, progId) {
+    return new Promise((resolve, reject) => {
+      const fd = new FormData();
+      fd.append('file',     file);
+      fd.append('folder',   folder);
+      fd.append('fileType', fileType);
+
+      document.getElementById(`${progId}Prog`).classList.add('show');
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', `${WORKER_URL}/upload`);
+
+      xhr.upload.onprogress = e => {
+        if (e.lengthComputable) {
+          const pct = Math.round((e.loaded / e.total) * 100);
+          document.getElementById(`${progId}Fill`).style.width = pct + '%';
+          document.getElementById(`${progId}Pct`).textContent  = pct + '%';
+        }
+      };
+
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          document.getElementById(`${progId}Fill`).style.width = '100%';
+          document.getElementById(`${progId}Pct`).textContent  = '100%';
+          resolve(JSON.parse(xhr.responseText));
+        } else {
+          try {
+            const err = JSON.parse(xhr.responseText);
+            reject(new Error(err.error || 'Upload failed'));
+          } catch { reject(new Error(`Upload failed (${xhr.status})`)); }
+        }
+      };
+
+      xhr.onerror = () => reject(new Error('Network error — check your Worker URL'));
+      xhr.send(fd);
+    });
+  }
+
+  // ─────────────────────────────────────────────
+  //  Main submit handler
+  // ─────────────────────────────────────────────
+  async function handleSubmit() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const email     = document.getElementById('email').value.trim();
+
+    if (!firstName || !lastName || !email) {
+      return toast('err', '⚠️', 'Please fill in all required fields.');
+    }
+    if (!vFileObj && !pFileObj) {
+      return toast('err', '⚠️', 'Please upload at least one file.');
+    }
+    if (WORKER_URL.includes('YOUR_WORKER')) {
+      return toast('err', '🔧', 'Please set your Cloudflare Worker URL first.');
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    try {
+      // Unique folder per submission — stored in B2, never exposed to users
+      const submissionId = `${Date.now()}_${Math.random().toString(36).slice(2,8)}`;
+      const folder = `submissions/${submissionId}`;
+
+      // Upload files in parallel
+      const uploads = [];
+      if (vFileObj) uploads.push(uploadFile(vFileObj, folder, 'video', 'v'));
+      if (pFileObj) uploads.push(uploadFile(pFileObj, folder, 'ppt',   'p'));
+      await Promise.all(uploads);
+
+      // Upload info.json — metadata about this submission
+      const info = {
+        submissionId,
+        name:      `${firstName} ${lastName}`,
+        email,
+        phone:     document.getElementById('phone').value,
+        category:  document.getElementById('category').value,
+        about:     document.getElementById('about').value,
+        submitted: new Date().toISOString(),
+        files: {
+          video: vFileObj?.name || null,
+          ppt:   pFileObj?.name || null,
+        }
+      };
+      const infoFile = new File(
+        [JSON.stringify(info, null, 2)],
+        'info.json',
+        { type: 'application/json' }
+      );
+      await uploadFile(infoFile, folder, 'info', 'v');
+
+      toast('ok', '✅', 'Submitted successfully! Your files are safely stored.');
+      setTimeout(resetForm, 2800);
+
+    } catch (err) {
+      console.error(err);
+      toast('err', '❌', err.message);
+    } finally {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+  }
+
+  function resetForm() {
+    ['firstName','lastName','email','phone','about'].forEach(id =>
+      document.getElementById(id).value = '');
+    document.getElementById('category').value = '';
+    clearFile('v'); clearFile('p');
+  }
+
+  function toast(type, icon, msg) {
+    const el = document.getElementById('toast');
+    document.getElementById('toastIcon').textContent = icon;
+    document.getElementById('toastMsg').textContent  = msg;
+    el.className = `toast ${type} show`;
+    setTimeout(() => el.classList.remove('show'), 4200);
+  }
+</script>
+</body>
+</html>
