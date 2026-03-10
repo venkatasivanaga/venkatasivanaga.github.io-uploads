@@ -4,14 +4,9 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Presentation Upload | ForestSAT 2026</title>
-
-  <!-- Bootstrap 5 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"/>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-
   <style>
     :root {
       --green-dark:  #1a4a2e;
@@ -23,486 +18,162 @@
       --muted:       #6c7c72;
       --border:      #d4e4d9;
     }
-
     * { box-sizing: border-box; }
-
-    body {
-      font-family: 'Open Sans', sans-serif;
-      color: var(--text);
-      background: #f8faf9;
-    }
-
-    /* ── Navbar (matching ForestSAT style) ── */
-    .navbar {
-      background: var(--green-dark) !important;
-      padding: 0;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
-    }
+    body { font-family: 'Open Sans', sans-serif; color: var(--text); background: #f8faf9; }
+    .navbar { background: var(--green-dark) !important; padding: 0; box-shadow: 0 2px 12px rgba(0,0,0,0.2); }
     .navbar-brand img { height: 52px; padding: 6px 0; }
-    .navbar-nav .nav-link {
-      color: rgba(255,255,255,0.88) !important;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      padding: 18px 14px !important;
-      transition: color 0.2s, background 0.2s;
-    }
+    .navbar-nav .nav-link { color: rgba(255,255,255,0.88) !important; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; padding: 18px 14px !important; transition: color 0.2s, background 0.2s; }
     .navbar-nav .nav-link:hover { color: #fff !important; background: rgba(255,255,255,0.08); }
     .navbar-nav .nav-link.active { color: var(--gold) !important; }
-    .dropdown-menu {
-      background: var(--green-dark);
-      border: none;
-      border-top: 2px solid var(--green-light);
-      border-radius: 0 0 6px 6px;
-      min-width: 220px;
-    }
-    .dropdown-item {
-      color: rgba(255,255,255,0.82) !important;
-      font-size: 12.5px;
-      padding: 8px 18px;
-    }
+    .dropdown-menu { background: var(--green-dark); border: none; border-top: 2px solid var(--green-light); border-radius: 0 0 6px 6px; min-width: 220px; }
+    .dropdown-item { color: rgba(255,255,255,0.82) !important; font-size: 12.5px; padding: 8px 18px; }
     .dropdown-item:hover { background: var(--green-mid); color: #fff !important; }
     .navbar-toggler { border-color: rgba(255,255,255,0.3); }
     .navbar-toggler-icon { filter: invert(1); }
-
-    /* ── Page Header Banner ── */
-    .page-banner {
-      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
-      color: white;
-      padding: 48px 0 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-banner::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .page-banner h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem; font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 8px;
-    }
-    .page-banner .breadcrumb {
-      background: none; padding: 0; margin: 0;
-    }
-    .page-banner .breadcrumb-item, .page-banner .breadcrumb-item a {
-      color: rgba(255,255,255,0.7); font-size: 13px;
-    }
+    .page-banner { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%); color: white; padding: 48px 0 40px; position: relative; overflow: hidden; }
+    .page-banner::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .page-banner h1 { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .page-banner .breadcrumb { background: none; padding: 0; margin: 0; }
+    .page-banner .breadcrumb-item, .page-banner .breadcrumb-item a { color: rgba(255,255,255,0.7); font-size: 13px; }
     .page-banner .breadcrumb-item.active { color: rgba(255,255,255,0.9); }
     .page-banner .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,0.4); }
-
-    /* ── Main content ── */
     .main-content { padding: 48px 0 72px; }
-
-    /* ── Section heading style matching site ── */
-    .section-heading {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.35rem; font-weight: 700;
-      color: var(--green-dark);
-      border-left: 4px solid var(--green-light);
-      padding-left: 14px;
-      margin-bottom: 24px;
-    }
-
-    /* ── Info box ── */
-    .info-box {
-      background: var(--green-pale);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--green-light);
-      border-radius: 6px;
-      padding: 18px 22px;
-      margin-bottom: 28px;
-      font-size: 14px;
-      line-height: 1.7;
-    }
+    .section-heading { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--green-dark); border-left: 4px solid var(--green-light); padding-left: 14px; margin-bottom: 24px; }
+    .info-box { background: var(--green-pale); border: 1px solid var(--border); border-left: 4px solid var(--green-light); border-radius: 6px; padding: 18px 22px; margin-bottom: 28px; font-size: 14px; line-height: 1.7; }
     .info-box strong { color: var(--green-dark); }
-
-    /* ── Card ── */
-    .upload-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 12px rgba(26,74,46,0.06);
-    }
-
-    /* ── Form elements ── */
-    .form-label {
-      font-size: 13px; font-weight: 600;
-      color: var(--text);
-      margin-bottom: 6px;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .form-label .optional {
-      font-weight: 400; color: var(--muted);
-      font-size: 11px; font-family: 'Open Sans', sans-serif;
-    }
+    .upload-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 32px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(26,74,46,0.06); }
+    .form-label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; font-family: 'Montserrat', sans-serif; }
+    .form-label .optional { font-weight: 400; color: var(--muted); font-size: 11px; font-family: 'Open Sans', sans-serif; }
     .required-star { color: #c0392b; margin-left: 2px; }
-
-    .form-control, .form-select {
-      border: 1.5px solid var(--border);
-      border-radius: 6px;
-      font-size: 14px;
-      padding: 9px 13px;
-      color: var(--text);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-control:focus, .form-select:focus {
-      border-color: var(--green-light);
-      box-shadow: 0 0 0 3px rgba(61,160,102,0.12);
-      outline: none;
-    }
+    .form-control, .form-select { border: 1.5px solid var(--border); border-radius: 6px; font-size: 14px; padding: 9px 13px; color: var(--text); transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-control:focus, .form-select:focus { border-color: var(--green-light); box-shadow: 0 0 0 3px rgba(61,160,102,0.12); outline: none; }
     .form-control::placeholder { color: #aab8b0; }
     textarea.form-control { min-height: 90px; resize: vertical; }
-
-    /* Abstract ID special styling */
-    #abstractId {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.4rem; font-weight: 700;
-      letter-spacing: 0.15em;
-      text-align: center;
-      color: var(--green-dark);
-      max-width: 120px;
-    }
-
-    /* ── Drop zones ── */
-    .drop-zone {
-      border: 2px dashed var(--border);
-      border-radius: 8px;
-      padding: 32px 20px;
-      text-align: center;
-      cursor: pointer;
-      position: relative;
-      transition: all 0.2s;
-      background: #fafcfb;
-    }
-    .drop-zone:hover, .drop-zone.over {
-      border-color: var(--green-light);
-      background: var(--green-pale);
-    }
-    .drop-zone input[type=file] {
-      position: absolute; inset: 0;
-      opacity: 0; cursor: pointer;
-      width: 100%; height: 100%;
-    }
-    .drop-icon {
-      width: 52px; height: 52px;
-      background: var(--green-pale);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 12px;
-      font-size: 22px; color: var(--green-mid);
-    }
-    .drop-zone h5 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px; font-weight: 600;
-      color: var(--text); margin-bottom: 4px;
-    }
+    #abstractId { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.15em; text-align: center; color: var(--green-dark); max-width: 120px; }
+    .drop-zone { border: 2px dashed var(--border); border-radius: 8px; padding: 32px 20px; text-align: center; cursor: pointer; position: relative; transition: all 0.2s; background: #fafcfb; }
+    .drop-zone:hover, .drop-zone.over { border-color: var(--green-light); background: var(--green-pale); }
+    .drop-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .drop-icon { width: 52px; height: 52px; background: var(--green-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 22px; color: var(--green-mid); }
+    .drop-zone h5 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
     .drop-zone p { font-size: 12.5px; color: var(--muted); margin: 0; }
     .drop-zone .browse-link { color: var(--green-mid); font-weight: 600; }
-
-    /* File chip */
-    .file-chip {
-      display: none;
-      align-items: center; gap: 12px;
-      background: var(--green-pale);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 10px 14px;
-      margin-top: 10px;
-    }
+    .file-chip { display: none; align-items: center; gap: 12px; background: var(--green-pale); border: 1px solid var(--border); border-radius: 7px; padding: 10px 14px; margin-top: 10px; }
     .file-chip.show { display: flex; }
-    .chip-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; flex-shrink: 0;
-      background: rgba(45,122,79,0.12);
-      color: var(--green-dark);
-    }
+    .chip-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; background: rgba(45,122,79,0.12); color: var(--green-dark); }
     .chip-meta { flex: 1; min-width: 0; }
     .chip-name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .chip-size { font-size: 11px; color: var(--muted); }
-    .chip-rm {
-      background: none; border: none;
-      color: var(--muted); cursor: pointer; font-size: 16px;
-      transition: color 0.15s; padding: 2px 6px;
-    }
+    .chip-rm { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 16px; transition: color 0.15s; padding: 2px 6px; }
     .chip-rm:hover { color: #c0392b; }
-
-    /* Progress */
     .prog-wrap { display: none; margin-top: 10px; }
     .prog-wrap.show { display: block; }
     .prog-meta { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); margin-bottom: 5px; }
     .progress { height: 5px; border-radius: 99px; background: var(--border); }
     .progress-bar { background: linear-gradient(90deg, var(--green-mid), var(--green-light)); border-radius: 99px; transition: width 0.3s ease; }
-
-    /* ── Submit button ── */
-    .btn-submit {
-      background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
-      color: white;
-      border: none;
-      border-radius: 7px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px; font-weight: 700;
-      letter-spacing: 0.04em;
-      padding: 13px 36px;
-      transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
-      width: 100%; margin-top: 8px;
-    }
-    .btn-submit:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(26,74,46,0.25);
-      color: white;
-    }
+    .btn-submit { background: linear-gradient(135deg, var(--green-dark), var(--green-mid)); color: white; border: none; border-radius: 7px; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; padding: 13px 36px; transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s; width: 100%; margin-top: 8px; }
+    .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,74,46,0.25); color: white; }
     .btn-submit:disabled { opacity: 0.55; transform: none; cursor: not-allowed; }
     .btn-submit .spinner-border { width: 16px; height: 16px; border-width: 2px; }
-
-    /* ── Sidebar ── */
-    .sidebar-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(26,74,46,0.05);
-    }
-    .sidebar-card h6 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--green-dark); margin-bottom: 14px;
-      padding-bottom: 10px; border-bottom: 1px solid var(--border);
-    }
+    .sidebar-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(26,74,46,0.05); }
+    .sidebar-card h6 { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
     .sidebar-card ul { padding-left: 18px; margin: 0; }
     .sidebar-card ul li { font-size: 13px; color: var(--muted); margin-bottom: 6px; line-height: 1.5; }
     .sidebar-card ul li strong { color: var(--text); }
-
-    .deadline-item {
-      display: flex; gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-    }
+    .deadline-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
     .deadline-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .deadline-date {
-      background: var(--green-pale);
-      color: var(--green-dark);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px; font-weight: 700;
-      padding: 4px 8px; border-radius: 4px;
-      white-space: nowrap; align-self: flex-start;
-    }
+    .deadline-date { background: var(--green-pale); color: var(--green-dark); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 4px; white-space: nowrap; align-self: flex-start; }
     .deadline-label { font-size: 13px; color: var(--muted); line-height: 1.4; }
-
-    /* ── Toast ── */
-    .toast-wrap {
-      position: fixed; bottom: 24px; right: 24px;
-      z-index: 9999;
-    }
-    .my-toast {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 20px;
-      display: flex; align-items: center; gap: 12px;
-      font-size: 13.5px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      max-width: 360px;
-      opacity: 0; transform: translateY(12px);
-      transition: all 0.3s ease;
-      pointer-events: none;
-    }
+    .toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
+    .my-toast { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; display: flex; align-items: center; gap: 12px; font-size: 13.5px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); max-width: 360px; opacity: 0; transform: translateY(12px); transition: all 0.3s ease; pointer-events: none; }
     .my-toast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .my-toast.ok  { border-left: 4px solid var(--green-light); }
     .my-toast.err { border-left: 4px solid #c0392b; }
-
-    /* ── Footer ── */
-    footer {
-      background: var(--green-dark);
-      color: rgba(255,255,255,0.75);
-      padding: 36px 0 20px;
-    }
-    footer img { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; margin: 0 16px 12px 0; }
-    footer .footer-links a {
-      color: rgba(255,255,255,0.6); font-size: 12.5px;
-      text-decoration: none; margin: 0 8px;
-    }
+    footer { background: var(--green-dark); color: rgba(255,255,255,0.75); padding: 36px 0 20px; }
+    footer .footer-links a { color: rgba(255,255,255,0.6); font-size: 12.5px; text-decoration: none; margin: 0 8px; }
     footer .footer-links a:hover { color: #fff; }
     footer .copyright { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 16px; }
-
-    /* Validation feedback */
-    .invalid-feedback { font-size: 12px; }
-    .form-control.is-invalid { border-color: #c0392b; }
-    .form-control.is-valid  { border-color: var(--green-light); }
-
-    @media (max-width: 768px) {
-      .upload-card { padding: 20px 16px; }
-      .page-banner h1 { font-size: 1.5rem; }
-    }
+    @media (max-width: 768px) { .upload-card { padding: 20px 16px; } .page-banner h1 { font-size: 1.5rem; } }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     NAVBAR — matching ForestSAT 2026
-══════════════════════════════════════ -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-xxl bg-primary py-0">
-        <div class="container">
-          <a class="navbar-brand pt-1 pb-3" href="index.html">
-            <img src="images/navbar-logo.svg" alt="ForestSAT2026 Navbar Logo" width="190px">
-          </a>
-          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item mx-1">
-                <a class="nav-link text-white fw-semibold text-center" href="index.html">
-                  Home
-                </a>
-              </li>
-			  <li class="nav-item dropdown mx-1">
-                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  About
-                </a>
-                <ul class="dropdown-menu">
-				  				  <li><a class="dropdown-item" href="executive-organizing-committee.html">Executive Organizing Committee</a></li>
-          <li><a class="dropdown-item" href="scientific-committee.html">Scientific Committee</a></li>
-                  <li><a class="dropdown-item" href="benefits-attending.html">Benefits of Attending</a></li>
-                  <li><a class="dropdown-item" href="who-should-attend.html">Who Will Attend</a></li>
-                  <li><a class="dropdown-item" href="Keynote_Speakers.html">Keynote Speakers</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown mx-1">
-                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Program
-                </a>
-                <ul class="dropdown-menu">
-									
-                  <li><a class="dropdown-item" href="registration.html">Conference Registration</a></li> 
-                  <li><a class="dropdown-item" href="call-abstract.html">Abstract submission</a></li>
-                  <li><a class="dropdown-item" href="pre-conference-virtual-workshops.html">Pre-Conference Virtual Workshops</a></li>
-									<li><a class="dropdown-item" href="pre-conference-on-site-workshops.html">Pre-Conference On Site Workshops</a></li>
-                  <li><a class="dropdown-item" href="special_sessions.html">Special Sessions</a></li>
-									<div role="separator" class="dropdown-divider" style="border-top: solid thin #ccc; margin: 8px 0px;"></div>
-									<li><a class="dropdown-item" href="key-dates-deadlines.html">Key Dates &amp; Deadlines</a></li>
-									<li><a class="dropdown-item" href="agenda-glance.html">Agenda-at-a-Glance (Single Row)</a></li>
-									<li><a class="dropdown-item" href="agenda-glance-horiz.html">Agenda-at-a-Glance (Column View)</a></li>
-                  <li><a class="dropdown-item" href="program-presentation-topics.html">Program &amp; Presentation Topics</a></li>
-                  <li><a class="dropdown-item" href="field_trip.html">Field Trip</a></li>
-
-                </ul>
-              </li>
-              <li class="nav-item dropdown mx-1">
-                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Location
-                </a>
-                <ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="meeting-site.html">Meeting Site</a></li>
-                  <li><a class="dropdown-item" href="hotels.html">Hotels</a></li>
-									<li><a class="dropdown-item" href="entry-into-united-states.html">Entry into the United States</a></li>
-                  <li><a class="dropdown-item" href="getting-to-gainesville.html">Getting to Gainesville</a></li>
-                  <li><a class="dropdown-item" href="about-gainesville.html">About Gainesville</a></li>
-									<li><a class="dropdown-item" href="things-to-do.html">Things to Do</a></li>
-									<li><a class="dropdown-item" href="visiting-florida.html">Visiting Florida</a></li>
-									<li><a class="dropdown-item" href="electricity-usa.html">Electricity in the USA</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown mx-1">
-                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Sponsors
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="sponsor_list.html">Our sponsors</a></li>
-                  <li><a class="dropdown-item" href="sponsorship-opportunities.html">Sponsorship Opportunities</a></li>
-				  <!-- <li><a class="dropdown-item" href="sponsor-display-information.html">Sponsor Display Information</a></li> -->
-                </ul>
-              </li>
-<!--
-              <li class="nav-item dropdown mx-1">
-                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Registration
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="registration-information.php">Registration Information</a></li>
-                </ul>
-              </li>
--->
-              <li class="nav-item dropdown mx-1">
-                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Communications
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="publicity-toolbox.html">Publicity Toolbox</a></li>
-				  <li><a class="dropdown-item" href="contact-us.html">Contact Us</a></li>
-				  <li><a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSdmaNZpBqdv6oJ_7N2k8KLdktL4Pl4gEZ-NaSXaencfwRaOxA/viewform">Invitation letter</a></li>
-				<!--   <li><a class="dropdown-item" href="https://conference.ifas.ufl.edu/ice.php">In Case of Emergency</a></li>-->
-                </ul>
-              </li>
-            </ul>
-            <ul class="navbar-nav ms-auto mb-4 mb-xxl-0">
-              <a class="nav-link text-white fw-semibold text-center" href="https://list-manage.us17.list-manage.com/subscribe?u=4d7574f87e47102feee257de7&amp;id=27167e4372 
-                " target="_blank">
-                  <!-- <a class="nav-link text-white fw-semibold text-center" href="https://lp.constantcontactpages.com/sl/AJfGuMn" target="_blank"> -->
-                 <i class="far fa-envelope" aria-hidden="true"></i>&nbsp; Subscribe
-                </a>
-              
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <!-- Replace with actual logo: <img src="images/navbar-logo.svg" alt="ForestSAT 2026"> -->
-      <span style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;color:white;letter-spacing:0.02em;">
-        🌲 ForestSAT <span style="color:var(--gold)">2026</span>
-      </span>
+    <a class="navbar-brand pt-1 pb-3" href="index.html">
+      <img src="images/navbar-logo.svg" alt="ForestSAT2026 Navbar Logo" width="190px">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item mx-1"><a class="nav-link text-white fw-semibold text-center" href="index.html">Home</a></li>
+        <li class="nav-item dropdown mx-1">
+          <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="executive-organizing-committee.html">Executive Organizing Committee</a></li>
             <li><a class="dropdown-item" href="scientific-committee.html">Scientific Committee</a></li>
             <li><a class="dropdown-item" href="benefits-attending.html">Benefits of Attending</a></li>
+            <li><a class="dropdown-item" href="who-should-attend.html">Who Will Attend</a></li>
+            <li><a class="dropdown-item" href="Keynote_Speakers.html">Keynote Speakers</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">Program</a>
+        <li class="nav-item dropdown mx-1">
+          <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Program</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="call-abstract.html">Abstract Submission</a></li>
-            <li><a class="dropdown-item active" href="upload.html">Presentation Upload</a></li>
-            <li><a class="dropdown-item" href="key-dates-deadlines.html">Key Dates & Deadlines</a></li>
+            <li><a class="dropdown-item" href="registration.html">Conference Registration</a></li>
+            <li><a class="dropdown-item" href="call-abstract.html">Abstract submission</a></li>
+            <li><a class="dropdown-item" href="pre-conference-virtual-workshops.html">Pre-Conference Virtual Workshops</a></li>
+            <li><a class="dropdown-item" href="pre-conference-on-site-workshops.html">Pre-Conference On Site Workshops</a></li>
+            <li><a class="dropdown-item" href="special_sessions.html">Special Sessions</a></li>
+            <div role="separator" class="dropdown-divider" style="border-top: solid thin #ccc; margin: 8px 0px;"></div>
+            <li><a class="dropdown-item" href="key-dates-deadlines.html">Key Dates &amp; Deadlines</a></li>
+            <li><a class="dropdown-item" href="agenda-glance.html">Agenda-at-a-Glance (Single Row)</a></li>
+            <li><a class="dropdown-item" href="agenda-glance-horiz.html">Agenda-at-a-Glance (Column View)</a></li>
+            <li><a class="dropdown-item" href="program-presentation-topics.html">Program &amp; Presentation Topics</a></li>
+            <li><a class="dropdown-item" href="field_trip.html">Field Trip</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Location</a>
+        <li class="nav-item dropdown mx-1">
+          <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Location</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="meeting-site.html">Meeting Site</a></li>
             <li><a class="dropdown-item" href="hotels.html">Hotels</a></li>
+            <li><a class="dropdown-item" href="entry-into-united-states.html">Entry into the United States</a></li>
             <li><a class="dropdown-item" href="getting-to-gainesville.html">Getting to Gainesville</a></li>
+            <li><a class="dropdown-item" href="about-gainesville.html">About Gainesville</a></li>
+            <li><a class="dropdown-item" href="things-to-do.html">Things to Do</a></li>
+            <li><a class="dropdown-item" href="visiting-florida.html">Visiting Florida</a></li>
+            <li><a class="dropdown-item" href="electricity-usa.html">Electricity in the USA</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+        <li class="nav-item dropdown mx-1">
+          <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sponsors</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="sponsor_list.html">Our sponsors</a></li>
+            <li><a class="dropdown-item" href="sponsorship-opportunities.html">Sponsorship Opportunities</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown mx-1">
+          <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Communications</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="publicity-toolbox.html">Publicity Toolbox</a></li>
+            <li><a class="dropdown-item" href="contact-us.html">Contact Us</a></li>
+            <li><a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSdmaNZpBqdv6oJ_7N2k8KLdktL4Pl4gEZ-NaSXaencfwRaOxA/viewform">Invitation letter</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-4 mb-xxl-0">
+        <a class="nav-link text-white fw-semibold text-center" href="https://list-manage.us17.list-manage.com/subscribe?u=4d7574f87e47102feee257de7&amp;id=27167e4372" target="_blank">
+          <i class="far fa-envelope" aria-hidden="true"></i>&nbsp; Subscribe
+        </a>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════
-     PAGE BANNER
-══════════════════════════════════════ -->
+<!-- PAGE BANNER -->
 <div class="page-banner">
   <div class="container">
     <nav aria-label="breadcrumb">
@@ -512,7 +183,6 @@
         <li class="breadcrumb-item active">Presentation Upload</li>
       </ol>
     </nav>
-    <h1 class="heading fw-bolder pb-1">Presentation Upload</h1>
     <h1><i class="bi bi-cloud-upload me-2"></i>Presentation Upload</h1>
     <p class="mb-0" style="color:rgba(255,255,255,0.8);font-size:15px;">
       Upload your presentation files for ForestSAT 2026 · May 4–8, Gainesville, FL
@@ -520,35 +190,26 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     MAIN CONTENT
-══════════════════════════════════════ -->
+<!-- MAIN CONTENT -->
 <div class="main-content">
   <div class="container">
     <div class="row g-4">
-
-      <!-- ── Left: Upload Form ── -->
       <div class="col-lg-8">
 
-        <!-- Info box -->
         <div class="info-box">
           <strong><i class="bi bi-info-circle me-1"></i> Instructions</strong><br/>
           Please use your <strong>Abstract ID</strong> (3-digit number assigned during abstract submission) and your
           <strong>User ID</strong> to upload your files. You may upload a video, a presentation (PPT/PDF), or both.
-          If you re-upload using the same Abstract ID, your existing files will be replaced.
         </div>
 
-        <!-- ── Submission Identity ── -->
+        <!-- Submission Identity -->
         <div class="upload-card">
           <div class="section-heading">Submission Identity</div>
-
           <div class="row g-3">
             <div class="col-sm-4">
               <label class="form-label">Abstract ID <span class="required-star">*</span></label>
-              <input type="text" class="form-control" id="abstractId"
-                placeholder="042" maxlength="3"
-                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,3)"
-                title="3-digit number assigned at abstract submission"/>
+              <input type="text" class="form-control" id="abstractId" placeholder="042" maxlength="3"
+                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,3)"/>
               <div class="form-text" style="font-size:11px;color:var(--muted);">3-digit number from your abstract submission</div>
             </div>
             <div class="col-sm-8">
@@ -558,10 +219,9 @@
           </div>
         </div>
 
-        <!-- ── Personal Information ── -->
+        <!-- Personal Information -->
         <div class="upload-card">
           <div class="section-heading">Personal Information</div>
-
           <div class="row g-3">
             <div class="col-sm-6">
               <label class="form-label">First Name <span class="required-star">*</span></label>
@@ -600,7 +260,7 @@
           </div>
         </div>
 
-        <!-- ── File Uploads ── -->
+        <!-- File Uploads -->
         <div class="upload-card">
           <div class="section-heading">File Uploads</div>
           <p style="font-size:13.5px;color:var(--muted);margin-bottom:24px;">
@@ -657,7 +317,6 @@
             <div class="progress"><div class="progress-bar" id="pFill" style="width:0%"></div></div>
           </div>
 
-          <!-- Submit -->
           <div class="mt-4 pt-2">
             <button class="btn btn-submit" id="submitBtn" onclick="handleSubmit()">
               <span class="btn-text"><i class="bi bi-cloud-upload me-2"></i>Submit Presentation</span>
@@ -668,10 +327,8 @@
 
       </div><!-- /col-lg-8 -->
 
-      <!-- ── Right: Sidebar ── -->
+      <!-- Sidebar -->
       <div class="col-lg-4">
-
-        <!-- Key Dates -->
         <div class="sidebar-card">
           <h6><i class="bi bi-calendar3 me-1"></i> Key Dates</h6>
           <div class="deadline-item">
@@ -687,50 +344,32 @@
             <span class="deadline-label">Early registration closes</span>
           </div>
         </div>
-
-        <!-- Upload Guidelines -->
         <div class="sidebar-card">
           <h6><i class="bi bi-info-circle me-1"></i> Upload Guidelines</h6>
           <ul>
             <li><strong>Abstract ID</strong> — 3-digit number from your abstract confirmation email</li>
             <li><strong>Video</strong> — MP4 preferred, max 500MB</li>
             <li><strong>Presentation</strong> — PPTX or PDF, max 50MB</li>
-            <li>Re-uploading with the same Abstract ID will <strong>overwrite</strong> existing files</li>
+            <li>Same filename = overwrite. Different filename = new file added.</li>
             <li>Files are stored <strong>privately</strong> — only organizers can access them</li>
           </ul>
         </div>
-
-        <!-- Contact -->
         <div class="sidebar-card">
           <h6><i class="bi bi-envelope me-1"></i> Need Help?</h6>
           <p style="font-size:13px;color:var(--muted);margin:0;line-height:1.6;">
             Contact us at<br/>
-            <a href="mailto:ForestSAT2026@ifas.ufl.edu" style="color:var(--green-mid);font-weight:600;">
-              ForestSAT2026@ifas.ufl.edu
-            </a>
+            <a href="mailto:ForestSAT2026@ifas.ufl.edu" style="color:var(--green-mid);font-weight:600;">ForestSAT2026@ifas.ufl.edu</a>
           </p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- Setup notice (remove when live) -->
-        <!-- <div class="sidebar-card" style="border-left:4px solid var(--gold);background:#fffdf4;">
-          <h6 style="color:#8a6a00;"><i class="bi bi-gear me-1"></i> Developer Note</h6>
-          <p style="font-size:12.5px;color:#8a6a00;margin:0;line-height:1.6;">
-            Replace <code>WORKER_URL</code> in the script below with your Cloudflare Worker URL before going live.
-          </p>
-        </div> -->
-
-      </div><!-- /col-lg-4 -->
-    </div><!-- /row -->
-  </div><!-- /container -->
-</div><!-- /main-content -->
-
-<!-- ══════════════════════════════════════
-     FOOTER — matching ForestSAT 2026
-══════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="d-flex flex-wrap align-items-center mb-3">
-      <!-- Replace these with actual logo images from the site -->
       <span style="font-family:'Montserrat',sans-serif;font-weight:700;color:white;font-size:16px;margin-right:24px;">🌲 ForestSAT 2026</span>
       <span style="font-size:12px;color:rgba(255,255,255,0.5);">University of Florida · Gainesville, FL · May 4–8, 2026</span>
     </div>
@@ -754,9 +393,7 @@
   </div>
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
   const WORKER_URL = 'https://black-meadow-0843.forestsat2026.workers.dev';
 
@@ -800,7 +437,7 @@
     return (b/1048576).toFixed(1) + ' MB';
   }
 
-  // Upload a single file — NO user metadata, NO info.json
+  // Upload ONE file — no info.json, no metadata
   function uploadFile(file, abstractId, progId) {
     return new Promise((resolve, reject) => {
       const fd = new FormData();
@@ -819,7 +456,6 @@
           document.getElementById(`${progId}Pct`).textContent  = pct + '%';
         }
       };
-
       xhr.onload = () => {
         if (xhr.status === 200) {
           document.getElementById(`${progId}Fill`).style.width = '100%';
@@ -835,24 +471,30 @@
     });
   }
 
-  // Save user info — called ONCE after all files uploaded
+  // Save user info — called ONCE after all files finish
   async function saveInfo(abstractId, fileNames) {
+    const payload = {
+      abstractId,
+      fileNames,
+      userId:      document.getElementById('userId').value.trim(),
+      name:        `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
+      email:       document.getElementById('email').value.trim(),
+      phone:       document.getElementById('phone').value.trim(),
+      institution: document.getElementById('institution').value.trim(),
+      presType:    document.getElementById('presType').value,
+      notes:       document.getElementById('notes').value.trim(),
+    };
+
     const res = await fetch(`${WORKER_URL}/saveinfo`, {
-      method: 'POST',
+      method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        abstractId,
-        userId:      document.getElementById('userId').value.trim(),
-        name:        `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
-        email:       document.getElementById('email').value.trim(),
-        phone:       document.getElementById('phone').value.trim(),
-        institution: document.getElementById('institution').value.trim(),
-        presType:    document.getElementById('presType').value,
-        notes:       document.getElementById('notes').value.trim(),
-        fileNames,
-      }),
+      body:    JSON.stringify(payload),
     });
-    if (!res.ok) throw new Error('Failed to save submission info');
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ error: 'saveinfo failed' }));
+      throw new Error(err.error || 'Failed to save info');
+    }
     return res.json();
   }
 
@@ -887,7 +529,7 @@
       if (pFileObj) uploads.push(uploadFile(pFileObj, abstractId, 'p'));
       await Promise.all(uploads);
 
-      // Step 2: Save user info ONCE after all uploads complete
+      // Step 2: Save info.json ONCE — no race condition possible
       const fileNames = [
         ...(vFileObj ? [vFileObj.name] : []),
         ...(pFileObj ? [pFileObj.name] : []),
