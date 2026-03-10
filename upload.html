@@ -758,16 +758,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // ─────────────────────────────────────────────
-  //  🔧 Replace with your Cloudflare Worker URL
-  // ─────────────────────────────────────────────
   const WORKER_URL = 'https://black-meadow-0843.forestsat2026.workers.dev';
-  // ─────────────────────────────────────────────
 
   let vFileObj = null;
   let pFileObj = null;
 
-  // File listeners
   document.getElementById('vFile').addEventListener('change', e => {
     vFileObj = e.target.files[0];
     if (vFileObj) showChip('v', vFileObj);
@@ -777,7 +772,6 @@
     if (pFileObj) showChip('p', pFileObj);
   });
 
-  // Drag feedback
   ['vZone','pZone'].forEach(id => {
     const z = document.getElementById(id);
     z.addEventListener('dragover',  e => { e.preventDefault(); z.classList.add('over'); });
@@ -806,18 +800,12 @@
     return (b/1048576).toFixed(1) + ' MB';
   }
 
-  // Upload a single file via Cloudflare Worker with progress
-  function uploadFile(file, folder, fileType, progId) {
+  function uploadFile(file, abstractId, fileType, progId) {
     return new Promise((resolve, reject) => {
-      // Use fixed filenames so re-uploads overwrite existing files
-      const ext = file.name.split('.').pop();
-      const fixedName = new File([file], `${fileType}.${ext}`, { type: file.type });
-
       const fd = new FormData();
-      fd.append('file',        file);
-      fd.append('abstractId',  folder.replace('submissions/', ''));
+      fd.append('file',        file);                  // real filename → correct overwrite logic
+      fd.append('abstractId',  abstractId);            // just "042", not "submissions/042"
       fd.append('fileType',    fileType);
-      // User metadata — required for info.json and confirmation email
       fd.append('userId',      document.getElementById('userId').value.trim());
       fd.append('name',        `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`);
       fd.append('email',       document.getElementById('email').value.trim());
@@ -854,7 +842,6 @@
     });
   }
 
-  // Main submit
   async function handleSubmit() {
     const abstractId = document.getElementById('abstractId').value.trim();
     const userId     = document.getElementById('userId').value.trim();
@@ -862,16 +849,15 @@
     const lastName   = document.getElementById('lastName').value.trim();
     const email      = document.getElementById('email').value.trim();
 
-    // Validate required fields
-    if (!abstractId || !/^[0-9]{3}$/.test(abstractId)) {
+    if (!abstractId || !/^[0-9]{3}$/.test(abstractId))
       return showToast('err', '⚠️', 'Please enter a valid 3-digit Abstract ID.');
-    }
     if (!userId)    return showToast('err', '⚠️', 'User ID is required.');
     if (!firstName) return showToast('err', '⚠️', 'First name is required.');
     if (!lastName)  return showToast('err', '⚠️', 'Last name is required.');
-    if (!email || !/\S+@\S+\.\S+/.test(email)) return showToast('err', '⚠️', 'Please enter a valid email address.');
-    if (!vFileObj && !pFileObj) return showToast('err', '⚠️', 'Please upload at least one file (video or presentation).');
-    if (WORKER_URL.includes('YOUR_WORKER')) return showToast('err', '🔧', 'Please configure your Cloudflare Worker URL.');
+    if (!email || !/\S+@\S+\.\S+/.test(email))
+      return showToast('err', '⚠️', 'Please enter a valid email address.');
+    if (!vFileObj && !pFileObj)
+      return showToast('err', '⚠️', 'Please upload at least one file (video or presentation).');
 
     const btn     = document.getElementById('submitBtn');
     const spinner = document.getElementById('spinner');
@@ -881,29 +867,13 @@
     btnText.classList.add('d-none');
 
     try {
-      // Folder = Abstract ID only (e.g. submissions/042)
-      const folder = `submissions/${abstractId}`;
-
-      // Upload files — fixed names ensure overwrite on re-upload
+      // Upload files — Worker automatically handles info.json and confirmation email
       const uploads = [];
-      if (vFileObj) uploads.push(uploadFile(vFileObj, folder, 'video', 'v'));
-      if (pFileObj) uploads.push(uploadFile(pFileObj, folder, 'ppt',   'p'));
+      if (vFileObj) uploads.push(uploadFile(vFileObj, abstractId, 'video', 'v'));
+      if (pFileObj) uploads.push(uploadFile(pFileObj, abstractId, 'ppt',   'p'));
       await Promise.all(uploads);
 
-      // Save metadata as info.json (also overwrites)
-      const info = {
-        abstractId, userId,
-        name:         `${firstName} ${lastName}`,
-        email,
-        phone:        document.getElementById('phone').value,
-        institution:  document.getElementById('institution').value,
-        presType:     document.getElementById('presType').value,
-        notes:        document.getElementById('notes').value,
-        submitted:    new Date().toISOString(),
-        files: { video: vFileObj?.name || null, ppt: pFileObj?.name || null }
-      };
-      const infoFile = new File([JSON.stringify(info, null, 2)], 'info.json', { type: 'application/json' });
-      await uploadFile(infoFile, folder, 'info', vFileObj ? 'v' : 'p');
+      // ← NO manual info.json upload here — Worker does it automatically
 
       showToast('ok', '✅', `Submission ${abstractId} uploaded successfully!`);
       setTimeout(resetForm, 3000);
@@ -922,7 +892,8 @@
     ['abstractId','userId','firstName','lastName','email','phone','institution','notes'].forEach(id =>
       document.getElementById(id).value = '');
     document.getElementById('presType').value = '';
-    clearFile('v'); clearFile('p');
+    clearFile('v');
+    clearFile('p');
   }
 
   function showToast(type, icon, msg) {
