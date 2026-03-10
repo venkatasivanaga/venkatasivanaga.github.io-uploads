@@ -800,19 +800,12 @@
     return (b/1048576).toFixed(1) + ' MB';
   }
 
-  function uploadFile(file, abstractId, fileType, progId) {
+  // Upload a single file — NO user metadata, NO info.json
+  function uploadFile(file, abstractId, progId) {
     return new Promise((resolve, reject) => {
       const fd = new FormData();
-      fd.append('file',        file);                  // real filename → correct overwrite logic
-      fd.append('abstractId',  abstractId);            // just "042", not "submissions/042"
-      fd.append('fileType',    fileType);
-      fd.append('userId',      document.getElementById('userId').value.trim());
-      fd.append('name',        `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`);
-      fd.append('email',       document.getElementById('email').value.trim());
-      fd.append('phone',       document.getElementById('phone').value.trim());
-      fd.append('institution', document.getElementById('institution').value.trim());
-      fd.append('presType',    document.getElementById('presType').value);
-      fd.append('notes',       document.getElementById('notes').value.trim());
+      fd.append('file',       file);
+      fd.append('abstractId', abstractId);
 
       document.getElementById(`${progId}Prog`).classList.add('show');
 
@@ -837,9 +830,30 @@
           catch { reject(new Error(`Upload failed (${xhr.status})`)); }
         }
       };
-      xhr.onerror = () => reject(new Error('Network error — check your Worker URL'));
+      xhr.onerror = () => reject(new Error('Network error'));
       xhr.send(fd);
     });
+  }
+
+  // Save user info — called ONCE after all files uploaded
+  async function saveInfo(abstractId, fileNames) {
+    const res = await fetch(`${WORKER_URL}/saveinfo`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        abstractId,
+        userId:      document.getElementById('userId').value.trim(),
+        name:        `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
+        email:       document.getElementById('email').value.trim(),
+        phone:       document.getElementById('phone').value.trim(),
+        institution: document.getElementById('institution').value.trim(),
+        presType:    document.getElementById('presType').value,
+        notes:       document.getElementById('notes').value.trim(),
+        fileNames,
+      }),
+    });
+    if (!res.ok) throw new Error('Failed to save submission info');
+    return res.json();
   }
 
   async function handleSubmit() {
@@ -857,7 +871,7 @@
     if (!email || !/\S+@\S+\.\S+/.test(email))
       return showToast('err', '⚠️', 'Please enter a valid email address.');
     if (!vFileObj && !pFileObj)
-      return showToast('err', '⚠️', 'Please upload at least one file (video or presentation).');
+      return showToast('err', '⚠️', 'Please upload at least one file.');
 
     const btn     = document.getElementById('submitBtn');
     const spinner = document.getElementById('spinner');
@@ -867,13 +881,18 @@
     btnText.classList.add('d-none');
 
     try {
-      // Upload files — Worker automatically handles info.json and confirmation email
+      // Step 1: Upload files in parallel
       const uploads = [];
-      if (vFileObj) uploads.push(uploadFile(vFileObj, abstractId, 'video', 'v'));
-      if (pFileObj) uploads.push(uploadFile(pFileObj, abstractId, 'ppt',   'p'));
+      if (vFileObj) uploads.push(uploadFile(vFileObj, abstractId, 'v'));
+      if (pFileObj) uploads.push(uploadFile(pFileObj, abstractId, 'p'));
       await Promise.all(uploads);
 
-      // ← NO manual info.json upload here — Worker does it automatically
+      // Step 2: Save user info ONCE after all uploads complete
+      const fileNames = [
+        ...(vFileObj ? [vFileObj.name] : []),
+        ...(pFileObj ? [pFileObj.name] : []),
+      ];
+      await saveInfo(abstractId, fileNames);
 
       showToast('ok', '✅', `Submission ${abstractId} uploaded successfully!`);
       setTimeout(resetForm, 3000);
