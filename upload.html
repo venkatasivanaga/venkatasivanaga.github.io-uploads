@@ -817,6 +817,14 @@
       fd.append('file',        file);
       fd.append('abstractId',  folder.replace('submissions/', ''));
       fd.append('fileType',    fileType);
+      // User metadata — required for info.json and confirmation email
+      fd.append('userId',      document.getElementById('userId').value.trim());
+      fd.append('name',        `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`);
+      fd.append('email',       document.getElementById('email').value.trim());
+      fd.append('phone',       document.getElementById('phone').value.trim());
+      fd.append('institution', document.getElementById('institution').value.trim());
+      fd.append('presType',    document.getElementById('presType').value);
+      fd.append('notes',       document.getElementById('notes').value.trim());
 
       document.getElementById(`${progId}Prog`).classList.add('show');
 
