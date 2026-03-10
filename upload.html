@@ -814,9 +814,9 @@
       const fixedName = new File([file], `${fileType}.${ext}`, { type: file.type });
 
       const fd = new FormData();
-      fd.append('file',     fixedName);
-      fd.append('folder',   folder);
-      fd.append('fileType', fileType);
+      fd.append('file',        file);
+      fd.append('abstractId',  folder.replace('submissions/', ''));
+      fd.append('fileType',    fileType);
 
       document.getElementById(`${progId}Prog`).classList.add('show');
 
