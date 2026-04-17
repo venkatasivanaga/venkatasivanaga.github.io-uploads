@@ -105,23 +105,14 @@
           <h2 class="section-title">Presentation Upload</h2>
 
           <div class="info-box">
-            Please use your <strong>Abstract ID</strong> and your <strong>User ID</strong> to upload your files.<br><br>
+            Please use your <strong>Abstract ID</strong> to upload your files.<br><br>
             You may upload a video, a presentation (PPTX/PDF), or both. If you re-upload using the same filename, your existing file will be replaced.
           </div>
 
           <div class="content-box">
             <h2 class="section-title">Submission Identity</h2>
             <div class="row g-3">
-              <div class="col-sm-4">
-                <label class="form-label">Abstract ID *</label>
-                <input type="text" class="form-control" id="abstractId" placeholder="042" maxlength="3"
-                  oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,3)">
-              </div>
 
-              <div class="col-sm-8">
-                <label class="form-label">User ID *</label>
-                <input type="text" class="form-control" id="userId" placeholder="e.g. USR-001 or your ConfTool ID">
-              </div>
 
               <div class="col-sm-4">
                 <label class="form-label">Day *</label>
@@ -143,6 +134,19 @@
                   <option value="">Select session…</option>
                 </select>
               </div>
+
+              <div class="col-sm-4">
+                <label class="form-label">Abstract ID / Paper ID *</label>
+                <select class="form-select" id="abstractId" disabled>
+                  <option value="">Select abstract ID…</option>
+                </select>
+              </div>
+
+              <div class="col-sm-8">
+                <label class="form-label">Paper Title</label>
+                <input type="text" class="form-control" id="paperTitle" placeholder="Selected paper title will appear here" readonly>
+              </div>
+
             </div>
           </div>
 
@@ -289,23 +293,840 @@
     let vFileObj = null;
     let pFileObj = null;
 
-    const SESSION_MAP = [
-      {"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)","session_title":"Advances in Remote Sensing Technologies I"},
-      {"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Fire, Burned Area, and Fuel Load Mapping I"},
-      {"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)","session_title":"Artificial Intelligence in Forest Research and Management I"},
-      {"DAY":"Tuesday","session_room":"Auditorium","session_title":"More than ice in ICESat-2: Unlocking canopy insights from space"},
-      {"DAY":"Tuesday","session_room":"Rion Ballroom","session_title":"Hurricane-resilient forests: Innovations in remote sensing for hurricane ecology and management in a changing climate I"},
-      {"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)","session_title":"Forest Disturbance, Recovery, and Resilience I"},
-      {"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)","session_title":"Carbon and Biomass Estimation I"},
-      {"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Biodiversity and Habitat Monitoring I"},
-      {"DAY":"Wednesday","session_room":"Auditorium","session_title":"Cutting-edge Terrestrial Laser Scanning for tree volume, biomass, and carbon estimation: From point clouds to precision forestry"},
-      {"DAY":"Wednesday","session_room":"Rion Ballroom","session_title":"Hurricane-resilient forests: Innovations in remote sensing for hurricane ecology and management in a changing climate II"},
-      {"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)","session_title":"Spaceborne Missions for Forest Science I"},
-      {"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)","session_title":"Sampling and Statistical Inference in Forestry I"},
-      {"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)","session_title":"Emerging Trends in Forest Management"},
-      {"DAY":"Thursday","session_room":"Auditorium","session_title":"Forest applications with Harmonized Landsat and Sentinel-2 analysis ready data products I"},
-      {"DAY":"Thursday","session_room":"Rion Ballroom","session_title":"What is the value of satellite imagery? – The impact of Earth Observation programs on forest applications"}
+    const RAW_SESSION_PAPERS = [
+      {
+        session_ID: "177",
+        session_title: "Advances in Remote Sensing Technologies I",
+        DAY: "Tuesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "236", title: "Large-Scale Reconstruction of Realistic 3D Forest Voxel-Based Scenes from Airborne Lidar Data" },
+          { paperID: "288", title: "A sensitivity study of satellite jitter’s effect on forest canopy surface retrieval" },
+          { paperID: "314", title: "Airborne Lidar Pulse Density Thinning Effects on Area-based Forest Inventory Metrics" },
+          { paperID: "436", title: "An improved canopy height model for the forest-tundra ecotone" }
+        ]
+      },
+      {
+        session_ID: "179",
+        session_title: "Fire, Burned Area, and Fuel Load Mapping I",
+        DAY: "Tuesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "306", title: "Deriving 3D fuels characteristics from terrestrial lidar data to inform fuel treatment strategy" },
+          { paperID: "336", title: "Enhancing Wildfire Risk Assessment in Canada through Continuous Hazardous Fuel Classification Using Harmonized Landsat and Sentinel-2 Data" },
+          { paperID: "504", title: ": The effect of fuel treatments in the Sierra Nevada: Integrating multi-scale remote sensing data to create high quality three-dimensional inputs for fire behavior modeling" }
+        ]
+      },
+      {
+        session_ID: "178",
+        session_title: "Artificial Intelligence in Forest Research and Management I",
+        DAY: "Tuesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "195", title: "Comparing k-Nearest Neighbor and Convolutional Neural Network Approaches for Generating Spatially Explicit Tree Lists in Mediterranean Pine Forests" },
+          { paperID: "309", title: "From Accuracy to Interpretability: Assessing Hyperparameter Sensitivity and SHAP Consistency in Forest Volume and Carbon Modelling" },
+          { paperID: "310", title: "A Machine Learning Approach for Large-Scale Mapping of Old-Growth Forest Probability in Italy" },
+          { paperID: "541", title: "Enhancing forest inventory and Analysis through satellite derived embeddings" }
+        ]
+      },
+      {
+        session_ID: "122",
+        session_title: "More than ice in ICESat-2: Unlocking canopy insights from space",
+        DAY: "Tuesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "231", title: "Evaluating ICESat-2-Derived Canopy Cover for Large-Area Forest Mapping" },
+          { paperID: "347", title: "Continental-Scale Forest Height Dynamics Using Integrated GEDI and ICESat-2 Lidar Data" },
+          { paperID: "354", title: "Continental and global-scale canopy height modeling: space-lasers to cloud-computing" },
+          { paperID: "556", title: "ICESat-4D: Monitoring Forest Resistance and Post-Hurricane Recovery Dynamics in Southern Forests by the Synergism of ICESat-2, SAR, and Optical Data and AI" }
+        ]
+      },
+      {
+        session_ID: "97",
+        session_title: "Hurricane-resilient forests: Innovations in remote sensing for hurricane ecology and management in a changing climate I",
+        DAY: "Tuesday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "122", title: "Using terrestrial lidar to understand hurricane-adaptive canopy traits in pine species from the Southeastern US to The Bahamas" },
+          { paperID: "301", title: "Gone with the wind: Assessing disease progression and hydraulic conductivity of pine trees exposed to extreme winds of hurricane Helene." },
+          { paperID: "368", title: "Long-term effects of canopy scorch on mitigating hurricane damage using long-term data and terrestrial lidar" },
+          { paperID: "513", title: "Storm-driven Acceleration of Coastal Forest Retreat and Ghost Forest Formation" }
+        ]
+      },
+      {
+        session_ID: "180",
+        session_title: "Advances in Remote Sensing Technologies II",
+        DAY: "Tuesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "293", title: "Assessment of stem straightness in mediterranean forest species using Handheld Laser Scanning: An Italian case study" },
+          { paperID: "443", title: "Terrestrial Laser Scanning (TLS) Data Collection and Integration: Geospatial Innovations in Location Sampling and On-the-Ground Efficiency" },
+          { paperID: "458", title: "Exploring the Potential of the Mandeye Handheld LiDAR System for Ecosystem Characterization" },
+          { paperID: "567", title: "Benchmarking Tree Instance Segmentation Algorithms: A Comprehensive Evaluation of Performance Across Diverse LiDAR Datasets and Forest Conditions" }
+        ]
+      },
+      {
+        session_ID: "182",
+        session_title: "Fire, Burned Area, and Fuel Load Mapping II",
+        DAY: "Tuesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "351", title: "Flareless: A Hybrid Machine Learning and AHP Approach for High-Resolution Forest Fire Risk Assessment" },
+          { paperID: "468", title: "Estimating forest wildfire emissions across the United States" },
+          { paperID: "511", title: "Fire progression and severity across fuel treatments in the Western United States" },
+          { paperID: "527", title: "Good fire: quantifying the beneficial ecosystem work of western U.S. wildfires (2010-2020)" }
+        ]
+      },
+      {
+        session_ID: "181",
+        session_title: "Artificial Intelligence in Forest Research and Management II",
+        DAY: "Tuesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "238", title: "Predicting Forest Inventory Parameters from Remote Sensing Data: Comparison of Random Forest and Deep Learning Approaches" },
+          { paperID: "333", title: "Scaling Up Forest Vision with Synthetic Data" },
+          { paperID: "340", title: "Geospatial foundation models enable data-efficient tree species mapping in temperate mountain forests" },
+          { paperID: "552", title: "Wall-to-Wall Forest Structure Mapping Using Generative AI and NAIP Imagery" }
+        ]
+      },
+      {
+        session_ID: "123",
+        session_title: "Remote sensing of trees in smallholder agroforestry systems",
+        DAY: "Tuesday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "203", title: "Assessment of automatic hedgerows detection using Pleiades Neo 30cm images and Foundation model" },
+          { paperID: "219", title: "Providing a New Remote Sensing Method and Extensive Tree Database for Allometric Scaling Models of Carbon Stocks of Individual Trees Outside of Forests" },
+          { paperID: "355", title: "Determining Detection Thresholds for Individual Trees to Enable Farmer-Specific Payments in Agroforestry Carbon Programs" },
+          { paperID: "499", title: "Learnings and applied results from combined remote and field monitoring of a restoration portfolio" }
+        ]
+      },
+      {
+        session_ID: "126",
+        session_title: "Large scale european projects supporting current policy making at the EU",
+        DAY: "Tuesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "102", title: "Remote sensing and the Nature Restoration Regulation: assessing biodiversity indicators for integrated forest management" },
+          { paperID: "147", title: "Federated Learning for forest monitoring: a privacy-preserving approach to cross-border data integration" },
+          { paperID: "291", title: "Harmonised Remote Sensing Products and Disturbance Reference Data to Support European Forest Monitoring and Multifunctionality Assessment" },
+          { paperID: "519", title: "Overview of EU large scale projects" }
+        ]
+      },
+      {
+        session_ID: "185",
+        session_title: "Fire, Burned Area, and Fuel Load Mapping III",
+        DAY: "Tuesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "212", title: "Quantifying Fire-Induced Biomass Loss in the Amazon Forest Using GEDI" },
+          { paperID: "390", title: "Object-Based Scanning of Wildland Fuels: Bridging the Resolution Gap in 3D Vegetation Modeling" },
+          { paperID: "416", title: "Pointclouds_DeepLab: Wildland fuel aware Multi-sensors LiDAR point clouds segmentation and classification: A case study of United States Forest ecosystems" },
+          { paperID: "475", title: "Integrating Airborne Laser Scanning data, Topography, and Climate Metrics for Forest Fuel Mapping in the Western U.S." }
+        ]
+      },
+      {
+        session_ID: "183",
+        session_title: "Advances in Remote Sensing Technologies III",
+        DAY: "Tuesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "194", title: "AI and GIS for urban biodiversity monitoring - Trees census, from location estimation to ecosystem services assessment" },
+          { paperID: "225", title: "Assessing Forest Structure and Biophysical Controls on Degradation Across the Amazon Using Spaceborne LiDAR" },
+          { paperID: "289", title: "Evaluating Traditional and Novel Height-Diameter Models for Urban Tree DBH Estimation" },
+          { paperID: "457", title: "Integrating UAV and Satellite-Derived Vegetation Indices in Mediterranean Forests" }
+        ]
+      },
+      {
+        session_ID: "184",
+        session_title: "Geospatial Innovations I",
+        DAY: "Tuesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "234", title: "Leveraging Geospatial Embeddings for Cloud-Free Reconstruction and Phenology Monitoring in Optical Remote Sensing" },
+          { paperID: "426", title: "Isolating Urban Tree Cooling: A 3D Workflow Using ALS LiDAR Data" },
+          { paperID: "435", title: "Multimodal Approach to Tree Species Classification: Integrating TLS Point Clouds with Contextual Remote Sensing and Forest Inventory Data" },
+          { paperID: "577", title: "Integrating UAV LiDAR and Multispectral Data for Improved Classification and Flood Hazard Assessment in Mediterranean Forests" }
+        ]
+      },
+      {
+        session_ID: "89",
+        session_title: "Remote sensing-assisted sampling and statistical inference in forest inventory",
+        DAY: "Tuesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "101", title: "Nexus of certain design-based estimators in remote sensing forest inventory" },
+          { paperID: "175", title: "Remote sensing-assisted, post-stratified estimation" },
+          { paperID: "189", title: "A STATISTICALLY CONGRUENT INNOVATIVE STRATEGY FOR ENHANCED NATIONAL FOREST INVENTORIES" },
+          { paperID: "239", title: "Impact of Tree Species on the Accuracy and Transferability of Lidar-Based Biomass Models" }
+        ]
+      },
+      {
+        session_ID: "90",
+        session_title: "Monitoring post-disturbance forest recovery dynamics",
+        DAY: "Tuesday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "104", title: "Tracking fire across the Southeast from burn severity to recovery with harmonized Landsat-Sentinel data" },
+          { paperID: "193", title: "Tracking forest recovery across Europe using spectral unmixing of Landsat time series" },
+          { paperID: "242", title: "Evaluating UAV-Based Approaches for Detecting Forest Regeneration in Post-Disturbance Landscapes: Insights from the KI-Recover Project" },
+          { paperID: "383", title: "Post-Fire Conifer Recovery From Spectral and Field Data - Why Monitoring Methods Matter" }
+        ]
+      },
+      {
+        session_ID: "188",
+        session_title: "Fire, Burned Area, and Fuel Load Mapping IV",
+        DAY: "Tuesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "148", title: "Tracing Land-Use Imprints on the Spatiotemporal Patterns of Wildfires" },
+          { paperID: "149", title: "Spatially analyzing vegetation type and tree cover influence on building survival during extreme urban fire events in California US using PlanetScope and eCognition." },
+          { paperID: "274", title: "Wildfire Propagation Modelling for Europe and the Mediterranean with Deep Learning and an adjusted Dataset" },
+          { paperID: "342", title: "Quantifying fuel composition with terrestrial LiDAR in a longleaf pine savanna" }
+        ]
+      },
+      {
+        session_ID: "186",
+        session_title: "Advances in Remote Sensing Technologies IV",
+        DAY: "Tuesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "134", title: "Estimation of canopy fAPAR using optical reflectance and airborne LiDAR data" },
+          { paperID: "186", title: "Development of crown morphology models for Pinus halepensis in central Spain using terrestrial laser scanning and unmanned aerial laser scanning data." },
+          { paperID: "321", title: "Use of high-resolution commercial X-band SAR and optical data to model forest height" },
+          { paperID: "348", title: "NAIP-based digital aerial photogrammetry for forest structure estimation and evaluating disturbance effects in Colorado, USA" }
+        ]
+      },
+      {
+        session_ID: "187",
+        session_title: "Geospatial Innovations II",
+        DAY: "Tuesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "144", title: "Study on the Examination of Data Acquisition Methods Based on Forest Conditions and the Evaluation of Ecological Functions in Japan" },
+          { paperID: "218", title: "Mapping Understory Vegetation Using LiDAR-Derived Canopy Models and Machine Learning" },
+          { paperID: "254", title: "LiDAR-based Reconstruction of Power Lines in Complex Forested Terrains" },
+          { paperID: "393", title: "Tracking Appalachian Surface Mine Reclamation Trajectories with Remotely Sensed Data" }
+        ]
+      },
+      {
+        session_ID: "101",
+        session_title: "Mapping forest long-term dynamics through multisensor time series and machine learning",
+        DAY: "Tuesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "114", title: "The Spanish Atlas of Forests and Disturbances (SAFoD): Four Decades of Forest Change Across Continental Spain" },
+          { paperID: "271", title: "Integrating Weakly Supervised Learning and Multispectral Time Series for Robust Tree Species Mapping of Heterogeneous Forest" },
+          { paperID: "296", title: "Vegetation Transition History Predicts Wildfire Risk Beyond Climate Forcing: A Spatiotemporal Analysis of California" },
+          { paperID: "352", title: "Large-scale Tropical Forest Disturbances Monitoring Using Harmonized Landsat and Sentinel-2 data" }
+        ]
+      },
+      {
+        session_ID: "131",
+        session_title: "NASA Wildland fire and FireSense: Transforming wildfire science into action",
+        DAY: "Tuesday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "110", title: "Advancing Wildfire Smoke Forecasting and Exposure Assessment Across the CONUS Using Multi-Model Intercomparison and Ensemble Techniques" },
+          { paperID: "423", title: "Coupled Interactive Forecasting of Active Fire Impacts" },
+          { paperID: "445", title: "NASA’s Wildland Fire Program – Supporting Proactive Wildfire and Prescribed Burn Management and Research Efforts" },
+          { paperID: "584", title: "Harmonics of stress and structure from ECOSTRESS and GEDI to support pre-fire mapping and the management of fire trajectories" }
+        ]
+      },
+      {
+        session_ID: "189",
+        session_title: "Climate Change Impacts",
+        DAY: "Tuesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "196", title: "Assessing Vertical Structural Complexity in Regulating Forest Microclimate Using Mobile Laser Scanning" },
+          { paperID: "403", title: "Analysis of Motifs of Intact Forest Resilience and Global Climate Variables" },
+          { paperID: "406", title: "Detecting tree stress in 3D: Using structural metrics to predict tree physiology and drought tolerance in P. taeda" },
+          { paperID: "508", title: "The importance of UF spatial structure in combating UHI using VHR satellite and ALS data - Kraków case study" }
+        ]
+      },
+      {
+        session_ID: "190",
+        session_title: "Near Real-Time Monitoring of Forests",
+        DAY: "Tuesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "143", title: "Edge-AI Fusion Pipeline for Real-Time Forest Health Monitoring in Subtropical Pine Ecosystems of North-Central Florida" },
+          { paperID: "208", title: "Attributing direct drivers to pantropical deforestation alerts" },
+          { paperID: "230", title: "Real-Time Event-Driven Vision for Aerial Surveillance on MPSoC Platforms in Forest Environments" },
+          { paperID: "267", title: "Monthly Forest Canopy Cover Loss in Europe, 2017–2024" }
+        ]
+      },
+      {
+        session_ID: "191",
+        session_title: "Agroforestry Applications",
+        DAY: "Tuesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "334", title: "Operational 3DGS and OB-NeRF Pipelines for Field Vegetation: Case Study on Strawberries" },
+          { paperID: "429", title: "Mapping research pathways for restoring South Carolina’s historic tidal rice landscapes" },
+          { paperID: "495", title: "GIS-Driven Land Suitability Mapping for Tiger Grass (Thysanolaena maxima, Roxb.) under Biophysical and Zoning Considerations in the Baroro Watershed, La Union, Philippines" },
+          { paperID: "546", title: "Evaluating Vertical Structure Differences Between Old-Growth Avocado Orchards and Temperate Forests with GEDI Metrics: Implications for Habitat Availability" }
+        ]
+      },
+      {
+        session_ID: "118",
+        session_title: "Leveraging BIOMASS, NISAR or multi-sensors for comprehensive forest monitoring",
+        DAY: "Tuesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "106", title: "TESSERA and Barlow Twins for forestry applications and carbon projects" },
+          { paperID: "137", title: "Near real time forest disturbance monitoring by integrating satellite-borne SAR data" },
+          { paperID: "298", title: "Global BIOMASS Digital Terrain Model Under the Canopy: Estimation Principle and Applications to Forest Characterization" },
+          { paperID: "517", title: "Integrating NAIP Point Cloud, Sentinel-1, and Sentinel-2 Data for Improved Forest/Non-Forest Classification Using Explainable Machine Learning" }
+        ]
+      },
+      {
+        session_ID: "93",
+        session_title: "Biomass carbon monitoring of pools and fluxes that is responsive to stakeholder needs",
+        DAY: "Tuesday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "322", title: "A geospatial database for quantifying effects from 40 years of fire (1985-2025) on biomass and fuel dynamics across the western USA" },
+          { paperID: "345", title: "Quantifying the preferences of final users of LiDAR derived tree list maps to maximize their use and adoption." },
+          { paperID: "442", title: "Introducing the Treatment and Wildfire Interagency Geodatabase: a new tool for accessing fuel treatment and wildfire data" },
+          { paperID: "523", title: "Integrating remote sensing and landscape modeling for monitoring biomass carbon pools and fluxes: results from three scales of stakeholder use-cases in the working forests of Maine, USA" }
+        ]
+      },
+      {
+        session_ID: "194",
+        session_title: "Biodiversity and Habitat Monitoring I",
+        DAY: "Wednesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "155", title: "Crown-level mapping and persistence of emergent tropical trees in fragmented tropical landscapes" },
+          { paperID: "188", title: "Assessing forest naturalness using airborne laser scanning (ALS)" },
+          { paperID: "374", title: "Extracting Ecological Variables from The Brazilian Atlantic Forest Using UAV Images" },
+          { paperID: "565", title: "Beyond Climate and Soil: LiDAR-Derived Forest Structure Unlocks Species Habitat Signatures Across the Temperate–Boreal Ecotone" }
+        ]
+      },
+      {
+        session_ID: "192",
+        session_title: "Forest Disturbance, Recovery, and Resilience I",
+        DAY: "Wednesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "140", title: "Characterizing the vertical structure of forests in the Brazilian Amazon" },
+          { paperID: "153", title: "Enhanced Detection of Forest Disturbances in the Pan-Amazon through Integration of Sentinel-2 and Landsat Time Series" },
+          { paperID: "431", title: "deFOREST: Fusing Optical and Radar satellite data for Enhanced Sensing of Tree-loss" },
+          { paperID: "459", title: "Evaluating endmember specificity for SMA-based disturbance detection across Pinus sylvestris provenance regions in Spain" }
+        ]
+      },
+      {
+        session_ID: "193",
+        session_title: "Carbon and Biomass Estimation I",
+        DAY: "Wednesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "159", title: "Augmenting Training data for Individual Tree Biomass Estimation using UAV LiDAR in Dense Forest and Urban Environments" },
+          { paperID: "338", title: "Estimating tree-level aboveground biomass using Unmanned Aerial Vehicle (UAV)-based multispectral imagery in mixed-species forests of the southeastern United States" },
+          { paperID: "538", title: "Estimating aboveground biomass loss from tree cover to cropland conversion" },
+          { paperID: "575", title: "Addressing The Small Data Problem in Forestry: Self-Supervised Learning for Aboveground Biomass Estimation" }
+        ]
+      },
+      {
+        session_ID: "215",
+        session_title: "Cutting-edge Terrestrial Laser Scanning for tree volume, biomass, and carbon estimation: From point clouds to precision forestry",
+        DAY: "Wednesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "108", title: "Validating Handheld LiDAR for Single-Tree Volume and Aboveground Biomass Carbon: Quantifying the Impact of Height Uncertainty" },
+          { paperID: "224", title: "Advancing the quantification of urban tree carbon content through the application of terrestrial laser scanning technology." },
+          { paperID: "241", title: "A novel tree-height independent method for tree volume estimation based on TLS point clouds" },
+          { paperID: "563", title: "Quantifying Aspen Aboveground Biomass and Allometry in Boreal Forests Using Terrestrial Laser Scanning" }
+        ]
+      },
+      {
+        session_ID: "91",
+        session_title: "Hurricane-resilient forests: Innovations in remote sensing for hurricane ecology and management in a changing climate II",
+        DAY: "Wednesday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "139", title: "Using UAVs to understand stand-level drivers of hurricane susceptibility in southeastern Georgia’s pecan orchards" },
+          { paperID: "204", title: "Scaling tropical cyclone risk across the southeast to inform conservation planning" },
+          { paperID: "382", title: "Mapping post-hurricane damage severity in southern U.S. forests using PlanetScope imagery, LiDAR, and deep learning" },
+          { paperID: "496", title: "Fifty years of tropical cyclones in US forests through the lens of forest inventory" }
+        ]
+      },
+      {
+        session_ID: "196",
+        session_title: "Carbon and Biomass Estimation II",
+        DAY: "Wednesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "272", title: "Forest Biomass Estimation Using Deep Learning and Multi-Source Remote Sensing Data in the Bohemian Forest Ecosystem" },
+          { paperID: "328", title: "Forest structure and carbon dynamics across the Amazon using GEDI and airborne lidar" },
+          { paperID: "444", title: "Forest structure as a source of bias in remote sensing-based biomass estimates: insights from the validation of ESA’s CCI and NASA’s GEDI models" },
+          { paperID: "569", title: "Using destructive sampling to validate mangrove biomass estimates from terrestrial laser scanning and published allometries" }
+        ]
+      },
+      {
+        session_ID: "197",
+        session_title: "Biodiversity and Habitat Monitoring II",
+        DAY: "Wednesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "259", title: "Tree species mapping at regional scale with Planet data and weakly labelled training data" },
+          { paperID: "392", title: "Pixel-based tree species detection using aerial hyperspectral imagery data in mid-Atlantic mixed hardwood forests" },
+          { paperID: "548", title: "Individual Tree Species Prediction and Area-Based Metrics in the Acadian Forest: New Brunswick's Unique and Highly Diverse Forest" },
+          { paperID: "585", title: "Spectral response of plants to herbivore overabundance" }
+        ]
+      },
+      {
+        session_ID: "195",
+        session_title: "Forest Disturbance, Recovery, and Resilience II",
+        DAY: "Wednesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "216", title: "Modeling the Regeneration of Aspen Using Remote Sensing, Machine Learning, and Field Validation in Post-Fire Ecosystems." },
+          { paperID: "318", title: "Mapping Forest Vulnerability Across Europe Using the Composite2Change (C2C) Framework" },
+          { paperID: "411", title: "Longterm index trends demonstrate canopy loss and possible link to hydrologic change in a barrier island forest" },
+          { paperID: "472", title: "Integrating field and high-resolution remote sensing data for comprehensive forest disturbance monitoring" }
+        ]
+      },
+      {
+        session_ID: "155",
+        session_title: "Ecosystem morphological traits from 3D data and biodiversity",
+        DAY: "Wednesday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "173", title: "Connecting forest structural diversity and foliar trait diversity across spatial scales and climate gradients in the eastern United States" },
+          { paperID: "210", title: "Detecting deadwood from terrestrial laser scanning data using deep learning" },
+          { paperID: "257", title: "Pristine forests approach maximum mean-independent entropy in every global climate" },
+          { paperID: "515", title: "Essential Biodiversity Variables of Ecosystem Structure: Definitions and Operational Workflows" }
+        ]
+      },
+      {
+        session_ID: "94",
+        session_title: "Fuel and consumption modeling and mapping to improve fuel, fire, and smoke models",
+        DAY: "Wednesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "227", title: "Accurate and Dynamic Fuel Load Mapping Using Satellite Remote Sensing Across Canada" },
+          { paperID: "319", title: "Coupling dead surface and ground fuel estimates to canopy biomass characterized using pre- and post-fire airborne laser scanning data in the western US" },
+          { paperID: "346", title: "Spatially explicit fuel distribution models from neighborhood methods" },
+          { paperID: "417", title: "Deep Learning of Snags and Coarse Woody Bebris (CWD) using VHR UAS imagery and LiDAR point clouds at FuelCraft Selected sites in United States" }
+        ]
+      },
+      {
+        session_ID: "199",
+        session_title: "Carbon and Biomass Estimation III",
+        DAY: "Wednesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "220", title: "Fusion of GEDI and ICESat-2 for Mapping Forest Canopy Height and Aboveground Biomass" },
+          { paperID: "283", title: "How close can we get? Comparing drone-based lidar and QSM estimates of tree dbh and biomass against in-situ measurements and allometric scaling models." },
+          { paperID: "356", title: "Improving Biomass Estimates in Heterogeneous Rangelands" },
+          { paperID: "395", title: "Large-scale aboveground carbon mapping from multi-source remote sensing and AI in tropical savanna" }
+        ]
+      },
+      {
+        session_ID: "200",
+        session_title: "Forest Health and Disease Detection I",
+        DAY: "Wednesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "124", title: "Assessing the accuracy of changepoint algorithms and vegetation index in detecting beetles related forest mortality." },
+          { paperID: "228", title: "Aspen leafminer detection in Interior Alaska from high-resolution satellite data using deep learning" },
+          { paperID: "232", title: "An Evaluation of UAV Lidar for Assessing Brown Spot Needle Blight Disease in Loblolly Pine" },
+          { paperID: "250", title: "Evaluating superpixel algorithms for standing dead tree dealineation using aerial orthoimagery" }
+        ]
+      },
+      {
+        session_ID: "198",
+        session_title: "Forest Disturbance, Recovery, and Resilience III",
+        DAY: "Wednesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "327", title: "Structural Quality Recovery of Amazon Tropical Forests using Spaceborne LiDAR" },
+          { paperID: "350", title: "Monitoring Post-Disturbance Forest Recovery across the Brazilian Amazon" },
+          { paperID: "365", title: "The (mis)measurement of forest edge effects using remote sensing" },
+          { paperID: "549", title: "Using the proportion of primary forest in the landscape to model forest degradation in the tropics" }
+        ]
+      },
+      {
+        session_ID: "92",
+        session_title: "Advancing near real-time monitoring of tropical forest disturbances, recovery, and land-use change through multi-source remote sensing and AI",
+        DAY: "Wednesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "136", title: "Improving the attribution of forest canopy loss drivers using time series remote sensing and multi-modal foundation model" },
+          { paperID: "371", title: "Integrating Multi-Source Remote Sensing, Machine Learning and Policy Pathways for Forest Conservation in the Brazilian Amazon" },
+          { paperID: "450", title: "linking in situ, airborne and satellite measurements of biophysical variables in tropical forests" },
+          { paperID: "491", title: "Quantifying tropical tree cover loss driven by cropland conversion" }
+        ]
+      },
+      {
+        session_ID: "216",
+        session_title: "Virtual Poster Presentation",
+        DAY: "Wednesday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "206", title: "Scalable monitoring of deforestation-free supply chains via cloud-native remote sensing" },
+          { paperID: "222", title: "A Multi-Source Remote Sensing Pipeline for Individual-Tree Phenotyping in Eucalyptus Breeding: Integrating UAV-LiDAR, MLS and Spectral Data" },
+          { paperID: "275", title: "Combining MODIS and ASTER Data for Satellite based Super-Resolution with Generative Deep Learning" },
+          { paperID: "295", title: "Effect of ratio between point cloud clipping size and field plot size on goodness-of-fit of forest attributes models based on LiDAR metrics" },
+          { paperID: "315", title: "Improvement forest biodiversity assessment through Handheld Laser Scanning for precision forestmanagement" },
+          { paperID: "394", title: "The Best Tool for the Fuel: Comparing 3D characterization approaches for forest understories" },
+          { paperID: "454", title: "﻿Spatio-temporal analysis of the ecological characteristics of mountainous forests in the Republic of Korea" }
+        ]
+      },
+      {
+        session_ID: "201",
+        session_title: "Carbon and Biomass Estimation IV",
+        DAY: "Wednesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "273", title: "Tracking forest aboveground biomass recovery following wind disturbance using PlanetScope-derived canopy structure and spectral data" },
+          { paperID: "337", title: "Terrestrial LiDAR and Forest Inventory Integration for Improved Estimates of Wildfire Impacts on Forest Carbon" },
+          { paperID: "381", title: "UAS lidar enables quantification of forest coarse woody debris to support forest carbon management plans" },
+          { paperID: "544", title: "Recent changes in global forest biomass as viewed from space" }
+        ]
+      },
+      {
+        session_ID: "202",
+        session_title: "Forest Health and Disease Detection II",
+        DAY: "Wednesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "150", title: "Sentinel-2 and Machine Learning Approaches for Early Detection of Forest Pest Outbreaks in Croatia" },
+          { paperID: "185", title: "Cloud-based forest health monitoring in Europe" },
+          { paperID: "326", title: "Forests from Space: Fusing Satellite Embeddings with NEON Field Data to Map Tree Mortality" },
+          { paperID: "554", title: "Modeling the spatial distribution of southern pine beetle outbreaks across the southeastern United States" }
+        ]
+      },
+      {
+        session_ID: "125",
+        session_title: "Advances in active remote sensing for forest parameter estimation",
+        DAY: "Wednesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "152", title: "Development Update on MOLI : Spaceborne Lidar Mission" },
+          { paperID: "287", title: "GEDI and the Path from Sampling to Monitoring: Forest Structure in the Next Generation of Active Missions" },
+          { paperID: "313", title: "The BIOMASS mission: status and first results after 1 year in orbit" },
+          { paperID: "564", title: "The Earth Dynamics Geodetic Explorer (EDGE) mission: Tracking change in the 3D structure of terrestrial ecosystems using satellite laser altimetry" }
+        ]
+      },
+      {
+        session_ID: "149",
+        session_title: "3D Fuels: Characterizing wildland fuels in three dimensions for next-generation fire modeling",
+        DAY: "Wednesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "364", title: "Characterizing fuels in 3D: scaling measurements and inputs for fire behavior and smoke modeling" },
+          { paperID: "399", title: "From Planar Intercepts to Point-Based Insights: 3D Fuel Characterization for Southwestern Forests and Woodlands" },
+          { paperID: "547", title: "TreeFlow: Generative Modeling of 3D Tree Structure for Canopy Fuel Characterization" },
+          { paperID: "576", title: "Evaluating a novel understory vegetation segmentation method on airborne and terrestrial lidar point clouds" }
+        ]
+      },
+      {
+        session_ID: "121",
+        session_title: "Emerging applications of Landsat data for forest management and monitoring",
+        DAY: "Wednesday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "117", title: "Monitoring the circumpolar boreal forest’s structure and shifts with ICESat-2 & HLS" },
+          { paperID: "118", title: "Northward advance of the boreal forest confirmed by the Landsat record" },
+          { paperID: "123", title: "Mapping aboveground biomass and canopy height recovery following stand-replacing forest disturbances in Japan" },
+          { paperID: "509", title: "Rapid operational monitoring of global tree cover change" }
+        ]
+      },
+      {
+        session_ID: "130",
+        session_title: "Advancing earth science monitoring through web-based cyberinfrastructure platforms",
+        DAY: "Wednesday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "290", title: "Multi-temporal Lidar Workflow for Forest Change Mapping" },
+          { paperID: "294", title: "OpenForest4D - Cyberinfrastructure for Next-Generation Forest Structure and Biomass Monitoring" },
+          { paperID: "387", title: "Spaceborne remote sensing and AI highlight asymmetric canopy height change across southeastern US forests" },
+          { paperID: "533", title: "Mapping forest canopy height across the western United States using spaceborne lidar and multi-sensor data" }
+        ]
+      },
+      {
+        session_ID: "96",
+        session_title: "Toward a collaborative framework: Integrating remote sensing research with forestry practice",
+        DAY: "Wednesday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "142", title: "How deep learning can enhance and expand forest resource mapping in Norway" },
+          { paperID: "191", title: "Joint development of remote sensing-based tools for forest management planning –Project “VorratAktuell”" },
+          { paperID: "292", title: "Barriers in the Implementation of Close-Range Remote Sensing Technologies in Forestry" },
+          { paperID: "516", title: "Practical Forestry Insights from ALS, Sentinel and NFI" }
+        ]
+      },
+      {
+        session_ID: "98",
+        session_title: "Emerging applications of Landsat data for forest management and monitoring",
+        DAY: "Wednesday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "135", title: "Direct assessment of forest water status and water stress from satellite-based microwave measurements" },
+          { paperID: "233", title: "Improved estimation of the interannual variability of dryland carbon and water fluxes" },
+          { paperID: "332", title: "Evaluating Carbon Uptake and Evaporative Cooling in Temperate Forests Using Remote Sensing and Flux Tower Data" },
+          { paperID: "494", title: "Characterizing relationships between vegetation traits and land-atmosphere exchanges of CO2, CH4, and H2O across Mid-Atlantic coastal wetlands" }
+        ]
+      },
+      {
+        session_ID: "205",
+        session_title: "Emerging Trends in Forest Management",
+        DAY: "Thursday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "128", title: "Early success of natural regeneration after gap cuttings in Scots pine stands with varying site preparation methods in northern Finland evaluated using remote sensing and field-based models" },
+          { paperID: "260", title: "From 2D to 3D: Transforming Marteloscope Training through Digital Forest" },
+          { paperID: "465", title: "Is natural forest regeneration always a climate-cooling strategy?" },
+          { paperID: "580", title: "Look up, look down, look all around: lessons learned from recent experiments evaluating real-time data networks to support use of AI for digital transformation in operational forestry" }
+        ]
+      },
+      {
+        session_ID: "203",
+        session_title: "Spaceborne Missions for Forest Science I",
+        DAY: "Thursday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "358", title: "Characterizing the Effective Footprint Diameter of ICESat-2 when Measuring Canopy" },
+          { paperID: "380", title: "Annual Canopy Height Mapping Across the Northeastern US from 2019 to 2024 Using GEDI, Sentinel-1, Sentinel-2, ALOS-2 PALSAR-2, and 3DEP: A Machine Learning Framework for Regional Forest Monitoring" },
+          { paperID: "453", title: "Four decades of change in tree species composition across the Spanish Iberian Range forests: insights from NFI and Landsat data" },
+          { paperID: "460", title: "Atmospheric correction stands on the way in effective use of Landsat and Sentinel-2 image time series for forest inventories" }
+        ]
+      },
+      {
+        session_ID: "204",
+        session_title: "Sampling and Statistical Inference in Forestry I",
+        DAY: "Thursday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "246", title: "Effects of sample plot size on model-assisted estimates of above-ground forest biomass across Europe" },
+          { paperID: "263", title: "Characterizing Italian species phenology through Sentinel-2-derived vegetation phenology and productivity products" },
+          { paperID: "307", title: "Bridging GEDI Sampling Gaps: Multimodal Deep Learning for Wall-to-Wall Forest Structural Complexity Mapping" },
+          { paperID: "488", title: "Engineering independent intensity and texture features for sample design, classification, regression, and clustering analyses using principal component analysis and convolution kernels" }
+        ]
+      },
+      {
+        session_ID: "119",
+        session_title: "Forest applications with Harmonized Landsat and Sentinel-2 analysis ready data products I",
+        DAY: "Thursday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "113", title: "Harmonized Landsat and Sentinel-2 (HLS) Project Updates" },
+          { paperID: "129", title: "Global uncertainty assessment of vegetation indices from NASA's Harmonized Landsat and Sentinel-2 Project" },
+          { paperID: "133", title: "A Time-series-based Image Fusion Algorithm for Harmonizing Landsat and Sentinel-2 Data at 10 m" },
+          { paperID: "493", title: "Congo Basin forest monitoring applications with Harmonized Landsat Sentinel 2 data" }
+        ]
+      },
+      {
+        session_ID: "151",
+        session_title: "What is the value of satellite imagery? – The impact of Earth Observation programs on forest applications",
+        DAY: "Thursday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "205", title: "IMPROVING FOREST DISTURBANCE DETECTION TECHNIQUES USING LANDSAT SATELLITE IMAGERY" },
+          { paperID: "215", title: "Global Earth observation-based maps of annual greenhouse gas fluxes from land" },
+          { paperID: "420", title: "Imagery Into Action: Indigenous Remote Sensing for Territorial Security and Climate Resilience" },
+          { paperID: "526", title: "The impact of available satellite imagery on national monitoring and reporting capacity" }
+        ]
+      },
+      {
+        session_ID: "206",
+        session_title: "Spaceborne Missions for Forest Science II",
+        DAY: "Thursday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "281", title: "Leveraging Planet imagery and LiDAR data for enhanced estimation of wild edible mushroom yield in Mediterranean forests" },
+          { paperID: "353", title: "Modeling TROPOSIF using PACE EVI and PRI: Seasonal differences in the multivariate relationship" },
+          { paperID: "518", title: "Using dense Landsat time series imagery and national forest inventory field plots to monitor US forests" },
+          { paperID: "561", title: "Monitoring the Community Level Individual Tree Phenology from Space" }
+        ]
+      },
+      {
+        session_ID: "207",
+        session_title: "Sampling and Statistical Inference in Forestry II",
+        DAY: "Thursday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "163", title: "GEDI AGBD Calibration and Model-Based Inference in Tropical Forests via Embedding-Aided Spatiotemporal NNGP and Bayesian Regression" },
+          { paperID: "377", title: "Improving Precision of Stand-Level Estimates in Southern Pine Plantations Using Small Area Estimation" },
+          { paperID: "485", title: "Stand effects, not spatial autocorrelation are often the main driver behind underestimating stand-level uncertainty." },
+          { paperID: "570", title: "Small-Area Estimation improves FIA estimates in areas of high nonresponse" }
+        ]
+      },
+      {
+        session_ID: "208",
+        session_title: "Sustainability Metrics for Forest-Based Industries",
+        DAY: "Thursday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "170", title: "Assessing Risk Uncertainty in Deforestation-Free Supply Chains through Multi-Tiered Remote Sensing Analysis" },
+          { paperID: "279", title: "Towards Resilient Carbon Farming: Accounting for Reversal Risks in European Forest Carbon Markets" },
+          { paperID: "486", title: "Accounting for Water Assets in the Pagsanjan-Lumban Watershed Using the SEEA-Water Framework" },
+          { paperID: "490", title: "High-resolution global forest typology and natural forest identification in support of sustainability initiatives" }
+        ]
+      },
+      {
+        session_ID: "120",
+        session_title: "Forest applications with Harmonized Landsat and Sentinel-2 analysis ready data products II",
+        DAY: "Thursday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "125", title: "Validation of the NASA Harmonized Landsat-Sentinel-2 (HLS) surface reflectance data product against MODIS NBAR" },
+          { paperID: "131", title: "Eucalyptus Woodlot Expansion on Croplands in Mecha Woreda, Northwestern Ethiopian Highlands: Insights from Very-High-Resolution and HLS Time-Series Analysis" },
+          { paperID: "325", title: "Leveraging NASA’s Harmonized Landsat and Sentinel-2 (HLS) Data and Google Earth Engine (GEE) for Forest Dynamics Monitoring using Continuous Change Detection and Classification (CCDC)" },
+          { paperID: "566", title: "Fire-driven vegetation loss across North American forest zones: attribution of near real-time DIST-ALERT data" }
+        ]
+      },
+      {
+        session_ID: "129",
+        session_title: "New frontiers in forest biomass mapping with low-frequency SAR satellites",
+        DAY: "Thursday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "300", title: "Forest disturbance analysis of BIOMASS time-series in the Brazilian Amazon: comparison with Sentinel-1 and Sentinel-2 missions" },
+          { paperID: "425", title: "First demonstration of spaceborne L-band bistatic InSAR from China's Lutan-1 for forest height and AGBD mapping" },
+          { paperID: "463", title: "ESA's BIOMASS mission: a new frontier in forest biomass mapping with P-band SAR" },
+          { paperID: "574", title: "A Study on High-Resolution Forest Aboveground Biomass Estimation at the National Scale" }
+        ]
+      },
+      {
+        session_ID: "209",
+        session_title: "Industrial Plantation Monitoring and Optimization I",
+        DAY: "Thursday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "398", title: "Modeling biomass in loblolly pine plantations using variables from UAV multispectral imagery and SfM point clouds" },
+          { paperID: "414", title: "Linking Tree Architecture with Genetics and Management: A Multi-scale Assessment Using Terrestrial Laser Scanning in Loblolly Pine" },
+          { paperID: "510", title: "Operational Use of Mobile Laser Scanning for Estimating Tree Volume in Temperate Hardwood Forests" },
+          { paperID: "535", title: "Scalable Correction and Characterization of Forestry Roads in Ontario Using Single Photon LiDAR and Deep Learning" }
+        ]
+      },
+      {
+        session_ID: "210",
+        session_title: "Programming and Data Analysis for Forestry",
+        DAY: "Thursday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "160", title: "AiDroneTree: A Software for Individual Tree Detection, Inventory, and Biomass Estimation Using UAV Point Cloud" },
+          { paperID: "481", title: "ForestVision: A Universal Framework for Forestry Vision Tasks Based on Strong Foundation Models" },
+          { paperID: "505", title: "PlotToSat: A Scalable and Efficient Tool for Generating Sentinel-1 and Sentinel-2 Time-Series Signatures from Distributed Field Plots and Multiple Polygons" },
+          { paperID: "539", title: "treeX: Unsupervised Tree Instance Segmentation in Dense Forest Point Clouds" }
+        ]
+      },
+      {
+        session_ID: "211",
+        session_title: "Policy and Decision-Making Support",
+        DAY: "Thursday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "171", title: "From Spatial Analysis to Decisions: Modelling and Mapping Mangrove Forest Restoration Potential in Coastal Africa" },
+          { paperID: "253", title: "From Land Cover to Land Use: A Remote Sensing–Based Map of Forest Area in Europe" },
+          { paperID: "264", title: "U.S. mature and old-growth forest mapping, ownership, and land use" },
+          { paperID: "302", title: "Mapping and Characterizing High Conservation Value Forests in the Polish Carpathians Using Multi-Source Remote Sensing" }
+        ]
+      },
+      {
+        session_ID: "100",
+        session_title: "From canopy to complexity: Advances in understanding forest structure using remote sensing",
+        DAY: "Thursday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "127", title: "Evaluation of Height Changes in Uneven-Aged Spruce–Fir–Beech Forest with Freely Available Nationwide Lidar and Aerial Photogrammetry Data" },
+          { paperID: "130", title: "LiDAR Reveals Structurally Similar Canopies at Forest Edges Adjacent to Urban and Agricultural Land Uses" },
+          { paperID: "560", title: "Towards a unified estimation of forest structural metrics from active remote sensing platforms" },
+          { paperID: "578", title: "The Global Terrestrial Laser Scanning Database: Understanding Regional Drivers of 3D Tree Architectural Traits" }
+        ]
+      },
+      {
+        session_ID: "150",
+        session_title: "Applications of NASA’s hyperspectral PACE mission: New insights for ecosystem science",
+        DAY: "Thursday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "177", title: "PACE Terrestrial Products – a New View of Forest Distributions, Phenology, and Function" },
+          { paperID: "178", title: "Land in living color: Terrestrial applications from PACE, NASA’s new global, hyperspectral satellite mission" },
+          { paperID: "180", title: "Terrestrial Remote Sensing with the Ocean Color Instrument" },
+          { paperID: "235", title: "A cloud-based toolkit for accessing hyperspectral data from NASA's PACE mission" }
+        ]
+      },
+      {
+        session_ID: "212",
+        session_title: "Industrial Plantation Monitoring and Optimization II",
+        DAY: "Thursday",
+        session_room: "Pine (Meeting Room 2355)",
+        papers: [
+          { paperID: "167", title: "Potential of GEDI waveform data for plantation forests and natural forests detection" },
+          { paperID: "252", title: "Predicting Pinus taeda L. stand volume using Random Forest and hyperspectral data in southern Brazil" },
+          { paperID: "386", title: "Using Satellite-Derived Phenology Metrics to Optimize Silvicultural TreatmentTiming" },
+          { paperID: "396", title: "Monitoring change in softwood plantations using high resolution satellite imagery" }
+        ]
+      },
+      {
+        session_ID: "213",
+        session_title: "RS36",
+        DAY: "Thursday",
+        session_room: "Oak (Meeting Room 2365)",
+        papers: [
+          { paperID: "312", title: "From Crowns to Stands: LiDAR Mapping of Tree Social Status and Stand Structure by a Standardized, Reproducible Approach" },
+          { paperID: "330", title: "Transparent parametric models as a pathway to reproducible forest volume estimation using NFI and ALS data" },
+          { paperID: "534", title: "Expect the unexpected when processing ALS data stored in large public archives" },
+          { paperID: "568", title: "Beyond maps: Using data from the Nationwide Forest Inventory of the United States to support geospatial modeling and mapping" }
+        ]
+      },
+      {
+        session_ID: "214",
+        session_title: "Stakeholder Engagement in Forest Management",
+        DAY: "Thursday",
+        session_room: "Cypress (Meeting Room 3315)",
+        papers: [
+          { paperID: "105", title: "Augmented Reality in Forestry: A Strategic Tool for Operational Efficiency, Safety, and Asset Optimization" },
+          { paperID: "119", title: "Bridging Research and Application: A Framework for Remote Sensing in Forestry" },
+          { paperID: "469", title: "Geospatial Valuation of the Intangible: Mapping Cultural Ecosystem Service Hotspots Based on Tourists Perceptions in the Mount Makiling Forest Reserve ASEAN Heritage Park" },
+          { paperID: "573", title: "Participatory Remote Sensing in support of global forest monitoring" }
+        ]
+      },
+      {
+        session_ID: "102",
+        session_title: "Assessing map quality, accuracy, and area estimation: implications and applications for biodiversity conservation, climate change mitigation, and financing",
+        DAY: "Thursday",
+        session_room: "Auditorium",
+        papers: [
+          { paperID: "197", title: "Area Estimation Using Class Probabilities: Advancing Model-Based Approaches for Forest Monitoring" },
+          { paperID: "244", title: "Map quality assessment to support the appropriate use of large-scale land cover maps" },
+          { paperID: "438", title: "Area estimation and applications for international financial mechanisms and forest conservation" },
+          { paperID: "446", title: "Assessing sampling efficiency: Implications for area estimation and map accuracy assessment" }
+        ]
+      },
+      {
+        session_ID: "156",
+        session_title: "Beyond the flames: Advancing wildfire science and management with spaceborne LiDAR",
+        DAY: "Thursday",
+        session_room: "Rion Ballroom",
+        papers: [
+          { paperID: "214", title: "Modeling Future Ecosystem Dynamics under Changing Fire Regimes in California" },
+          { paperID: "305", title: "Post-Fire Forest Structure and Carnivore Habitat: Improving GEDI-Fusion Products for Canada Lynx Conservation" },
+          { paperID: "447", title: "Supporting fire behavior modeling with canopy base height and canopy bulk density estimates using airborne and spaceborne lidar" },
+          { paperID: "582", title: "The fire triangle revisited: using continuous GEDI fuel structure to partition variance among drivers" }
+        ]
+      }
     ];
+
+    const SESSION_MAP = RAW_SESSION_PAPERS.map(session => ({
+      ...session,
+      DAY: String(session.DAY || '').trim(),
+      session_room: String(session.session_room || '').trim(),
+      session_title: String(session.session_title || '').trim(),
+      papers: (session.papers || [])
+        .filter(p => p && p.paperID && p.title)
+        .map(p => ({
+          paperID: String(p.paperID).trim(),
+          title: String(p.title).trim()
+        }))
+        .sort((a, b) => Number(a.paperID) - Number(b.paperID))
+    }));
 
     function uniqueValues(arr) {
       return [...new Set(arr)];
@@ -325,42 +1146,107 @@
       const dayEl = document.getElementById('sessionDay');
       const roomEl = document.getElementById('sessionRoom');
       const titleEl = document.getElementById('sessionTitle');
+      const abstractEl = document.getElementById('abstractId');
+      const paperTitleEl = document.getElementById('paperTitle');
 
       const days = uniqueValues(SESSION_MAP.map(x => x.DAY));
       fillSelect(dayEl, days, 'Select day…');
 
+      fillSelect(roomEl, [], 'Select room…');
+      fillSelect(titleEl, [], 'Select session…');
+      fillSelect(abstractEl, [], 'Select abstract ID…');
+
+      roomEl.disabled = true;
+      titleEl.disabled = true;
+      abstractEl.disabled = true;
+      paperTitleEl.value = '';
+
       dayEl.addEventListener('change', () => {
         const day = dayEl.value;
+
+        fillSelect(roomEl, [], 'Select room…');
+        fillSelect(titleEl, [], 'Select session…');
+        fillSelect(abstractEl, [], 'Select abstract ID…');
+
         roomEl.disabled = !day;
         titleEl.disabled = true;
-        fillSelect(titleEl, [], 'Select session…');
+        abstractEl.disabled = true;
+        paperTitleEl.value = '';
 
-        if (!day) {
-          fillSelect(roomEl, [], 'Select room…');
-          return;
-        }
+        if (!day) return;
 
         const rooms = uniqueValues(
-          SESSION_MAP.filter(x => x.DAY === day).map(x => x.session_room)
+          SESSION_MAP
+            .filter(x => x.DAY === day)
+            .map(x => x.session_room)
         );
+
         fillSelect(roomEl, rooms, 'Select room…');
       });
 
       roomEl.addEventListener('change', () => {
         const day = dayEl.value;
         const room = roomEl.value;
-        titleEl.disabled = !(day && room);
 
-        if (!(day && room)) {
-          fillSelect(titleEl, [], 'Select session…');
-          return;
-        }
+        fillSelect(titleEl, [], 'Select session…');
+        fillSelect(abstractEl, [], 'Select abstract ID…');
+
+        titleEl.disabled = !(day && room);
+        abstractEl.disabled = true;
+        paperTitleEl.value = '';
+
+        if (!(day && room)) return;
 
         const titles = SESSION_MAP
           .filter(x => x.DAY === day && x.session_room === room)
           .map(x => x.session_title);
 
         fillSelect(titleEl, titles, 'Select session…');
+      });
+
+      titleEl.addEventListener('change', () => {
+        const day = dayEl.value;
+        const room = roomEl.value;
+        const title = titleEl.value;
+
+        fillSelect(abstractEl, [], 'Select abstract ID…');
+        abstractEl.disabled = !(day && room && title);
+        paperTitleEl.value = '';
+
+        if (!(day && room && title)) return;
+
+        const session = SESSION_MAP.find(
+          x => x.DAY === day &&
+              x.session_room === room &&
+              x.session_title === title
+        );
+
+        if (!session) return;
+
+        const ids = session.papers.map(p => p.paperID);
+        fillSelect(abstractEl, ids, 'Select abstract ID…');
+      });
+
+      abstractEl.addEventListener('change', () => {
+        const day = dayEl.value;
+        const room = roomEl.value;
+        const title = titleEl.value;
+        const abstractId = abstractEl.value;
+
+        paperTitleEl.value = '';
+
+        if (!(day && room && title && abstractId)) return;
+
+        const session = SESSION_MAP.find(
+          x => x.DAY === day &&
+              x.session_room === room &&
+              x.session_title === title
+        );
+
+        if (!session) return;
+
+        const paper = session.papers.find(p => p.paperID === abstractId);
+        paperTitleEl.value = paper ? paper.title : '';
       });
     }
 
@@ -409,16 +1295,24 @@
     }
 
     function resetForm() {
-      ['abstractId','userId','firstName','lastName','email','phone','institution','notes'].forEach(id => {
+      ['firstName','lastName','email','phone','institution','notes'].forEach(id => {
         document.getElementById(id).value = '';
       });
 
       document.getElementById('presType').value = '';
+
       document.getElementById('sessionDay').value = '';
+
       document.getElementById('sessionRoom').innerHTML = '<option value="">Select room…</option>';
       document.getElementById('sessionRoom').disabled = true;
+
       document.getElementById('sessionTitle').innerHTML = '<option value="">Select session…</option>';
       document.getElementById('sessionTitle').disabled = true;
+
+      document.getElementById('abstractId').innerHTML = '<option value="">Select abstract ID…</option>';
+      document.getElementById('abstractId').disabled = true;
+
+      document.getElementById('paperTitle').value = '';
 
       clearFile('v');
       clearFile('p');
@@ -540,8 +1434,8 @@
     async function saveInfo(meta, fileNames) {
       const payload = {
         abstractId: meta.abstractId,
+        paperTitle: document.getElementById('paperTitle').value.trim(),
         fileNames,
-        userId: document.getElementById('userId').value.trim(),
         day: meta.day,
         sessionRoom: meta.sessionRoom,
         sessionTitle: meta.sessionTitle,
@@ -568,8 +1462,7 @@
     }
 
     async function handleSubmit() {
-      const abstractId = document.getElementById('abstractId').value.trim();
-      const userId = document.getElementById('userId').value.trim();
+      const abstractId = document.getElementById('abstractId').value;
       const day = document.getElementById('sessionDay').value;
       const sessionRoom = document.getElementById('sessionRoom').value;
       const sessionTitle = document.getElementById('sessionTitle').value;
@@ -577,8 +1470,7 @@
       const lastName = document.getElementById('lastName').value.trim();
       const email = document.getElementById('email').value.trim();
 
-      if (!abstractId || !/^[0-9]{3}$/.test(abstractId)) return showToast('err', '⚠️', 'Please enter a valid 3-digit Abstract ID.');
-      if (!userId) return showToast('err', '⚠️', 'User ID is required.');
+      if (!abstractId) return showToast('err', '⚠️', 'Please select an Abstract ID.');
       if (!day) return showToast('err', '⚠️', 'Please select a day.');
       if (!sessionRoom) return showToast('err', '⚠️', 'Please select a room.');
       if (!sessionTitle) return showToast('err', '⚠️', 'Please select a session.');
