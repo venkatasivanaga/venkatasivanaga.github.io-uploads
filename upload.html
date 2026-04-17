@@ -1,312 +1,907 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+ 
+<!-- Mirrored from conference.ifas.ufl.edu/forestsat/about-gainesville.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Jun 2025 16:06:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Presentation Upload | ForestSAT 2026</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <style>
-    body { font-family: Arial, Helvetica, sans-serif; color: #333; background: #f3f3f3; margin: 0; padding: 0; }
-    .forestsat-navbar { background: linear-gradient(90deg, #314d1f 0%, #2a461c 100%); min-height: 80px; padding: 0; position: sticky; top: 0; z-index: 1050; }
-    .forestsat-navbar .container { max-width: 1280px; display: flex; align-items: center; }
-    .forestsat-navbar .navbar-brand { margin-right: 18px; padding: 8px 0; display: flex; align-items: center; flex-shrink: 0; }
-    .forestsat-navbar .navbar-brand img { height: 46px; width: auto; display: block; }
-    .forestsat-navbar .navbar-collapse { align-items: center; }
-    .forestsat-navbar .navbar-nav { align-items: center; }
-    .forestsat-navbar .nav-item { margin: 0 3px; }
-    .forestsat-navbar .nav-link { color: #ffffff !important; font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-weight: 700; font-size: 13px; line-height: 1; padding: 14px 24px !important; background: rgba(120,145,61,0.26); border-radius: 6px; display: flex; align-items: center; min-height: 44px; white-space: nowrap; letter-spacing: 0.15px; transition: background 0.2s ease; text-decoration: none; }
-    .forestsat-navbar .nav-link:hover, .forestsat-navbar .nav-link:focus, .forestsat-navbar .nav-item.show .nav-link { color: #ffffff !important; background: rgba(120,145,61,0.38); }
-    .forestsat-navbar .dropdown-toggle::after { margin-left: 8px; vertical-align: middle; border-top: 0.28em solid; border-right: 0.28em solid transparent; border-left: 0.28em solid transparent; }
-    .forestsat-navbar .dropdown-menu { background-color: #2d491e; border: none; border-radius: 0 0 6px 6px; padding: 8px 0; margin-top: 8px; min-width: 235px; box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
-    .forestsat-navbar .dropdown-item { color: #ffffff; font-size: 14px; font-weight: 600; padding: 10px 16px; background: transparent; text-decoration: none; }
-    .forestsat-navbar .dropdown-item:hover, .forestsat-navbar .dropdown-item:focus { background: rgba(120,145,61,0.22); color: #ffffff; }
-    .forestsat-navbar .dropdown-divider { border-top: 1px solid rgba(255,255,255,0.18); margin: 6px 0; }
-    .forestsat-navbar .navbar-toggler { border: 1px solid rgba(255,255,255,0.28); border-radius: 4px; padding: 6px 10px; }
-    .forestsat-navbar .navbar-toggler:focus { box-shadow: none; }
-    .forestsat-navbar .navbar-toggler-icon { filter: brightness(0) invert(1); }
-    .main-content { padding: 38px 0 70px; }
-    .main-content .container { max-width: 1180px; }
-    .page-title { font-size: 3.2rem; font-weight: 700; color: #78943b; margin-bottom: 28px; line-height: 1.05; }
-    .section-title { font-size: 2rem; font-weight: 700; color: #78943b; margin: 26px 0 18px; line-height: 1.15; }
-    .content-box { background: transparent; border: none; padding: 0; margin-bottom: 22px; }
-    .info-box { background: #f7f7f7; border: 1px solid #d8d8d8; padding: 18px; margin-bottom: 30px; font-size: 15px; line-height: 1.9; color: #333; }
-    .form-label { font-size: 15px; font-weight: 700; color: #222; margin-bottom: 8px; display: inline-block; }
-    .form-control, .form-select { border: 1px solid #c8c8c8; border-radius: 0; padding: 10px 12px; font-size: 15px; background: #fff; color: #333; box-shadow: none; min-height: 40px; }
-    .form-control:focus, .form-select:focus { border-color: #78943b; box-shadow: none; outline: none; }
-    .btn-submit { background: #d46d22; color: #fff; border: none; border-radius: 4px; font-size: 18px; font-weight: 700; padding: 12px 24px; width: auto; min-width: 220px; box-shadow: none; }
-    .btn-submit:hover, .btn-submit:focus { background: #bc5f1b; color: #fff; box-shadow: none; }
-    .btn-submit:disabled { opacity: 0.55; cursor: not-allowed; }
-    .btn-submit .spinner-border { width: 16px; height: 16px; border-width: 2px; }
-    .sidebar-panel { background: #ececec; padding: 28px 18px 22px; border-radius: 0; max-width: 295px; margin-left: auto; margin-right: 0; margin-top: 12px; position: sticky; top: 130px; }
-    .sidebar-heading { font-size: 1.15rem; font-weight: 700; color: #78943b; margin-bottom: 20px; text-align: center; line-height: 1.5; }
-    .sidebar-panel hr { border: 0; border-top: 1px solid #c9c9c9; margin: 18px 0; opacity: 1; }
-    .count-box { background: #fff; padding: 10px 0; font-size: 2rem; line-height: 1.2; color: #222; text-align: center; margin-bottom: 4px; font-weight: 400; }
-    .count-label { color: #78943b; font-size: 1.15rem; text-align: center; margin-bottom: 18px; line-height: 1.2; }
-    .drop-zone { border: 2px dashed #c8c8c8; border-radius: 8px; padding: 32px 20px; text-align: center; cursor: pointer; position: relative; transition: all 0.2s; background: #fafcfb; }
-    .drop-zone:hover, .drop-zone.over { border-color: #78943b; background: #eef5e7; }
-    .drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-    .drop-icon { width: 52px; height: 52px; background: #eef5e7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 22px; color: #78943b; }
-    .drop-zone h5 { font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 700; color: #333; margin-bottom: 6px; }
-    .drop-zone p { font-size: 13px; color: #666; margin: 0; }
-    .drop-zone .browse-link { color: #78943b; font-weight: 700; }
-    .file-chip { display: none; align-items: center; gap: 12px; background: #eef5e7; border: 1px solid #c8d7bc; border-radius: 7px; padding: 10px 14px; margin-top: 10px; }
-    .file-chip.show { display: flex; }
-    .chip-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; background: rgba(120,145,61,0.14); color: #314d1f; }
-    .chip-meta { flex: 1; min-width: 0; }
-    .chip-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .chip-size { font-size: 11px; color: #666; }
-    .chip-rm { background: none; border: none; color: #666; cursor: pointer; font-size: 16px; transition: color 0.15s; padding: 2px 6px; }
-    .chip-rm:hover { color: #c0392b; }
-    .prog-wrap { display: none; margin-top: 10px; }
-    .prog-wrap.show { display: block; }
-    .prog-meta { display: flex; justify-content: space-between; font-size: 11.5px; color: #666; margin-bottom: 5px; }
-    .progress { height: 5px; border-radius: 99px; background: #d8e0d2; }
-    .progress-bar { background: linear-gradient(90deg, #5f7d2d, #78943b); border-radius: 99px; transition: width 0.3s ease; }
-    .toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
-    .my-toast { background: #fff; border: 1px solid #d8d8d8; border-radius: 10px; padding: 14px 20px; display: flex; align-items: center; gap: 12px; font-size: 13.5px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); max-width: 360px; opacity: 0; transform: translateY(12px); transition: all 0.3s ease; pointer-events: none; }
-    .my-toast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .my-toast.ok  { border-left: 4px solid #78943b; }
-    .my-toast.err { border-left: 4px solid #c0392b; }
-    @media (max-width: 1199px) { .forestsat-navbar .nav-link { padding: 13px 18px !important; font-size: 12px; } .page-title { font-size: 2.9rem; } .section-title { font-size: 1.85rem; } }
-    @media (max-width: 991px) { .forestsat-navbar { min-height: auto; padding: 10px 0; } .forestsat-navbar .nav-item { margin: 4px 0; } .forestsat-navbar .nav-link { padding: 12px 16px !important; justify-content: space-between; } .main-content { padding: 40px 0 55px; } .page-title { font-size: 2.6rem; } .section-title { font-size: 1.75rem; } .sidebar-panel { margin-top: 30px; } }
-    @media (max-width: 767px) { .page-title { font-size: 2.25rem; } .section-title { font-size: 1.55rem; } .btn-submit { width: 100%; min-width: 0; } .sidebar-panel { padding: 24px 18px; } }
-  </style>
-</head>
-<body>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <nav class="navbar navbar-expand-xxl py-0 forestsat-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="./images/navbar-logo.svg" alt="ForestSAT2026 Navbar Logo">
-      </a>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">About</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="executive-organizing-committee.html">Executive Organizing Committee</a></li>
-              <li><a class="dropdown-item" href="scientific-committee.html">Scientific Committee</a></li>
-              <li><a class="dropdown-item" href="benefits-attending.html">Benefits of Attending</a></li>
-              <li><a class="dropdown-item" href="who-should-attend.html">Who Will Attend</a></li>
-              <li><a class="dropdown-item" href="Keynote_Speakers.html">Keynote Speakers</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Program</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="registration.html">Conference Registration</a></li>
-              <li><a class="dropdown-item" href="call-abstract.html">Abstract Submission</a></li>
-              <li><a class="dropdown-item" href="pre-conference-virtual-workshops.html">Pre-Conference Virtual Workshops</a></li>
-              <li><a class="dropdown-item" href="pre-conference-on-site-workshops.html">Pre-Conference On Site Workshops</a></li>
-              <li><a class="dropdown-item" href="special_sessions.html">Special Sessions</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="key-dates-deadlines.html">Key Dates &amp; Deadlines</a></li>
-              <li><a class="dropdown-item" href="agenda-glance.html">Agenda-at-a-Glance (Single Row)</a></li>
-              <li><a class="dropdown-item" href="agenda-glance-horiz.html">Agenda-at-a-Glance (Column View)</a></li>
-              <li><a class="dropdown-item" href="program-presentation-topics.html">Program &amp; Presentation Topics</a></li>
-              <li><a class="dropdown-item" href="field_trip.html">Field Trip</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Location</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="meeting-site.html">Meeting Site</a></li>
-              <li><a class="dropdown-item" href="hotels.html">Hotels</a></li>
-              <li><a class="dropdown-item" href="entry-into-united-states.html">Entry into the United States</a></li>
-              <li><a class="dropdown-item" href="getting-to-gainesville.html">Getting to Gainesville</a></li>
-              <li><a class="dropdown-item" href="about-gainesville.html">About Gainesville</a></li>
-              <li><a class="dropdown-item" href="things-to-do.html">Things to Do</a></li>
-              <li><a class="dropdown-item" href="visiting-florida.html">Visiting Florida</a></li>
-              <li><a class="dropdown-item" href="electricity-usa.html">Electricity in the USA</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Sponsors</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="sponsor_list.html">Our Sponsors</a></li>
-              <li><a class="dropdown-item" href="sponsorship-opportunities.html">Sponsorship Opportunities</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Communications</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="publicity-toolbox.html">Publicity Toolbox</a></li>
-              <li><a class="dropdown-item" href="contact-us.html">Contact Us</a></li>
-              <li><a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSdmaNZpBqdv6oJ_7N2k8KLdktL4Pl4gEZ-NaSXaencfwRaOxA/viewform">Invitation Letter</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://list-manage.us17.list-manage.com/subscribe?u=4d7574f87e47102feee257de7&amp;id=27167e4372" target="_blank">
-              <i class="bi bi-envelope me-2"></i>Subscribe
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<!-- Core Bootstrap CDN -->
+<!-- <link href="../../cdn.jsdelivr.net/npm/bootstrap%405.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  -->
+<!-- Bootstrap Icons -->  
+<!-- <link rel="stylesheet" href="../../cdn.jsdelivr.net/npm/bootstrap-icons%401.11.3/font/bootstrap-icons.min.css">  -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <div class="main-content">
-    <div class="container">
+  <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+<!-- Custom Bootstrap Overrides -->
+<link href="css/custom.css" rel="stylesheet">
+<!-- Owl Carousel -->
+<link href="css/owlcarousel/owl.carousel.css" rel="stylesheet">
+<link href="css/owlcarousel/owl.theme.default.css" rel="stylesheet">
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/ca76a7feb5.js" crossorigin="anonymous"></script>
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+<link rel="manifest" href="images/favicon/site.html">
+
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; color: #333; background: #f3f3f3; margin: 0; padding: 0; }
+
+  .main-content { padding: 38px 0 70px; }
+  .main-content .container { max-width: 1180px; }
+  .page-title { font-size: 3.2rem; font-weight: 700; color: #78943b; margin-bottom: 28px; line-height: 1.05; }
+  .section-title { font-size: 2rem; font-weight: 700; color: #78943b; margin: 26px 0 18px; line-height: 1.15; }
+  .content-box { background: transparent; border: none; padding: 0; margin-bottom: 22px; }
+  .info-box { background: #f7f7f7; border: 1px solid #d8d8d8; padding: 18px; margin-bottom: 30px; font-size: 15px; line-height: 1.9; color: #333; }
+  .form-label { font-size: 15px; font-weight: 700; color: #222; margin-bottom: 8px; display: inline-block; }
+  .form-control, .form-select { border: 1px solid #c8c8c8; border-radius: 0; padding: 10px 12px; font-size: 15px; background: #fff; color: #333; box-shadow: none; min-height: 40px; }
+  .form-control:focus, .form-select:focus { border-color: #78943b; box-shadow: none; outline: none; }
+  .btn-submit { background: #d46d22; color: #fff; border: none; border-radius: 4px; font-size: 18px; font-weight: 700; padding: 12px 24px; width: auto; min-width: 220px; box-shadow: none; }
+  .btn-submit:hover, .btn-submit:focus { background: #bc5f1b; color: #fff; box-shadow: none; }
+  .btn-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+  .btn-submit .spinner-border { width: 16px; height: 16px; border-width: 2px; }
+  .sidebar-panel { background: #ececec; padding: 28px 18px 22px; border-radius: 0; max-width: 295px; margin-left: auto; margin-right: 0; margin-top: 12px; position: sticky; top: 130px; }
+  .sidebar-heading { font-size: 1.15rem; font-weight: 700; color: #78943b; margin-bottom: 20px; text-align: center; line-height: 1.5; }
+  .sidebar-panel hr { border: 0; border-top: 1px solid #c9c9c9; margin: 18px 0; opacity: 1; }
+  .count-box { background: #fff; padding: 10px 0; font-size: 2rem; line-height: 1.2; color: #222; text-align: center; margin-bottom: 4px; font-weight: 400; }
+  .count-label { color: #78943b; font-size: 1.15rem; text-align: center; margin-bottom: 18px; line-height: 1.2; }
+  .drop-zone { border: 2px dashed #c8c8c8; border-radius: 8px; padding: 32px 20px; text-align: center; cursor: pointer; position: relative; transition: all 0.2s; background: #fafcfb; }
+  .drop-zone:hover, .drop-zone.over { border-color: #78943b; background: #eef5e7; }
+  .drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .drop-icon { width: 52px; height: 52px; background: #eef5e7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 22px; color: #78943b; }
+  .drop-zone h5 { font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 700; color: #333; margin-bottom: 6px; }
+  .drop-zone p { font-size: 13px; color: #666; margin: 0; }
+  .drop-zone .browse-link { color: #78943b; font-weight: 700; }
+  .file-chip { display: none; align-items: center; gap: 12px; background: #eef5e7; border: 1px solid #c8d7bc; border-radius: 7px; padding: 10px 14px; margin-top: 10px; }
+  .file-chip.show { display: flex; }
+  .chip-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; background: rgba(120,145,61,0.14); color: #314d1f; }
+  .chip-meta { flex: 1; min-width: 0; }
+  .chip-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .chip-size { font-size: 11px; color: #666; }
+  .chip-rm { background: none; border: none; color: #666; cursor: pointer; font-size: 16px; transition: color 0.15s; padding: 2px 6px; }
+  .chip-rm:hover { color: #c0392b; }
+  .prog-wrap { display: none; margin-top: 10px; }
+  .prog-wrap.show { display: block; }
+  .prog-meta { display: flex; justify-content: space-between; font-size: 11.5px; color: #666; margin-bottom: 5px; }
+  .progress { height: 5px; border-radius: 99px; background: #d8e0d2; }
+  .progress-bar { background: linear-gradient(90deg, #5f7d2d, #78943b); border-radius: 99px; transition: width 0.3s ease; }
+  .toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
+  .my-toast { background: #fff; border: 1px solid #d8d8d8; border-radius: 10px; padding: 14px 20px; display: flex; align-items: center; gap: 12px; font-size: 13.5px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); max-width: 360px; opacity: 0; transform: translateY(12px); transition: all 0.3s ease; pointer-events: none; }
+  .my-toast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .my-toast.ok  { border-left: 4px solid #78943b; }
+  .my-toast.err { border-left: 4px solid #c0392b; }
+  @media (max-width: 1199px) { .forestsat-navbar .nav-link { padding: 13px 18px !important; font-size: 12px; } .page-title { font-size: 2.9rem; } .section-title { font-size: 1.85rem; } }
+  @media (max-width: 991px) { .forestsat-navbar { min-height: auto; padding: 10px 0; } .forestsat-navbar .nav-item { margin: 4px 0; } .forestsat-navbar .nav-link { padding: 12px 16px !important; justify-content: space-between; } .main-content { padding: 40px 0 55px; } .page-title { font-size: 2.6rem; } .section-title { font-size: 1.75rem; } .sidebar-panel { margin-top: 30px; } }
+  @media (max-width: 767px) { .page-title { font-size: 2.25rem; } .section-title { font-size: 1.55rem; } .btn-submit { width: 100%; min-width: 0; } .sidebar-panel { padding: 24px 18px; } }
+</style>
+
+  <title>Abstract submission | ForestSat 2026</title>
+  </head>
+  <body>
+  <header class="d-print-none fixed-top">
+      <nav class="navbar navbar-expand-xxl bg-primary py-0">
+        <div class="container">
+          <a class="navbar-brand pt-1 pb-3" href="index.html">
+            <img src="images/navbar-logo.svg" alt="ForestSAT2026 Navbar Logo" width="190px">
+          </a>
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item mx-1">
+                <a class="nav-link text-white fw-semibold text-center" href="index.html">
+                  Home
+                </a>
+              </li>
+        <li class="nav-item dropdown mx-1">
+                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="executive-organizing-committee.html">Executive Organizing Committee</a></li>
+          <li><a class="dropdown-item" href="scientific-committee.html">Scientific Committee</a></li>
+                  <li><a class="dropdown-item" href="benefits-attending.html">Benefits of Attending</a></li>
+                  <li><a class="dropdown-item" href="who-should-attend.html">Who Will Attend</a></li>
+                  <li><a class="dropdown-item" href="Keynote_Speakers.html">Keynote Speakers</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown mx-1">
+                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Program
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="registration.html">Conference Registration</a></li>
+                  <li><a class="dropdown-item" href="presentation-details-upload.html">Presentation details and Upload</a></li>
+              <!--  -->
+                                    <li><a class="dropdown-item" href="pre-conference-on-site-workshops.html">Pre-Conference On Site Workshops</a></li>
+                  <li><a class="dropdown-item" href="special_sessions.html">Special Sessions</a></li>
+                      <div role="separator" class="dropdown-divider" style="border-top: solid thin #ccc; margin: 8px 0px;"></div>
+                  <li><a class="dropdown-item" href="key-dates-deadlines.html">Key Dates &amp; Deadlines</a></li>
+                                    <li><a class="dropdown-item" href="agenda-glance.html">Agenda-at-a-Glance </a></li>
+                  <li><a class="dropdown-item" href="Ice-breaker-reception.html">Ice Breaker Reception</a></li>
+                  <!--<li><a class="dropdown-item" href="agenda-glance-horiz.html">Agenda-at-a-Glance (Column View)</a></li>-->
+                  <li><a class="dropdown-item" href="program-presentation-topics.html">Program &amp; Presentation Topics</a></li>
+                  <li><a class="dropdown-item" href="field_trip.html">Field Trip</a></li>
+
+                </ul>
+              </li>
+              <li class="nav-item dropdown mx-1">
+                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Location
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="meeting-site.html">Meeting Site</a></li>
+                  <li><a class="dropdown-item" href="hotels.html">Hotels</a></li>
+                  <li><a class="dropdown-item" href="entry-into-united-states.html">Entry into the United States</a></li>
+                  <li><a class="dropdown-item" href="getting-to-gainesville.html">Getting to Gainesville</a></li>
+                  <li><a class="dropdown-item" href="about-gainesville.html">About Gainesville</a></li>
+                  <li><a class="dropdown-item" href="things-to-do.html">Things to Do</a></li>
+                  <li><a class="dropdown-item" href="visiting-florida.html">Visiting Florida</a></li>
+                  <li><a class="dropdown-item" href="electricity-usa.html">Electricity in the USA</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown mx-1">
+                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sponsors
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="sponsor_list.html">Our sponsors</a></li>
+                  <li><a class="dropdown-item" href="sponsorship-opportunities.html">Sponsorship Opportunities</a></li>
+          <!-- <li><a class="dropdown-item" href="sponsor-display-information.html">Sponsor Display Information</a></li> -->
+                </ul>
+              </li>
+<!--
+              <li class="nav-item dropdown mx-1">
+                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Registration
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="registration-information.php">Registration Information</a></li>
+                </ul>
+              </li>
+-->
+              <li class="nav-item dropdown mx-1">
+                <a class="nav-link dropdown-toggle text-white fw-semibold text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Communications
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="publicity-toolbox.html">Publicity Toolbox</a></li>
+          <li><a class="dropdown-item" href="contact-us.html">Contact Us</a></li>
+          <li><a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSdmaNZpBqdv6oJ_7N2k8KLdktL4Pl4gEZ-NaSXaencfwRaOxA/viewform">Invitation letter</a></li>
+        <!--   <li><a class="dropdown-item" href="https://conference.ifas.ufl.edu/ice.php">In Case of Emergency</a></li>-->
+                </ul>
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-4 mb-xxl-0">
+              <a class="nav-link text-white fw-semibold text-center" href="https://list-manage.us17.list-manage.com/subscribe?u=4d7574f87e47102feee257de7&id=27167e4372
+                " target="_blank">
+                  <!-- <a class="nav-link text-white fw-semibold text-center" href="https://lp.constantcontactpages.com/sl/AJfGuMn" target="_blank"> -->
+                 <i class="far fa-envelope"></i>&nbsp; Subscribe
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  </header> <div class="container">
       <div class="row">
-        <div class="col-lg-8">
-          <h1 class="page-title">Presentation Upload</h1>
+        <div class="col-lg-9">
+      <article>
+ 
+        <article>
+          <!-- <h1 class="heading fw-bolder pb-3">Abstract Submission </h1>
 
-          <div class="info-box">
-            Please use your <strong>Abstract ID</strong> (3-digit number assigned during abstract submission)
-            and your <strong>User ID</strong> to upload your files.<br><br>
-            You may upload a video, a presentation (PPT/PDF), or both. If you re-upload using the same
-            filename, your existing file will be replaced.
-          </div>
+          <p>
+            We are pleased to invite abstract submissions for <strong>ForestSAT 2026</strong>, a
+            <strong>hybrid conference</strong> to be held at the <strong>University of Florida, Gainesville, from May 4–8, 2026</strong>.
+            Participants may choose to attend <strong>in person</strong> or <strong>virtually</strong>.
+          </p> -->
+ 
+          <!-- <h2 class="mt-4">Submission Period</h2>
+          <ul>
+            <li><strong>Opens:</strong> September 8, 2025</li>
+            <li><strong>Closes:</strong> November 21, 2025</li>
 
-          <div class="content-box">
-            <h2 class="section-title">Submission Identity</h2>
-            <div class="row g-3">
-              <div class="col-sm-4">
-                <label class="form-label">Abstract ID *</label>
-                <input type="text" class="form-control" id="abstractId" placeholder="042" maxlength="3"
-                  oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,3)"/>
-              </div>
-              <div class="col-sm-8">
-                <label class="form-label">User ID *</label>
-                <input type="text" class="form-control" id="userId" placeholder="e.g. USR-001 or your ConfTool ID"/>
-              </div>
-            </div>
-          </div>
+            <li><strong>Submission Portal:</strong>
+              <a href="https://www.conftool.pro/forestsat2026/" target="_blank">ConfTool – ForestSAT 2026</a>
+            </li> -->
+           
+          </ul>
+ 
+          <!-- <div class="my-3">
+            <a href="https://www.conftool.pro/forestsat2026/" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+              Abstract Submission is closed!
+            </a>
+          </div> -->
+         
 
-          <div class="content-box">
-            <h2 class="section-title">Personal Information</h2>
-            <div class="row g-3">
-              <div class="col-sm-6">
-                <label class="form-label">First Name *</label>
-                <input type="text" class="form-control" id="firstName"/>
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label">Last Name *</label>
-                <input type="text" class="form-control" id="lastName"/>
-              </div>
-              <div class="col-sm-8">
-                <label class="form-label">Email Address *</label>
-                <input type="email" class="form-control" id="email"/>
-              </div>
-              <div class="col-sm-4">
-                <label class="form-label">Phone</label>
-                <input type="tel" class="form-control" id="phone"/>
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label">Institution</label>
-                <input type="text" class="form-control" id="institution"/>
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label">Presentation Type</label>
-                <select class="form-select" id="presType">
-                  <option value="">Select…</option>
-                  <option>In-Person Oral</option>
-                  <option>In-Person Poster</option>
-                  <option>Virtual Oral</option>
-                  <option>Virtual Poster</option>
-                </select>
-              </div>
-              <div class="col-12">
-                <label class="form-label">Notes</label>
-                <textarea class="form-control" id="notes" style="min-height:80px;resize:vertical;" placeholder="Any notes or special requirements…"></textarea>
-              </div>
-            </div>
-          </div>
+          <h2 class="mt-4">Presentation Formats</h2>
+<p>
+  ForestSAT 2026 offers four presentation formats, reflecting its <strong>hybrid format</strong>:
+</p>
 
-          <div class="content-box">
-            <h2 class="section-title">Upload Files</h2>
-            <p style="font-size:14px;color:#666;margin-bottom:24px;">
-              Upload your <strong>video</strong>, <strong>presentation (PPT/PDF)</strong>, or both. At least one file is required.
-            </p>
+<hr>
 
-            <label class="form-label"><i class="bi bi-camera-video me-1" style="color:#78943b;"></i> Video File</label>
-            <div class="drop-zone" id="vZone">
-              <input type="file" id="vFile" accept="video/*"/>
-              <div class="drop-icon"><i class="bi bi-camera-video-fill"></i></div>
-              <h5>Drop your video here</h5>
-              <p>or <span class="browse-link">click to browse</span> · MP4, MOV, AVI, MKV</p>
-            </div>
-            <div class="file-chip" id="vChip">
-              <div class="chip-icon"><i class="bi bi-camera-video-fill"></i></div>
-              <div class="chip-meta">
-                <div class="chip-name" id="vName"></div>
-                <div class="chip-size" id="vSize"></div>
-              </div>
-              <button class="chip-rm" onclick="clearFile('v')" title="Remove"><i class="bi bi-x-lg"></i></button>
-            </div>
-            <div class="prog-wrap" id="vProg">
-              <div class="prog-meta"><span>Uploading video…</span><span id="vPct">0%</span></div>
-              <div class="progress"><div class="progress-bar" id="vFill" style="width:0%"></div></div>
-            </div>
+<h5 class="mt-3">🏛️ In-Person Presentations</h5>
+<ul>
+  <li>
+    <strong>Oral Presentation (in person):</strong>
+    12-minute talk followed by a 3-minute Q&amp;A session, delivered live at the University of Florida.
+    Authors are required to submit their presentation slides (PPTX) using the
+    <strong>
+      <a href="documents/ForestSAT_talk_template.pptx" target="_blank">
+        conference template (PPTX)
+      </a>
+    </strong>.
+    Presentations must be submitted via the portal by
+    <strong class="text-danger">April 27, 2026</strong>.
+    This will allow our team to ensure smooth delivery of content to all in-person and virtual participants.
+  </li>
 
-            <hr style="margin:28px 0;border-color:#d8d8d8;"/>
+  <br>
+  <li>
+    <strong>Poster Presentation (in person):</strong>
+    Posters will be displayed in the Grand Ballroom for the duration of the conference.
+    Authors are requested to be present at their poster during the Poster Reception on
+    <strong>Tuesday, May 5, 2026, from 5:00 PM to 7:00 PM</strong>.
+  </li>
+</ul>
 
-            <label class="form-label"><i class="bi bi-file-earmark-slides me-1" style="color:#78943b;"></i> Presentation File</label>
-            <div class="drop-zone" id="pZone">
-              <input type="file" id="pFile" accept=".ppt,.pptx,.pdf"/>
-              <div class="drop-icon"><i class="bi bi-file-earmark-slides-fill"></i></div>
-              <h5>Drop your presentation here</h5>
-              <p>or <span class="browse-link">click to browse</span> · PPT, PPTX, PDF</p>
-            </div>
-            <div class="file-chip" id="pChip">
-              <div class="chip-icon"><i class="bi bi-file-earmark-slides-fill"></i></div>
-              <div class="chip-meta">
-                <div class="chip-name" id="pName"></div>
-                <div class="chip-size" id="pSize"></div>
-              </div>
-              <button class="chip-rm" onclick="clearFile('p')" title="Remove"><i class="bi bi-x-lg"></i></button>
-            </div>
-            <div class="prog-wrap" id="pProg">
-              <div class="prog-meta"><span>Uploading presentation…</span><span id="pPct">0%</span></div>
-              <div class="progress"><div class="progress-bar" id="pFill" style="width:0%"></div></div>
-            </div>
+<p class="mt-3"><strong>Poster Display Specifications</strong></p>
+<ul>
+  <li>One side of a poster board will be provided, along with pushpins.</li>
+  <li><strong>Display area:</strong> 60 in (152 cm) height × 72 in (182 cm) width.</li>
+  <li><strong>Total board height (including pedestal):</strong> 74 in (187 cm).</li>
+  <li>
+    <strong>Setup:</strong>
+    Monday, May 4, 2026, from 12:00 PM to 5:00 PM
+    or Tuesday, May 5, 2026, from 7:30 AM to 8:30 AM
+  </li>
+  <li>
+    <strong>Removal:</strong>
+    Thursday, May 7, 2026, from 3:30 PM to 5:00 PM
+  </li>
+</ul>
 
-            <div class="mt-4 pt-2">
-              <button class="btn btn-submit" id="submitBtn" onclick="handleSubmit()">
-                <span class="btn-text"><i class="bi bi-cloud-upload me-2"></i>Submit Presentation</span>
-                <span class="spinner-border spinner-border-sm d-none" id="spinner"></span>
-              </button>
+<p>
+  Several local businesses can print posters for reasonable rates
+  (<strong>less than $40 USD</strong>). Please contact them directly:
+</p>
+<ul>
+  <li>
+    <a href="https://target-copy.com/" target="_blank">
+      <strong>Target Copy</strong>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.officedepot.com/storelocator/fl/gainesville/office-depot-186" target="_blank">
+      <strong>Office Depot</strong>
+    </a>
+  </li>
+</ul>
+
+<hr>
+
+<h5 class="mt-3">🌐 Virtual Presentations</h5>
+<ul>
+  <li>
+    <strong>Oral Presentation (virtual):</strong>
+    12-minute talk followed by a 3-minute Q&amp;A session, delivered via Zoom.
+    Authors presenting virtually will do so in real time during their assigned session and timeslot.
+    Please note that the conference time zone is <strong>U.S. Eastern Time</strong>.
+    Authors are required to submit their presentation slides (PPTX) using the <strong>
+      <a href="documents/ForestSAT_talk_template.pptx" target="_blank">
+        conference template (PPTX)
+      </a>
+    </strong> and a
+    <strong>12-minute recorded presentation</strong> to be used as a backup in case of connectivity issues, using the portal below.
+    Presentations must be submitted via the portal by
+    <strong class="text-danger">April 27, 2026</strong>.
+    This will allow our team to ensure smooth delivery of content to all in-person and virtual participants.
+  </li>
+
+  <br>
+  <li>
+    <strong>Poster Presentation (virtual):</strong>
+    Virtual poster presentations consist of a <strong>5-minute presentation</strong> followed by a
+    <strong>2-minute Q&amp;A session</strong>, delivered via Zoom.
+    Authors presenting virtually will do so in real time during the virtual poster session timeslot
+    (<a href="#agenda"><strong>see Agenda for details</strong></a>).
+    Please note that the conference time zone is <strong>U.S. Eastern Time</strong>.
+    Authors are required to submit their presentation slides (PPTX) and a
+    <strong>5-minute recorded presentation</strong> to be used as a backup in case of connectivity issues.
+    Please use the portal below.
+  </li>
+</ul>
+
+<p class="mt-3"><strong>Video Format Guidelines</strong></p>
+<p>
+To ensure compatibility and smooth playback across all sessions, please follow the guidelines below:
+</p>
+
+
+<ul>
+  <li><strong>File format:</strong> MP4 (recommended)</li>
+  <li>
+    <strong>Maximum duration:</strong>
+    <ul>
+      <li>Oral presentations: 12 minutes</li>
+      <li>Poster presentations: 5 minutes</li>
+    </ul>
+  </li>
+  <li><strong>Resolution:</strong> 1080p (1920 × 1080) recommended</li>
+  <li><strong>Aspect ratio:</strong> 16:9</li>
+  <li><strong>Audio:</strong> Clear narration (built-in microphone or headset is acceptable)</li>
+  <li><strong>File size:</strong> Keep under 300 MB whenever possible</li>
+</ul>
+
+<hr>
+<p class="mt-3">
+  <strong>Submission Deadline:</strong>
+  All presentation materials must be submitted via the portal by
+  <strong class="text-danger">April 27, 2026</strong>.
+</p>
+         
+       
+          <!-- <h2 class="mt-4">Abstract Format</h2>
+          <ul>
+            <li>Maximum 500 words</li>
+            <li>Written in English</li>
+            <li>Include objectives, methods, results, and significance</li>
+            <li>No figures, tables, or references</li>
+            <div class="mt-2 p-2 border border-warning rounded" style="display: inline-block; background-color: #fff8e1;">
+              <strong>Note:</strong> Abstract submission is limited to <strong>three per author</strong>: up to <strong>two oral talks</strong> and <strong>one poster</strong> upon acceptance.
             </div>
-          </div>
+             -->
+          <!-- </ul> -->
+          <hr>
+                   <h2 class="mt-4">Presentation Upload</h2>
+
+                 <div class="info-box">
+                   Please use your <strong>Abstract ID</strong> (3-digit number assigned during abstract submission)
+                   and your <strong>User ID</strong> to upload your files.<br><br>
+                   You may upload a video, a presentation (PPTX), or both. If you re-upload using the same
+                   filename, your existing file will be replaced.
+                 </div>
+       
+	   
+					<div class="content-box">
+					<h2 class="mt-4">Submission Identity</h2>
+					<div class="row g-3">
+						<div class="col-sm-4">
+						<label class="form-label">Abstract ID *</label>
+						<input type="text" class="form-control" id="abstractId" placeholder="042" maxlength="3"
+							oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,3)"/>
+						</div>
+
+						<div class="col-sm-8">
+						<label class="form-label">User ID *</label>
+						<input type="text" class="form-control" id="userId" placeholder="e.g. USR-001 or your ConfTool ID"/>
+						</div>
+
+						<div class="col-sm-4">
+						<label class="form-label">Day *</label>
+						<select class="form-select" id="sessionDay">
+							<option value="">Select day…</option>
+						</select>
+						</div>
+
+						<div class="col-sm-4">
+						<label class="form-label">Room *</label>
+						<select class="form-select" id="sessionRoom" disabled>
+							<option value="">Select room…</option>
+						</select>
+						</div>
+
+						<div class="col-sm-4">
+						<label class="form-label">Session ID *</label>
+						<select class="form-select" id="sessionId" disabled>
+							<option value="">Select session…</option>
+						</select>
+						</div>
+					</div>
+					</div>
+       
+                 <div class="content-box">
+                   <h2 class="mt-4">Personal Information</h2>
+                   <div class="row g-3">
+                     <div class="col-sm-6">
+                       <label class="form-label">First Name *</label>
+                       <input type="text" class="form-control" id="firstName"/>
+                     </div>
+                     <div class="col-sm-6">
+                       <label class="form-label">Last Name *</label>
+                       <input type="text" class="form-control" id="lastName"/>
+                     </div>
+                     <div class="col-sm-8">
+                       <label class="form-label">Email Address *</label>
+                       <input type="email" class="form-control" id="email"/>
+                     </div>
+                     <div class="col-sm-4">
+                       <label class="form-label">Phone</label>
+                       <input type="tel" class="form-control" id="phone"/>
+                     </div>
+                     <div class="col-sm-6">
+                       <label class="form-label">Institution</label>
+                       <input type="text" class="form-control" id="institution"/>
+                     </div>
+                     <div class="col-sm-6">
+                       <label class="form-label">Presentation Type</label>
+                       <select class="form-select" id="presType">
+                         <option value="">Select…</option>
+                         <option>In-Person Oral</option>
+                         <option>In-Person Poster</option>
+                         <option>Virtual Oral</option>
+                         <option>Virtual Poster</option>
+                       </select>
+                     </div>
+                     <div class="col-12">
+                       <label class="form-label">Notes</label>
+                       <textarea class="form-control" id="notes" style="min-height:80px;resize:vertical;" placeholder="Any notes or special requirements…"></textarea>
+                     </div>
+                   </div>
+                 </div>
+       
+                 <div class="content-box">
+                   <h2 class="mt-4">Upload Files</h2>
+                   <p style="font-size:14px;color:#666;margin-bottom:24px;">
+                     Upload your <strong>video</strong>, <strong>presentation (PPT/PDF)</strong>, or both. At least one file is required.
+                   </p>
+       
+                   <label class="form-label"><i class="bi bi-camera-video me-1" style="color:#78943b;"></i> Video File</label>
+                   <div class="drop-zone" id="vZone">
+                     <input type="file" id="vFile" accept="video/*"/>
+                     <div class="drop-icon"><i class="bi bi-camera-video-fill"></i></div>
+                     <h5>Drop your video here</h5>
+                     <p>or <span class="browse-link">click to browse</span> · MP4, MOV, AVI, MKV</p>
+                   </div>
+                   <div class="file-chip" id="vChip">
+                     <div class="chip-icon"><i class="bi bi-camera-video-fill"></i></div>
+                     <div class="chip-meta">
+                       <div class="chip-name" id="vName"></div>
+                       <div class="chip-size" id="vSize"></div>
+                     </div>
+                     <button class="chip-rm" onclick="clearFile('v')" title="Remove"><i class="bi bi-x-lg"></i></button>
+                   </div>
+                   <div class="prog-wrap" id="vProg">
+                     <div class="prog-meta"><span>Uploading video…</span><span id="vPct">0%</span></div>
+                     <div class="progress"><div class="progress-bar" id="vFill" style="width:0%"></div></div>
+                   </div>
+       
+                   <hr style="margin:28px 0;border-color:#d8d8d8;"/>
+       
+                   <label class="form-label"><i class="bi bi-file-earmark-slides me-1" style="color:#78943b;"></i> Presentation File</label>
+                   <div class="drop-zone" id="pZone">
+                     <input type="file" id="pFile" accept=".ppt,.pptx,.pdf"/>
+                     <div class="drop-icon"><i class="bi bi-file-earmark-slides-fill"></i></div>
+                     <h5>Drop your presentation here</h5>
+                     <p>or <span class="browse-link">click to browse</span> · PPT, PPTX, PDF</p>
+                   </div>
+                   <div class="file-chip" id="pChip">
+                     <div class="chip-icon"><i class="bi bi-file-earmark-slides-fill"></i></div>
+                     <div class="chip-meta">
+                       <div class="chip-name" id="pName"></div>
+                       <div class="chip-size" id="pSize"></div>
+                     </div>
+                     <button class="chip-rm" onclick="clearFile('p')" title="Remove"><i class="bi bi-x-lg"></i></button>
+                   </div>
+                   <div class="prog-wrap" id="pProg">
+                     <div class="prog-meta"><span>Uploading presentation…</span><span id="pPct">0%</span></div>
+                     <div class="progress"><div class="progress-bar" id="pFill" style="width:0%"></div></div>
+                   </div>
+       
+                   <div class="mt-4 pt-2">
+                     <button class="btn btn-submit" id="submitBtn" onclick="handleSubmit()">
+                       <span class="btn-text"><i class="bi bi-cloud-upload me-2"></i>Submit Presentation</span>
+                       <span class="spinner-border spinner-border-sm d-none" id="spinner"></span>
+                     </button>
+                   </div>
+
+
+                   
+  </article>
+ 
+
+ 
+
+      </article>
         </div>
-
-        <div class="col-lg-4">
-          <div class="sidebar-panel">
-            <div class="sidebar-heading" style="font-size:1rem;">May 4-8, 2026<br>Gainesville, FL, USA</div>
-            <hr>
-            <div class="sidebar-heading" style="font-size:0.95rem;">Countdown</div>
-            <div class="count-box" id="countDays">0</div>
-            <div class="count-label">Days</div>
-            <div class="count-box" id="countHours">0</div>
-            <div class="count-label">Hours</div>
-            <div class="count-box" id="countMinutes">0</div>
-            <div class="count-label">Minutes</div>
-            <div class="count-box" id="countSeconds">0</div>
-            <div class="count-label">Seconds</div>
+        <div class="col-lg-3 d-print-none">
+  <div class="sticky-top px-1 mb-3" style="top: 132px">
+    <div class="rounded p-3" style="background-color: #F5F5F5">
+      <div class="px-2 mt-2">
+        <h4 align="center" class="d-inline-block my-1 mb-0 mx-auto w-100 fw-bold">May 4-8, 2026</span></h4>
+        <h5 align="center" class="d-inline-block my-1 mx-auto w-100 fw-bold">Gainesville, FL, USA</h5>
+      </div>
+      <!--
+      <div>
+        <a href="https://lp.constantcontactpages.com/su/AQ73Cfn" class="btn btn-primary rounded-lg" style="padding: 9px 0px; width: 100%; margin-top: 10px"><strong>Join Our Mailing List &raquo;</strong></a>
+      </div>
+      <div>
+        <a href="speaker-presentations.php" class="btn btn-primary rounded-lg" style="padding: 9px; width: 100%; margin-top: 10px"><strong>2022 Presentations</strong></a>
+      </div>
+      <div>
+        <a href="sponsor-recognition.php" class="btn btn-primary rounded-lg" style="padding: 9px 10px; width: 100%; margin-top: 10px"><strong>2022 Sponsors</strong></a>
+      </div>
+      <div>
+        <a href="venue-hotel.php" class="btn btn-primary rounded-lg" style="padding: 9px 0px; width: 100%; margin-top: 10px"><strong>Venue &amp; Hotel</strong></a>
+      </div>
+      <div>
+        <a href="sponsor-recognition.html" class="btn btn-primary rounded-lg" style="padding: 9px 0px; width: 100%; margin-top: 15px"><strong>Sponsorship Recognition »</strong></a>
+      </div>
+      -->
+      <div class="mx-auto px-5"><hr class="my-4"></div>
+      <h5 align="center" class="d-inline-block mb-3 mx-auto w-100 fw-bold">Countdown</h5>
+      <div id="timer">
+        <div id="days" class="rounded-lg mb-2" style="height: 40px; display: flex; align-content: center; justify-content: center; align-items: center; font-size: 18px; background-color: white">
+          <div class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="sr-only small">&nbsp;</span>
           </div>
-        </div>
+    </div>
+    <h6 align="center">Days</h6>
+        <div id="hours" class="rounded-lg mb-2" style="height: 40px; display: flex; align-content: center; justify-content: center; align-items: center; font-size: 18px; background-color: white">
+          <div class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="sr-only small">&nbsp;</span>
+          </div>
+    </div>
+    <h6 align="center">Hours</h6>
+        <div id="minutes" class="rounded-lg mb-2" style="height: 40px; display: flex; align-content: center; justify-content: center; align-items: center; font-size: 18px; background-color: white">
+          <div class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="sr-only small">&nbsp;</span>
+          </div>
+    </div>
+    <h6 align="center">Minutes</h6>
+        <div id="seconds" class="rounded-lg mb-2" style="height: 40px; display: flex; align-content: center; justify-content: center; align-items: center; font-size: 18px; background-color: white">
+          <div class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="sr-only small">&nbsp;</span>
+          </div>
+    </div>
+    <h6 align="center">Seconds</h6>
       </div>
     </div>
   </div>
+</div>      </div>
+    </div>
+  <div class="modal fade" id="Conduct" tabindex="-1" aria-labelledby="ConductLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header d-block">
+<h1 align="center" class="modal-title fs-4 mt-3 fw-bold" id="ConductLabel">Code of Conduct</h1>
+</div>
+<div class="modal-body p-4">
+<p class="mb-0">We are dedicated to providing a harassment-free experience for everyone, regardless of gender, gender identity and expression, age, sexual orientation, disability, physical appearance, body size, race, ethnicity, religion (or lack thereof), or technology choices. We do not tolerate harassment of participants in any form. Suggestive statements, sexual innuendo, or offensive remarks are not appropriate during any activity, including during talks, poster sessions, workshops, social functions, after hours parties, via Zoom chat or on Twitter or other online media. Participants asked to stop any harassing behavior are expected to comply immediately. Those violating these rules may be sanctioned or expelled without a refund at the discretion of the organizers. If you are being harassed, notice that someone else is being harassed, or have any other concerns about participant behavior, please notify the organizers immediately.</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary w-100 text-center" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
 
-  <div class="toast-wrap">
-    <div class="my-toast" id="myToast">
-      <span id="toastIcon" style="font-size:20px;"></span>
-      <span id="toastMsg"></span>
+<div class="modal fade" id="Hotel" tabindex="-1" aria-labelledby="HotelLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" style="max-width: 535px !important">
+<div class="modal-content">
+<div class="modal-header d-block">
+<p align="center" class="mt-2"><i class="fa-solid fa-triangle-exclamation" style="font-size:50px; color:#970001"></i></p>
+<h1 class="modal-title fs-4 mt-3" id="HotelLabel">Hotel Reservation Fraud Alert</h1>
+</div>
+<div class="modal-body p-4">
+<p class="mb-0">It is possible you may be contacted by a company claiming to be the official housing bureau for this conference. These companies contact conference exhibitors and attendees, telling them the guest room block is sold out at the host hotel. The company then quotes a rate at another hotel, claiming it is an official room block and that you must reserve through them to get discounted rates. They ask for your credit card information so they can make a reservation for you. <strong>DO NOT FALL FOR THIS</strong> or you will lose your money. This scam is affecting conferences all over the country. No matter what meeting you attend, always use the hotel reservation links provided on the host organization’s website.</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary w-100 text-center" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>  <div class="d-print-none text-center py-3 bg-white">
+  <button type="button" value="Start Slideshow" class="play border-0" style="background: none; color: #767676"><i class="fas fa-play" aria-hidden="true" aria-label="Start Slideshow"></i></button> &nbsp;/&nbsp; <button type="button" value="Pause Slideshow" class="stop border-0" style="background: none; color: #767676"><i class="fas fa-pause" aria-hidden="true" aria-label="Pause Slideshow"></i></button>
+</div>
+<div class="d-print-none container-fluid p-0" style="cursor: grab">
+  <div class="owl-carousel">
+  <img src="images/carousel/home-image4.jpg" alt="Carousel Image">
+    <img src="images/carousel/home-image5.jpg" alt="Carousel Image">
+    <img src="images/carousel/home-image6.jpg" alt="Carousel Image">
+  <img src="images/carousel/home-image3.jpg" alt="Carousel Image">
+    <img src="images/carousel/home-image7.jpg" alt="Carousel Image">
+  <img src="images/carousel/home-image9.jpg" alt="Carousel Image">
+    <!--<img src="images/carousel/home-image2.jpg" alt="Carousel Image">-->
+  <img src="images/carousel/home-image1.jpg" alt="Carousel Image">
+  <img src="images/carousel/home-image8.jpg" alt="Carousel Image">
+  <img src="images/carousel/home-image10.jpg" alt="Carousel Image">
+  </div>
+</div>
+<footer class="d-print-none mt-0 footer container-fluid pt-4 pb-5">
+  <div class="container row d-flex justify-content-center align-content-center align-items-center pb-3" style="max-width: 900px;">
+  <div class="col-lg-2 pt-3 my-4 text-center">
+      <a href="https://carlos-alberto-silva.github.io/silvalab/lab.html" target="_blank"><img src="images/silvalab-hex-clip-trans-green.png" class="w-100 px-1" alt="SilvaLab" style="max-width: 150px;"></a>
+    </div>
+    <div class="col-lg-5 pt-3 my-4 text-center">
+      <a href="https://ffgs.ifas.ufl.edu/" target="_blank"><img src="images/ufifas-sffgs-white.png" class="w-100" alt="UF/IFAS School of Forest, Fisheries, &amp; Geomatics Sciences Logo" style="max-width: 300px;"></a>
+    </div>
+  <div class="col-lg-5 pt-2 my-4 text-center">
+      <a href="https://www.forestsat.com/" target="_blank"><img src="images/forest-sat-association-white.png" class="w-100" alt="UF/IFAS School of Forest, Fisheries, &amp; Geomatics Sciences Logo" style="max-width: 290px;"></a>
     </div>
   </div>
+  <p class="text-center text-white">
+    <small>Copyright © <script type="text/javascript">document.write(new Date().getFullYear());</script> All Rights Reserved<br>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#Conduct">Code of Conduct</a> | <a href="https://privacy.ufl.edu/privacy-policies-and-procedures/onlineinternet-privacy-statement/" target="_blank">UF Privacy</a> | <button id="convertcolors" class="text-white border-0 bg-transparent px-0 fw-bold">Convert to Black</button><br><strong>Analytics:</strong> <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy <i class="fa fa-external-link-alt" aria-hidden="true"></i></a></small>
+  </p>
+  <div class="row mx-auto mt-4" style="max-width: 300px">
+    <div class="col text-center"><a href="https://x.com/ForestSAT/" target="_blank"><i class="bi bi-twitter-x text-white"></i></a></div>
+    <div class="col text-center"><a href="https://www.facebook.com/ForestSAT/" target="_blank"><i class="bi bi-facebook text-white"></i></a></div>
+    <div class="col text-center"><a href="https://www.youtube.com/@forestsat" target="_blank"><i class="bi bi-youtube text-white"></i></a></div>
+    <div class="col text-center"><a href="https://www.instagram.com/explore/tags/forestsat/" target="_blank"><i class="bi bi-instagram text-white"></i></a></div>
+    <div class="col text-center"><a href="https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fgroups%2F13822028%2F" target="_blank"><i class="bi bi-linkedin text-white"></i></a></div>
+   <div class="col text-center">
+  <a href="https://bsky.app/profile/forestsat.bsky.social" target="_blank">
+    <img src="images/icons8-bluesky-logo-24.png" alt="Bluesky" width="24" height="24" style="filter: brightness(0) invert(1);">
+  </a>
+</div>
+  </div>
+</footer>    <!-- Core JS CDN -->
+<!-- <script src="../../code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>  -->
+<!-- Core Bootstrap JS -->
+<!-- <script src="../../cdn.jsdelivr.net/npm/bootstrap%405.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  -->
+<!-- <script src="../../cdn.jsdelivr.net/npm/%40popperjs/core%402.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>  -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
+<div class="toast-wrap">
+  <div class="my-toast" id="myToast">
+    <span id="toastIcon" style="font-size:20px;"></span>
+    <span id="toastMsg"></span>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+
+<!-- Countdown Timer -->
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("May 4, 2026  00:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+// Get todays date and time
+var now = new Date().getTime();
+
+// Find the distance between now and the count down date
+var distance = countDownDate - now;
+
+// Time calculations for days, hours, minutes and seconds
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+// Output the result in an element with id="days"
+document.getElementById("days").innerHTML = days;
+ 
+// Output the result in an element with id="hours"
+document.getElementById("hours").innerHTML = hours;
+ 
+// Output the result in an element with id="minutes"
+document.getElementById("minutes").innerHTML = minutes;
+ 
+// Output the result in an element with id="seconds"
+document.getElementById("seconds").innerHTML = seconds;
+
+// If the count down is over, write some text
+if (distance < 0) {
+clearInterval(x);
+document.getElementById("timer").innerHTML = "Conference has Ended";
+}
+}, 1000);
+</script>
+
+<!-- BG Video Play/Pause Buttons -->
+<script>
+let vid = document.getElementById("bgvideo");
+function playVid() {
+  vid.play();
+}
+function pauseVid() {
+  vid.pause();
+}
+</script>
+<!-- Owl Carousel -->
+<script src="js/owl.carousel.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function() {
+    $(".owl-carousel").owlCarousel();
+  });
+  var owl = $('.owl-carousel');
+  owl.owlCarousel( {
+    items:4,
+    loop:true,
+    margin:0,
+    autoplay:true,
+    autoplayTimeout:4000,
+    autoplayHoverPause:true,
+    responsive:{
+      0:{
+        items:2
+      },
+      600:{
+        items:4
+      }
+    }
+  });
+  $('.play').on('click',function(){
+    owl.trigger('play.owl.autoplay',[4000])
+  })
+  $('.stop').on('click',function(){
+    owl.trigger('stop.owl.autoplay')
+  });
+</script>
+<!-- Convert Heading Colors -->
+<script>
+  let button = document.getElementById('convertcolors');
+  let containers = document.getElementsByClassName('heading');
+  let bgContainers = document.getElementsByClassName('bg');
+  function changeButtonText() {
+    if (button.innerHTML === "Convert to Black")
+      button.innerHTML = "Convert to Color";
+    else
+      button.innerHTML = "Convert to Black";
+  }
+  button.addEventListener('click', function() {
+    for (let index = 0; index < containers.length; ++index)
+      containers[index].classList.toggle('blacktext');
+    for (let index = 0; index < bgContainers.length; ++index)
+      bgContainers[index].classList.toggle('blackbg');
+    changeButtonText();
+  });
+
+
+
+ 
     const WORKER_URL = 'https://black-meadow-0843.forestsat2026.workers.dev';
     let vFileObj = null;
     let pFileObj = null;
+	
+
+	const SESSION_MAP = [
+  {"session_ID":177,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":179,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":178,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":122,"DAY":"Tuesday","session_room":"Auditorium"},
+  {"session_ID":97,"DAY":"Tuesday","session_room":"Rion Ballroom"},
+  {"session_ID":180,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":182,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":181,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":123,"DAY":"Tuesday","session_room":"Rion Ballroom"},
+  {"session_ID":126,"DAY":"Tuesday","session_room":"Auditorium"},
+  {"session_ID":185,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":183,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":184,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":89,"DAY":"Tuesday","session_room":"Auditorium"},
+  {"session_ID":90,"DAY":"Tuesday","session_room":"Rion Ballroom"},
+  {"session_ID":188,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":186,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":187,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":101,"DAY":"Tuesday","session_room":"Auditorium"},
+  {"session_ID":131,"DAY":"Tuesday","session_room":"Rion Ballroom"},
+  {"session_ID":189,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":190,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":191,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":118,"DAY":"Tuesday","session_room":"Auditorium"},
+  {"session_ID":93,"DAY":"Tuesday","session_room":"Rion Ballroom"},
+
+  {"session_ID":194,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":192,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":193,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":215,"DAY":"Wednesday","session_room":"Auditorium"},
+  {"session_ID":91,"DAY":"Wednesday","session_room":"Rion Ballroom"},
+  {"session_ID":196,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":197,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":195,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":155,"DAY":"Wednesday","session_room":"Rion Ballroom"},
+  {"session_ID":94,"DAY":"Wednesday","session_room":"Auditorium"},
+  {"session_ID":199,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":200,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":198,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":92,"DAY":"Wednesday","session_room":"Auditorium"},
+  {"session_ID":216,"DAY":"Wednesday","session_room":"Rion Ballroom"},
+  {"session_ID":201,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":202,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":125,"DAY":"Wednesday","session_room":"Auditorium"},
+  {"session_ID":149,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":121,"DAY":"Wednesday","session_room":"Auditorium"},
+  {"session_ID":130,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":96,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":98,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)"},
+
+  {"session_ID":205,"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":203,"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":204,"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":119,"DAY":"Thursday","session_room":"Auditorium"},
+  {"session_ID":151,"DAY":"Thursday","session_room":"Rion Ballroom"},
+  {"session_ID":206,"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":207,"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":208,"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":120,"DAY":"Thursday","session_room":"Auditorium"},
+  {"session_ID":129,"DAY":"Thursday","session_room":"Rion Ballroom"},
+  {"session_ID":209,"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":210,"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":211,"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":100,"DAY":"Thursday","session_room":"Auditorium"},
+  {"session_ID":150,"DAY":"Thursday","session_room":"Rion Ballroom"},
+  {"session_ID":212,"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)"},
+  {"session_ID":213,"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)"},
+  {"session_ID":214,"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)"},
+  {"session_ID":102,"DAY":"Thursday","session_room":"Auditorium"},
+  {"session_ID":156,"DAY":"Thursday","session_room":"Rion Ballroom"}
+];
+
+function uniqueValues(arr) {
+  return [...new Set(arr)];
+}
+
+function fillSelect(selectEl, values, placeholder) {
+  selectEl.innerHTML = `<option value="">${placeholder}</option>`;
+  values.forEach(v => {
+    const opt = document.createElement('option');
+    opt.value = v;
+    opt.textContent = v;
+    selectEl.appendChild(opt);
+  });
+}
+
+function initSessionDropdowns() {
+  const dayEl = document.getElementById('sessionDay');
+  const roomEl = document.getElementById('sessionRoom');
+  const sessionEl = document.getElementById('sessionId');
+
+  const days = uniqueValues(SESSION_MAP.map(x => x.DAY));
+  fillSelect(dayEl, days, 'Select day…');
+
+  dayEl.addEventListener('change', () => {
+    const day = dayEl.value;
+    roomEl.disabled = !day;
+    sessionEl.disabled = true;
+    fillSelect(sessionEl, [], 'Select session…');
+
+    if (!day) {
+      fillSelect(roomEl, [], 'Select room…');
+      return;
+    }
+
+    const rooms = uniqueValues(
+      SESSION_MAP.filter(x => x.DAY === day).map(x => x.session_room)
+    );
+    fillSelect(roomEl, rooms, 'Select room…');
+  });
+
+  roomEl.addEventListener('change', () => {
+    const day = dayEl.value;
+    const room = roomEl.value;
+    sessionEl.disabled = !(day && room);
+
+    if (!(day && room)) {
+      fillSelect(sessionEl, [], 'Select session…');
+      return;
+    }
+
+    const sessionIds = SESSION_MAP
+      .filter(x => x.DAY === day && x.session_room === room)
+      .map(x => String(x.session_ID));
+
+    fillSelect(sessionEl, sessionIds, 'Select session…');
+  });
+}
+
+initSessionDropdowns();
 
     // Countdown
     function updateCountdown() {
@@ -386,16 +981,20 @@
 
     // Save user info — called ONCE after all files finish
     async function saveInfo(abstractId, fileNames) {
-      const payload = {
-        abstractId, fileNames,
-        userId:      document.getElementById('userId').value.trim(),
-        name:        `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
-        email:       document.getElementById('email').value.trim(),
-        phone:       document.getElementById('phone').value.trim(),
-        institution: document.getElementById('institution').value.trim(),
-        presType:    document.getElementById('presType').value,
-        notes:       document.getElementById('notes').value.trim(),
-      };
+		const payload = {
+		abstractId,
+		fileNames,
+		userId:       document.getElementById('userId').value.trim(),
+		day:          document.getElementById('sessionDay').value,
+		sessionRoom:  document.getElementById('sessionRoom').value,
+		sessionId:    document.getElementById('sessionId').value,
+		name:         `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
+		email:        document.getElementById('email').value.trim(),
+		phone:        document.getElementById('phone').value.trim(),
+		institution:  document.getElementById('institution').value.trim(),
+		presType:     document.getElementById('presType').value,
+		notes:        document.getElementById('notes').value.trim(),
+		};
       const res = await fetch(`${WORKER_URL}/saveinfo`, {
         method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload),
       });
@@ -404,18 +1003,24 @@
     }
 
     async function handleSubmit() {
-      const abstractId = document.getElementById('abstractId').value.trim();
-      const userId     = document.getElementById('userId').value.trim();
-      const firstName  = document.getElementById('firstName').value.trim();
-      const lastName   = document.getElementById('lastName').value.trim();
-      const email      = document.getElementById('email').value.trim();
+		const abstractId  = document.getElementById('abstractId').value.trim();
+		const userId      = document.getElementById('userId').value.trim();
+		const day         = document.getElementById('sessionDay').value;
+		const sessionRoom = document.getElementById('sessionRoom').value;
+		const sessionId   = document.getElementById('sessionId').value;
+		const firstName   = document.getElementById('firstName').value.trim();
+		const lastName    = document.getElementById('lastName').value.trim();
+		const email       = document.getElementById('email').value.trim();
 
-      if(!abstractId || !/^[0-9]{3}$/.test(abstractId)) return showToast('err','⚠️','Please enter a valid 3-digit Abstract ID.');
-      if(!userId)    return showToast('err','⚠️','User ID is required.');
-      if(!firstName) return showToast('err','⚠️','First name is required.');
-      if(!lastName)  return showToast('err','⚠️','Last name is required.');
-      if(!email || !/\S+@\S+\.\S+/.test(email)) return showToast('err','⚠️','Please enter a valid email address.');
-      if(!vFileObj && !pFileObj) return showToast('err','⚠️','Please upload at least one file.');
+		if(!abstractId || !/^[0-9]{3}$/.test(abstractId)) return showToast('err','⚠️','Please enter a valid 3-digit Abstract ID.');
+		if(!userId) return showToast('err','⚠️','User ID is required.');
+		if(!day) return showToast('err','⚠️','Please select a day.');
+		if(!sessionRoom) return showToast('err','⚠️','Please select a room.');
+		if(!sessionId) return showToast('err','⚠️','Please select a session ID.');
+		if(!firstName) return showToast('err','⚠️','First name is required.');
+		if(!lastName) return showToast('err','⚠️','Last name is required.');
+		if(!email || !/\S+@\S+\.\S+/.test(email)) return showToast('err','⚠️','Please enter a valid email address.');
+		if(!vFileObj && !pFileObj) return showToast('err','⚠️','Please upload at least one file.');
 
       const btn=document.getElementById('submitBtn'), spinner=document.getElementById('spinner'), btnText=document.querySelector('.btn-text');
       btn.disabled=true; spinner.classList.remove('d-none'); btnText.classList.add('d-none');
@@ -439,19 +1044,44 @@
       }
     }
 
-    function resetForm() {
-      ['abstractId','userId','firstName','lastName','email','phone','institution','notes'].forEach(id => document.getElementById(id).value='');
-      document.getElementById('presType').value='';
-      clearFile('v'); clearFile('p');
-    }
+	function resetForm() {
+	['abstractId','userId','firstName','lastName','email','phone','institution','notes'].forEach(id => {
+		document.getElementById(id).value = '';
+	});
+
+	document.getElementById('presType').value = '';
+	document.getElementById('sessionDay').value = '';
+	document.getElementById('sessionRoom').innerHTML = '<option value="">Select room…</option>';
+	document.getElementById('sessionRoom').disabled = true;
+	document.getElementById('sessionId').innerHTML = '<option value="">Select session…</option>';
+	document.getElementById('sessionId').disabled = true;
+
+	clearFile('v');
+	clearFile('p');
+	}
 
     function showToast(type, icon, msg) {
-      const el=document.getElementById('myToast');
-      document.getElementById('toastIcon').textContent=icon;
-      document.getElementById('toastMsg').textContent=msg;
-      el.className=`my-toast ${type} show`;
-      setTimeout(()=>el.classList.remove('show'),4500);
-    }
-  </script>
-</body>
+  const el = document.getElementById('myToast');
+  const iconEl = document.getElementById('toastIcon');
+  const msgEl = document.getElementById('toastMsg');
+
+  if (!el || !iconEl || !msgEl) {
+    console.error('Toast elements missing', { el, iconEl, msgEl, msg });
+    alert(msg);
+    return;
+  }
+
+  iconEl.textContent = icon;
+  msgEl.textContent = msg;
+  el.className = `my-toast ${type} show`;
+  setTimeout(() => el.classList.remove('show'), 4500);
+}
+ 
+
+</script>  </body>
+
+
+
+
+<!-- Mirrored from conference.ifas.ufl.edu/forestsat/about-gainesville.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Jun 2025 16:06:29 GMT -->
 </html>
