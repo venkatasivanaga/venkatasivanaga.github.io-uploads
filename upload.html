@@ -1439,6 +1439,7 @@
         day: meta.day,
         sessionRoom: meta.sessionRoom,
         sessionTitle: meta.sessionTitle,
+        sessionId: meta.sessionId,
         name: `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
         email: document.getElementById('email').value.trim(),
         phone: document.getElementById('phone').value.trim(),
@@ -1486,7 +1487,20 @@
         return showToast('err', '⚠️', `Presentation must be under ${MAX_PRESENTATION_MB} MB.`);
       }
 
-      const meta = { abstractId, day, sessionRoom, sessionTitle };
+      const selectedSession = SESSION_MAP.find(
+        x =>
+          x.DAY === day &&
+          x.session_room === sessionRoom &&
+          x.session_title === sessionTitle
+      );
+
+      const meta = {
+        abstractId,
+        sessionId: selectedSession ? selectedSession.session_ID : '',
+        day,
+        sessionRoom,
+        sessionTitle
+      };
 
       const btn = document.getElementById('submitBtn');
       const spinner = document.getElementById('spinner');
