@@ -7,10 +7,6 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&display=swap" rel="stylesheet">
 
   <style>
     body { font-family: Arial, Helvetica, sans-serif; color: #333; background: #f3f3f3; margin: 0; padding: 0; }
@@ -36,7 +32,7 @@
     .drop-zone:hover, .drop-zone.over { border-color: #78943b; background: #eef5e7; }
     .drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
     .drop-icon { width: 52px; height: 52px; background: #eef5e7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 22px; color: #78943b; }
-    .drop-zone h5 { font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 700; color: #333; margin-bottom: 6px; }
+    .drop-zone h5 { font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 700; color: #333; margin-bottom: 6px; }
     .drop-zone p { font-size: 13px; color: #666; margin: 0; }
     .drop-zone .browse-link { color: #78943b; font-weight: 700; }
     .file-chip { display: none; align-items: center; gap: 12px; background: #eef5e7; border: 1px solid #c8d7bc; border-radius: 7px; padding: 10px 14px; margin-top: 10px; }
@@ -53,7 +49,7 @@
     .progress { height: 5px; border-radius: 99px; background: #d8e0d2; }
     .progress-bar { background: linear-gradient(90deg, #5f7d2d, #78943b); border-radius: 99px; transition: width 0.3s ease; }
     .toast-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
-    .my-toast { background: #fff; border: 1px solid #d8d8d8; border-radius: 10px; padding: 14px 20px; display: flex; align-items: center; gap: 12px; font-size: 13.5px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); max-width: 360px; opacity: 0; transform: translateY(12px); transition: all 0.3s ease; pointer-events: none; }
+    .my-toast { background: #fff; border: 1px solid #d8d8d8; border-radius: 10px; padding: 14px 20px; display: flex; align-items: center; gap: 12px; font-size: 13.5px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); max-width: 420px; opacity: 0; transform: translateY(12px); transition: all 0.3s ease; pointer-events: none; }
     .my-toast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .my-toast.ok  { border-left: 4px solid #78943b; }
     .my-toast.err { border-left: 4px solid #c0392b; }
@@ -81,82 +77,27 @@
 
           <div class="content-box">
             <h2 class="section-title">Presentation Formats</h2>
-
             <p>ForestSAT 2026 offers four presentation formats, reflecting its <strong>hybrid format</strong>.</p>
-
             <hr>
-
             <h5 class="mt-3">🏛️ In-Person Presentations</h5>
             <ul>
-              <li>
-                <strong>Oral Presentation (in person):</strong>
-                12-minute talk followed by a 3-minute Q&amp;A session, delivered live at the University of Florida.
-                Authors are required to submit their presentation slides (PPTX) using the
-                <strong><a href="documents/ForestSAT_talk_template.pptx" target="_blank">conference template (PPTX)</a></strong>.
-                Presentations must be submitted via the portal by <strong class="text-danger">April 27, 2026</strong>.
-              </li>
-              <br>
-              <li>
-                <strong>Poster Presentation (in person):</strong>
-                Posters will be displayed in the Grand Ballroom for the duration of the conference.
-                Authors are requested to be present at their poster during the Poster Reception on
-                <strong>Tuesday, May 5, 2026, from 5:00 PM to 7:00 PM</strong>.
-              </li>
+              <li><strong>Oral Presentation (in person):</strong> 12-minute talk followed by a 3-minute Q&amp;A session, delivered live at the University of Florida.</li>
+              <li><strong>Poster Presentation (in person):</strong> Posters will be displayed in the Grand Ballroom for the duration of the conference.</li>
             </ul>
-
-            <p class="mt-3"><strong>Poster Display Specifications</strong></p>
-            <ul>
-              <li>One side of a poster board will be provided, along with pushpins.</li>
-              <li><strong>Display area:</strong> 60 in (152 cm) height × 72 in (182 cm) width.</li>
-              <li><strong>Total board height (including pedestal):</strong> 74 in (187 cm).</li>
-              <li><strong>Setup:</strong> Monday, May 4, 2026, from 12:00 PM to 5:00 PM or Tuesday, May 5, 2026, from 7:30 AM to 8:30 AM</li>
-              <li><strong>Removal:</strong> Thursday, May 7, 2026, from 3:30 PM to 5:00 PM</li>
-            </ul>
-
-            <p>Several local businesses can print posters for reasonable rates (<strong>less than $40 USD</strong>). Please contact them directly:</p>
-            <ul>
-              <li><a href="https://target-copy.com/" target="_blank"><strong>Target Copy</strong></a></li>
-              <li><a href="https://www.officedepot.com/storelocator/fl/gainesville/office-depot-186" target="_blank"><strong>Office Depot</strong></a></li>
-            </ul>
-
             <hr>
-
             <h5 class="mt-3">🌐 Virtual Presentations</h5>
             <ul>
-              <li>
-                <strong>Oral Presentation (virtual):</strong>
-                12-minute talk followed by a 3-minute Q&amp;A session, delivered via Zoom.
-                Authors are required to submit their presentation slides (PPTX) using the
-                <strong><a href="documents/ForestSAT_talk_template.pptx" target="_blank">conference template (PPTX)</a></strong>
-                and a <strong>12-minute recorded presentation</strong> to be used as a backup in case of connectivity issues.
-              </li>
-              <br>
-              <li>
-                <strong>Poster Presentation (virtual):</strong>
-                Virtual poster presentations consist of a <strong>5-minute presentation</strong> followed by a
-                <strong>2-minute Q&amp;A session</strong>, delivered via Zoom.
-                Authors are required to submit their presentation slides (PPTX) and a
-                <strong>5-minute recorded presentation</strong> to be used as a backup in case of connectivity issues.
-              </li>
+              <li><strong>Oral Presentation (virtual):</strong> submit slides and a 12-minute backup recording.</li>
+              <li><strong>Poster Presentation (virtual):</strong> submit slides and a 5-minute backup recording.</li>
             </ul>
-
             <p class="mt-3"><strong>Video Format Guidelines</strong></p>
             <ul>
-              <li><strong>File format:</strong> MP4 (recommended)</li>
-              <li><strong>Maximum duration:</strong> Oral presentations: 12 minutes; Poster presentations: 5 minutes</li>
-              <li><strong>Resolution:</strong> 1080p (1920 × 1080) recommended</li>
+              <li><strong>File format:</strong> MP4 recommended</li>
+              <li><strong>Resolution:</strong> 1080p recommended</li>
               <li><strong>Aspect ratio:</strong> 16:9</li>
               <li><strong>Audio:</strong> Clear narration</li>
-              <li><strong>File size:</strong> Keep under 300 MB whenever possible</li>
+              <li><strong>File size:</strong> Video 300 MB max, Presentation 100 MB max</li>
             </ul>
-
-            <hr>
-
-            <p class="mt-3">
-              <strong>Submission Deadline:</strong>
-              All presentation materials must be submitted via the portal by
-              <strong class="text-danger">April 27, 2026</strong>.
-            </p>
           </div>
 
           <hr>
@@ -164,10 +105,8 @@
           <h2 class="section-title">Presentation Upload</h2>
 
           <div class="info-box">
-            Please use your <strong>Abstract ID</strong> (3-digit number assigned during abstract submission)
-            and your <strong>User ID</strong> to upload your files.<br><br>
-            You may upload a video, a presentation (PPTX/PDF), or both. If you re-upload using the same
-            filename, your existing file will be replaced.
+            Please use your <strong>Abstract ID</strong> and your <strong>User ID</strong> to upload your files.<br><br>
+            You may upload a video, a presentation (PPTX/PDF), or both. If you re-upload using the same filename, your existing file will be replaced.
           </div>
 
           <div class="content-box">
@@ -214,27 +153,22 @@
                 <label class="form-label">First Name *</label>
                 <input type="text" class="form-control" id="firstName">
               </div>
-
               <div class="col-sm-6">
                 <label class="form-label">Last Name *</label>
                 <input type="text" class="form-control" id="lastName">
               </div>
-
               <div class="col-sm-8">
                 <label class="form-label">Email Address *</label>
                 <input type="email" class="form-control" id="email">
               </div>
-
               <div class="col-sm-4">
                 <label class="form-label">Phone</label>
                 <input type="tel" class="form-control" id="phone">
               </div>
-
               <div class="col-sm-6">
                 <label class="form-label">Institution</label>
                 <input type="text" class="form-control" id="institution">
               </div>
-
               <div class="col-sm-6">
                 <label class="form-label">Presentation Type</label>
                 <select class="form-select" id="presType">
@@ -245,7 +179,6 @@
                   <option>Virtual Poster</option>
                 </select>
               </div>
-
               <div class="col-12">
                 <label class="form-label">Notes</label>
                 <textarea class="form-control" id="notes" style="min-height:80px;resize:vertical;" placeholder="Any notes or special requirements…"></textarea>
@@ -262,9 +195,7 @@
               Maximum file sizes: <strong>Video 300 MB</strong> and <strong>Presentation 100 MB</strong>.
             </p>
 
-            <label class="form-label">
-              <i class="bi bi-camera-video me-1" style="color:#78943b;"></i> Video File
-            </label>
+            <label class="form-label"><i class="bi bi-camera-video me-1" style="color:#78943b;"></i> Video File</label>
             <div class="drop-zone" id="vZone">
               <input type="file" id="vFile" accept="video/*">
               <div class="drop-icon"><i class="bi bi-camera-video-fill"></i></div>
@@ -277,9 +208,7 @@
                 <div class="chip-name" id="vName"></div>
                 <div class="chip-size" id="vSize"></div>
               </div>
-              <button class="chip-rm" onclick="clearFile('v')" title="Remove" type="button">
-                <i class="bi bi-x-lg"></i>
-              </button>
+              <button class="chip-rm" onclick="clearFile('v')" title="Remove" type="button"><i class="bi bi-x-lg"></i></button>
             </div>
             <div class="prog-wrap" id="vProg">
               <div class="prog-meta"><span>Uploading video…</span><span id="vPct">0%</span></div>
@@ -288,9 +217,7 @@
 
             <hr style="margin:28px 0;border-color:#d8d8d8;">
 
-            <label class="form-label">
-              <i class="bi bi-file-earmark-slides me-1" style="color:#78943b;"></i> Presentation File
-            </label>
+            <label class="form-label"><i class="bi bi-file-earmark-slides me-1" style="color:#78943b;"></i> Presentation File</label>
             <div class="drop-zone" id="pZone">
               <input type="file" id="pFile" accept=".ppt,.pptx,.pdf">
               <div class="drop-icon"><i class="bi bi-file-earmark-slides-fill"></i></div>
@@ -303,9 +230,7 @@
                 <div class="chip-name" id="pName"></div>
                 <div class="chip-size" id="pSize"></div>
               </div>
-              <button class="chip-rm" onclick="clearFile('p')" title="Remove" type="button">
-                <i class="bi bi-x-lg"></i>
-              </button>
+              <button class="chip-rm" onclick="clearFile('p')" title="Remove" type="button"><i class="bi bi-x-lg"></i></button>
             </div>
             <div class="prog-wrap" id="pProg">
               <div class="prog-meta"><span>Uploading presentation…</span><span id="pPct">0%</span></div>
@@ -364,80 +289,22 @@
     let vFileObj = null;
     let pFileObj = null;
 
-    // ────────────────────────────────────────────────────────────────
-    // MERGED session map: day + room + session_ID + session_title
-    // ────────────────────────────────────────────────────────────────
     const SESSION_MAP = [
-      {"session_ID":177,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)","session_title":"Advances in Remote Sensing Technologies I"},
-      {"session_ID":179,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Fire, Burned Area, and Fuel Load Mapping I"},
-      {"session_ID":178,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)","session_title":"Artificial Intelligence in Forest Research and Management I"},
-      {"session_ID":122,"DAY":"Tuesday","session_room":"Auditorium","session_title":"More than ice in ICESat-2: Unlocking canopy insights from space"},
-      {"session_ID":97,"DAY":"Tuesday","session_room":"Rion Ballroom","session_title":"Hurricane-resilient forests: Innovations in remote sensing for hurricane ecology and management in a changing climate I"},
-      {"session_ID":180,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)","session_title":"Advances in Remote Sensing Technologies II"},
-      {"session_ID":182,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Fire, Burned Area, and Fuel Load Mapping II"},
-      {"session_ID":181,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)","session_title":"Artificial Intelligence in Forest Research and Management II"},
-      {"session_ID":123,"DAY":"Tuesday","session_room":"Rion Ballroom","session_title":"Remote sensing of trees in smallholder agroforestry systems"},
-      {"session_ID":126,"DAY":"Tuesday","session_room":"Auditorium","session_title":"Large scale european projects supporting current policy making at the EU"},
-      {"session_ID":185,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Fire, Burned Area, and Fuel Load Mapping III"},
-      {"session_ID":183,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)","session_title":"Advances in Remote Sensing Technologies III"},
-      {"session_ID":184,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)","session_title":"Geospatial Innovations I"},
-      {"session_ID":89,"DAY":"Tuesday","session_room":"Auditorium","session_title":"Remote sensing-assisted sampling and statistical inference in forest inventory"},
-      {"session_ID":90,"DAY":"Tuesday","session_room":"Rion Ballroom","session_title":"Monitoring post-disturbance forest recovery dynamics"},
-      {"session_ID":188,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Fire, Burned Area, and Fuel Load Mapping IV"},
-      {"session_ID":186,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)","session_title":"Advances in Remote Sensing Technologies IV"},
-      {"session_ID":187,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)","session_title":"Geospatial Innovations II"},
-      {"session_ID":101,"DAY":"Tuesday","session_room":"Auditorium","session_title":"Mapping forest long-term dynamics through multisensor time series and machine learning"},
-      {"session_ID":131,"DAY":"Tuesday","session_room":"Rion Ballroom","session_title":"NASA Wildland fire and FireSense: Transforming wildfire science into action"},
-      {"session_ID":189,"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)","session_title":"Climate Change Impacts"},
-      {"session_ID":190,"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)","session_title":"Near Real-Time Monitoring of Forests"},
-      {"session_ID":191,"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Agroforestry Applications"},
-      {"session_ID":118,"DAY":"Tuesday","session_room":"Auditorium","session_title":"Leveraging BIOMASS, NISAR or multi-sensors for comprehensive forest monitoring"},
-      {"session_ID":93,"DAY":"Tuesday","session_room":"Rion Ballroom","session_title":"Biomass carbon monitoring of pools and fluxes that is responsive to stakeholder needs"},
-
-      {"session_ID":194,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Biodiversity and Habitat Monitoring I"},
-      {"session_ID":192,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)","session_title":"Forest Disturbance, Recovery, and Resilience I"},
-      {"session_ID":193,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)","session_title":"Carbon and Biomass Estimation I"},
-      {"session_ID":215,"DAY":"Wednesday","session_room":"Auditorium","session_title":"Cutting-edge Terrestrial Laser Scanning for tree volume, biomass, and carbon estimation: From point clouds to precision forestry"},
-      {"session_ID":91,"DAY":"Wednesday","session_room":"Rion Ballroom","session_title":"Hurricane-resilient forests: Innovations in remote sensing for hurricane ecology and management in a changing climate II"},
-      {"session_ID":196,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)","session_title":"Carbon and Biomass Estimation II"},
-      {"session_ID":197,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Biodiversity and Habitat Monitoring II"},
-      {"session_ID":195,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)","session_title":"Forest Disturbance, Recovery, and Resilience II"},
-      {"session_ID":155,"DAY":"Wednesday","session_room":"Rion Ballroom","session_title":"Ecosystem morphological traits from 3D data and biodiversity"},
-      {"session_ID":94,"DAY":"Wednesday","session_room":"Auditorium","session_title":"Fuel and consumption modeling and mapping to improve fuel, fire, and smoke models"},
-      {"session_ID":199,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)","session_title":"Carbon and Biomass Estimation III"},
-      {"session_ID":200,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Forest Health and Disease Detection I"},
-      {"session_ID":198,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)","session_title":"Forest Disturbance, Recovery, and Resilience III"},
-      {"session_ID":92,"DAY":"Wednesday","session_room":"Auditorium","session_title":"Advancing near real-time monitoring of tropical forest disturbances, recovery, and land-use change through multi-source remote sensing and AI"},
-      {"session_ID":216,"DAY":"Wednesday","session_room":"Rion Ballroom","session_title":"Virtual Poster Presentation"},
-      {"session_ID":201,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)","session_title":"Carbon and Biomass Estimation IV"},
-      {"session_ID":202,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Forest Health and Disease Detection II"},
-      {"session_ID":125,"DAY":"Wednesday","session_room":"Auditorium","session_title":"Advances in active remote sensing for forest parameter estimation"},
-      {"session_ID":149,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)","session_title":"3D Fuels: Characterizing wildland fuels in three dimensions for next-generation fire modeling"},
-      {"session_ID":121,"DAY":"Wednesday","session_room":"Auditorium","session_title":"Emerging applications of Landsat data for forest management and monitoring"},
-      {"session_ID":130,"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Advancing earth science monitoring through web-based cyberinfrastructure platforms"},
-      {"session_ID":96,"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)","session_title":"Toward a collaborative framework: Integrating remote sensing research with forestry practice"},
-      {"session_ID":98,"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)","session_title":"Emerging applications of Landsat data for forest management and monitoring"},
-
-      {"session_ID":205,"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)","session_title":"Emerging Trends in Forest Management"},
-      {"session_ID":203,"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)","session_title":"Spaceborne Missions for Forest Science I"},
-      {"session_ID":204,"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)","session_title":"Sampling and Statistical Inference in Forestry I"},
-      {"session_ID":119,"DAY":"Thursday","session_room":"Auditorium","session_title":"Forest applications with Harmonized Landsat and Sentinel-2 analysis ready data products I"},
-      {"session_ID":151,"DAY":"Thursday","session_room":"Rion Ballroom","session_title":"What is the value of satellite imagery? – The impact of Earth Observation programs on forest applications"},
-      {"session_ID":206,"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)","session_title":"Spaceborne Missions for Forest Science II"},
-      {"session_ID":207,"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)","session_title":"Sampling and Statistical Inference in Forestry II"},
-      {"session_ID":208,"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)","session_title":"Sustainability Metrics for Forest-Based Industries"},
-      {"session_ID":120,"DAY":"Thursday","session_room":"Auditorium","session_title":"Forest applications with Harmonized Landsat and Sentinel-2 analysis ready data products II"},
-      {"session_ID":129,"DAY":"Thursday","session_room":"Rion Ballroom","session_title":"New frontiers in forest biomass mapping with low-frequency SAR satellites"},
-      {"session_ID":209,"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)","session_title":"Industrial Plantation Monitoring and Optimization I"},
-      {"session_ID":210,"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)","session_title":"Programming and Data Analysis for Forestry"},
-      {"session_ID":211,"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)","session_title":"Policy and Decision-Making Support"},
-      {"session_ID":100,"DAY":"Thursday","session_room":"Auditorium","session_title":"From canopy to complexity: Advances in understanding forest structure using remote sensing"},
-      {"session_ID":150,"DAY":"Thursday","session_room":"Rion Ballroom","session_title":"Applications of NASA’s hyperspectral PACE mission: New insights for ecosystem science"},
-      {"session_ID":212,"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)","session_title":"Industrial Plantation Monitoring and Optimization II"},
-      {"session_ID":213,"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)","session_title":"RS36"},
-      {"session_ID":214,"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)","session_title":"Stakeholder Engagement in Forest Management"},
-      {"session_ID":102,"DAY":"Thursday","session_room":"Auditorium","session_title":"Assessing map quality, accuracy, and area estimation: implications and applications for biodiversity conservation, climate change mitigation, and financing"},
-      {"session_ID":156,"DAY":"Thursday","session_room":"Rion Ballroom","session_title":"Beyond the flames: Advancing wildfire science and management with spaceborne LiDAR"}
+      {"DAY":"Tuesday","session_room":"Pine (Meeting Room 2355)","session_title":"Advances in Remote Sensing Technologies I"},
+      {"DAY":"Tuesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Fire, Burned Area, and Fuel Load Mapping I"},
+      {"DAY":"Tuesday","session_room":"Oak (Meeting Room 2365)","session_title":"Artificial Intelligence in Forest Research and Management I"},
+      {"DAY":"Tuesday","session_room":"Auditorium","session_title":"More than ice in ICESat-2: Unlocking canopy insights from space"},
+      {"DAY":"Tuesday","session_room":"Rion Ballroom","session_title":"Hurricane-resilient forests: Innovations in remote sensing for hurricane ecology and management in a changing climate I"},
+      {"DAY":"Wednesday","session_room":"Pine (Meeting Room 2355)","session_title":"Forest Disturbance, Recovery, and Resilience I"},
+      {"DAY":"Wednesday","session_room":"Oak (Meeting Room 2365)","session_title":"Carbon and Biomass Estimation I"},
+      {"DAY":"Wednesday","session_room":"Cypress (Meeting Room 3315)","session_title":"Biodiversity and Habitat Monitoring I"},
+      {"DAY":"Wednesday","session_room":"Auditorium","session_title":"Cutting-edge Terrestrial Laser Scanning for tree volume, biomass, and carbon estimation: From point clouds to precision forestry"},
+      {"DAY":"Wednesday","session_room":"Rion Ballroom","session_title":"Hurricane-resilient forests: Innovations in remote sensing for hurricane ecology and management in a changing climate II"},
+      {"DAY":"Thursday","session_room":"Pine (Meeting Room 2355)","session_title":"Spaceborne Missions for Forest Science I"},
+      {"DAY":"Thursday","session_room":"Oak (Meeting Room 2365)","session_title":"Sampling and Statistical Inference in Forestry I"},
+      {"DAY":"Thursday","session_room":"Cypress (Meeting Room 3315)","session_title":"Emerging Trends in Forest Management"},
+      {"DAY":"Thursday","session_room":"Auditorium","session_title":"Forest applications with Harmonized Landsat and Sentinel-2 analysis ready data products I"},
+      {"DAY":"Thursday","session_room":"Rion Ballroom","session_title":"What is the value of satellite imagery? – The impact of Earth Observation programs on forest applications"}
     ];
 
     function uniqueValues(arr) {
@@ -452,17 +319,6 @@
         opt.textContent = v;
         selectEl.appendChild(opt);
       });
-    }
-
-    // Look up the session_ID for the currently selected day+room+title
-    function getSelectedSessionId() {
-      const day = document.getElementById('sessionDay').value;
-      const room = document.getElementById('sessionRoom').value;
-      const title = document.getElementById('sessionTitle').value;
-      const match = SESSION_MAP.find(
-        x => x.DAY === day && x.session_room === room && x.session_title === title
-      );
-      return match ? String(match.session_ID) : '';
     }
 
     function initSessionDropdowns() {
@@ -552,13 +408,28 @@
       document.getElementById(`${t}Pct`).textContent = '0%';
     }
 
+    function resetForm() {
+      ['abstractId','userId','firstName','lastName','email','phone','institution','notes'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+
+      document.getElementById('presType').value = '';
+      document.getElementById('sessionDay').value = '';
+      document.getElementById('sessionRoom').innerHTML = '<option value="">Select room…</option>';
+      document.getElementById('sessionRoom').disabled = true;
+      document.getElementById('sessionTitle').innerHTML = '<option value="">Select session…</option>';
+      document.getElementById('sessionTitle').disabled = true;
+
+      clearFile('v');
+      clearFile('p');
+    }
+
     function showToast(type, icon, msg) {
       const el = document.getElementById('myToast');
       const iconEl = document.getElementById('toastIcon');
       const msgEl = document.getElementById('toastMsg');
 
       if (!el || !iconEl || !msgEl) {
-        console.error('Toast elements missing', { el, iconEl, msgEl, msg });
         alert(msg);
         return;
       }
@@ -569,25 +440,43 @@
       setTimeout(() => el.classList.remove('show'), 4500);
     }
 
-    // ────────────────────────────────────────────────────────────────
-    // Upload — now sends day / room / sessionTitle / sessionId so the
-    // worker can store files in BOTH  submissions/all/<id>/  AND
-    // submissions/days/<day>/<room>/<session>/<id>/
-    // ────────────────────────────────────────────────────────────────
-    function uploadFile(file, meta, progId) {
+    async function sha1Hex(file) {
+      const buffer = await file.arrayBuffer();
+      const hashBuffer = await crypto.subtle.digest('SHA-1', buffer);
+      return Array.from(new Uint8Array(hashBuffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    async function getDirectUploadInfo(file, meta) {
+      const res = await fetch(`${WORKER_URL}/get-upload-url`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          abstractId: meta.abstractId,
+          day: meta.day,
+          sessionRoom: meta.sessionRoom,
+          sessionTitle: meta.sessionTitle,
+          fileName: file.name,
+          contentType: file.type || 'application/octet-stream'
+        })
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: 'Failed to prepare upload' }));
+        throw new Error(err.error || 'Failed to prepare upload');
+      }
+
+      return res.json();
+    }
+
+    async function directUploadToB2(file, uploadInfo, progId) {
+      const sha1 = await sha1Hex(file);
+      document.getElementById(`${progId}Prog`).classList.add('show');
+
       return new Promise((resolve, reject) => {
-        const fd = new FormData();
-        fd.append('file', file);
-        fd.append('abstractId',   meta.abstractId);
-        fd.append('day',          meta.day);
-        fd.append('sessionRoom',  meta.sessionRoom);
-        fd.append('sessionTitle', meta.sessionTitle);
-        fd.append('sessionId',    meta.sessionId);
-
-        document.getElementById(`${progId}Prog`).classList.add('show');
-
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', `${WORKER_URL}/upload`);
+        xhr.open('POST', uploadInfo.uploadUrl);
 
         xhr.upload.onprogress = e => {
           if (e.lengthComputable) {
@@ -598,49 +487,80 @@
         };
 
         xhr.onload = () => {
-          if (xhr.status === 200) {
+          if (xhr.status >= 200 && xhr.status < 300) {
             document.getElementById(`${progId}Fill`).style.width = '100%';
             document.getElementById(`${progId}Pct`).textContent = '100%';
-            resolve(JSON.parse(xhr.responseText));
+            resolve(JSON.parse(xhr.responseText || '{}'));
           } else {
-            try {
-              reject(new Error(JSON.parse(xhr.responseText).error || 'Upload failed'));
-            } catch {
-              reject(new Error(`Upload failed (${xhr.status})`));
-            }
+            reject(new Error(`B2 upload failed (${xhr.status})`));
           }
         };
 
-        xhr.onerror = () => reject(new Error('Network error'));
-        xhr.send(fd);
+        xhr.onerror = () => reject(new Error('Direct upload failed'));
+
+        xhr.setRequestHeader('Authorization', uploadInfo.authorizationToken);
+        xhr.setRequestHeader('X-Bz-File-Name', encodeURIComponent(uploadInfo.masterPath));
+        xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+        xhr.setRequestHeader('X-Bz-Content-Sha1', sha1);
+
+        xhr.send(file);
       });
+    }
+
+    async function finalizeUpload(uploadInfo) {
+      const res = await fetch(`${WORKER_URL}/finalize`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          masterPath: uploadInfo.masterPath,
+          schedulePath: uploadInfo.schedulePath
+        })
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: 'Finalize failed' }));
+        throw new Error(err.error || 'Finalize failed');
+      }
+
+      return res.json();
+    }
+
+    async function uploadFile(file, meta, progId) {
+      const uploadInfo = await getDirectUploadInfo(file, meta);
+      await directUploadToB2(file, uploadInfo, progId);
+      await finalizeUpload(uploadInfo);
+
+      return {
+        fileName: file.name,
+        masterPath: uploadInfo.masterPath,
+        schedulePath: uploadInfo.schedulePath
+      };
     }
 
     async function saveInfo(meta, fileNames) {
       const payload = {
-        abstractId:   meta.abstractId,
+        abstractId: meta.abstractId,
         fileNames,
-        userId:       document.getElementById('userId').value.trim(),
-        day:          meta.day,
-        sessionRoom:  meta.sessionRoom,
+        userId: document.getElementById('userId').value.trim(),
+        day: meta.day,
+        sessionRoom: meta.sessionRoom,
         sessionTitle: meta.sessionTitle,
-        sessionId:    meta.sessionId,
-        name:         `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
-        email:        document.getElementById('email').value.trim(),
-        phone:        document.getElementById('phone').value.trim(),
-        institution:  document.getElementById('institution').value.trim(),
-        presType:     document.getElementById('presType').value,
-        notes:        document.getElementById('notes').value.trim(),
+        name: `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        institution: document.getElementById('institution').value.trim(),
+        presType: document.getElementById('presType').value,
+        notes: document.getElementById('notes').value.trim()
       };
 
       const res = await fetch(`${WORKER_URL}/saveinfo`, {
         method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
       if (!res.ok) {
-        const err = await res.json().catch(() => ({error:'saveinfo failed'}));
+        const err = await res.json().catch(() => ({ error: 'saveinfo failed' }));
         throw new Error(err.error || 'Failed to save info');
       }
 
@@ -648,35 +568,33 @@
     }
 
     async function handleSubmit() {
-      const abstractId   = document.getElementById('abstractId').value.trim();
-      const userId       = document.getElementById('userId').value.trim();
-      const day          = document.getElementById('sessionDay').value;
-      const sessionRoom  = document.getElementById('sessionRoom').value;
+      const abstractId = document.getElementById('abstractId').value.trim();
+      const userId = document.getElementById('userId').value.trim();
+      const day = document.getElementById('sessionDay').value;
+      const sessionRoom = document.getElementById('sessionRoom').value;
       const sessionTitle = document.getElementById('sessionTitle').value;
-      const sessionId    = getSelectedSessionId();
-      const firstName    = document.getElementById('firstName').value.trim();
-      const lastName     = document.getElementById('lastName').value.trim();
-      const email        = document.getElementById('email').value.trim();
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
 
-      if (!abstractId || !/^[0-9]{3}$/.test(abstractId)) return showToast('err','⚠️','Please enter a valid 3-digit Abstract ID.');
-      if (!userId) return showToast('err','⚠️','User ID is required.');
-      if (!day) return showToast('err','⚠️','Please select a day.');
-      if (!sessionRoom) return showToast('err','⚠️','Please select a room.');
-      if (!sessionTitle) return showToast('err','⚠️','Please select a session.');
-      if (!firstName) return showToast('err','⚠️','First name is required.');
-      if (!lastName) return showToast('err','⚠️','Last name is required.');
-      if (!email || !/\S+@\S+\.\S+/.test(email)) return showToast('err','⚠️','Please enter a valid email address.');
-      if (!vFileObj && !pFileObj) return showToast('err','⚠️','Please upload at least one file.');
+      if (!abstractId || !/^[0-9]{3}$/.test(abstractId)) return showToast('err', '⚠️', 'Please enter a valid 3-digit Abstract ID.');
+      if (!userId) return showToast('err', '⚠️', 'User ID is required.');
+      if (!day) return showToast('err', '⚠️', 'Please select a day.');
+      if (!sessionRoom) return showToast('err', '⚠️', 'Please select a room.');
+      if (!sessionTitle) return showToast('err', '⚠️', 'Please select a session.');
+      if (!firstName) return showToast('err', '⚠️', 'First name is required.');
+      if (!lastName) return showToast('err', '⚠️', 'Last name is required.');
+      if (!email || !/\S+@\S+\.\S+/.test(email)) return showToast('err', '⚠️', 'Please enter a valid email address.');
+      if (!vFileObj && !pFileObj) return showToast('err', '⚠️', 'Please upload at least one file.');
 
       if (vFileObj && vFileObj.size > MAX_VIDEO_BYTES) {
         return showToast('err', '⚠️', `Video must be under ${MAX_VIDEO_MB} MB.`);
       }
-
       if (pFileObj && pFileObj.size > MAX_PRESENTATION_BYTES) {
         return showToast('err', '⚠️', `Presentation must be under ${MAX_PRESENTATION_MB} MB.`);
       }
 
-      const meta = { abstractId, day, sessionRoom, sessionTitle, sessionId };
+      const meta = { abstractId, day, sessionRoom, sessionTitle };
 
       const btn = document.getElementById('submitBtn');
       const spinner = document.getElementById('spinner');
@@ -700,32 +618,16 @@
 
         await saveInfo(meta, fileNames);
 
-        showToast('ok','✅',`Submission ${abstractId} uploaded successfully!`);
+        showToast('ok', '✅', `Submission ${abstractId} uploaded successfully!`);
         setTimeout(resetForm, 3000);
       } catch (err) {
         console.error(err);
-        showToast('err','❌',err.message);
+        showToast('err', '❌', err.message);
       } finally {
         btn.disabled = false;
         spinner.classList.add('d-none');
         btnText.classList.remove('d-none');
       }
-    }
-
-    function resetForm() {
-      ['abstractId','userId','firstName','lastName','email','phone','institution','notes'].forEach(id => {
-        document.getElementById(id).value = '';
-      });
-
-      document.getElementById('presType').value = '';
-      document.getElementById('sessionDay').value = '';
-      document.getElementById('sessionRoom').innerHTML = '<option value="">Select room…</option>';
-      document.getElementById('sessionRoom').disabled = true;
-      document.getElementById('sessionTitle').innerHTML = '<option value="">Select session…</option>';
-      document.getElementById('sessionTitle').disabled = true;
-
-      clearFile('v');
-      clearFile('p');
     }
 
     document.getElementById('vFile').addEventListener('change', e => {
